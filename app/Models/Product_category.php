@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Product_category extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'id','name'
+    ];
+
+    public function product_category()
+    {
+        return $this->belongsTo(Product_category::class);
+    }
+
+}
