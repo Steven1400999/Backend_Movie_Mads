@@ -18,13 +18,11 @@ class Product extends Model
         'product_category_id'
     ];
 
-
     public function inventorys(): HasMany
     {
         return $this->hasMany(Inventory::class);
 
     }
-
 
     public function product_category(): BelongsTo
     {
@@ -32,3 +30,4 @@ class Product extends Model
     }
 
 }
+

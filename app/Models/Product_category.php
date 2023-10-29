@@ -20,3 +20,4 @@ class Product_category extends Model
     }
 
 }
+
