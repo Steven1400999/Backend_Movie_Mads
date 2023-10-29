@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Rol extends Model
 {
@@ -11,13 +12,14 @@ class Rol extends Model
 
 
     protected $fillable = [
-        'id', 'rol_name'
+        'id',
+        'rol_name'
     ];
 
-public function rol()
-{
-    return $this->belongsTo(Rol::class);
-}
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 
 
 }

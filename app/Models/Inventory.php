@@ -4,23 +4,34 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Inventory extends Model
 {
     use HasFactory;
     use HasFactory;
     protected $fillable = [
-        'id','product_id','stock','admission_date','supplier_id'
+        'id',
+        'product_id',
+        'stock',
+        'admission_date',
+        'supplier_id'
     ];
 
-    public function product()
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(Product::class, 'producto_id');
+        return $this->belongsTo(Product::class);
+
+
     }
 
-    public function supplier()
+
+
+
+    public function supplier(): BelongsTo
     {
-        return $this->belongsTo(Supplier::class, 'supplier_id');
+        return $this->belongsTo(Supplier::class);
     }
+
 
 }
