@@ -13,19 +13,19 @@ class InventorySeeder extends Seeder
      */
     public function run(): void
     {
-        $registro = new Inventory();
-        $registro->product_id = 1;
-        $registro->stock = 250;
-        $registro->date = '2023-10-29';
-        $registro->supplier_id = 1;
-        $registro->save();
+        $inventory = new Inventory();
+        $inventory->product_id = 1;
+        $inventory->stock = 250;
+        $inventory->admission_date = '2023-10-29';
+        $inventory->supplier_id = 1;
+        $inventory->save();
 
 
-        $registro = new Inventory();
-        $registro->product_id = 2;
-        $registro->stock = 564;
-        $registro->date = '2023-10-30';
-        $registro->supplier_id = 1;
-        $registro->save();
+        $inventory = new Inventory();
+        $inventory->product_id = 2;
+        $inventory->stock = 564;
+        $inventory->admission_date = '2023-10-30';
+        $inventory->supplier_id = 1;
+        $inventory->save();
     }
 }

@@ -60,7 +60,10 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
+        
+
+
+        
     }
 
     /**
