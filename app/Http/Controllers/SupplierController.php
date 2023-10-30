@@ -49,8 +49,8 @@ class SupplierController extends Controller
     public function show(Request $request)
     {
 
-        $supplier = Supplier::where('name', $request->name)->get();
-
+        $supplier = Supplier::where('name', $request->name)
+        ->orwhere('name', $request->name)->get();
         return $supplier;
 
     }
@@ -58,27 +58,44 @@ class SupplierController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Supplier $supplier)
+    public function edit(Request $request)
     {
-        
+
+        $supplier = Supplier::where('id', $request->id)
+            ->orwhere('name', $request->name)->get();
+        return $supplier;
 
 
-        
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(Request $request)
     {
-        //
+
+        $supplier = Supplier::where('id', $request->id)
+        ->orwhere('name', $request->name)->get();
+
+        $supplier->update([
+            'name' => $request->name
+
+        ]);
+        $supplier->save();
+        return $supplier;
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Supplier $supplier)
+    public function destroy(Request $request)
     {
-        //
+
+        $supplier = Supplier::where('id', $request->id)
+        ->orwhere('name', $request->name)->delete();
+        return $supplier;
+
     }
 }

@@ -13,7 +13,7 @@ class Rol extends Model
 
     protected $fillable = [
         'id',
-        'rol_name'
+        'name'
     ];
 
     public function users(): HasMany

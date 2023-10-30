@@ -12,7 +12,8 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $rol = Rol::find(1);
+        return $rol->users;
     }
 
     /**
@@ -28,38 +29,66 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rol = Rol::create([
+            'name' => $request->name,
+
+        ]);
+
+        $rol->save();
+        return $request;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Rol $rol)
+    public function show(Request $request)
     {
-        //
+
+        $rol = Rol::where('name', $request->name)
+            ->orwhere('name', $request->name)->get();
+        return $rol;
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Rol $rol)
+    public function edit(Request $request)
     {
-        //
+
+        $rol = Rol::where('id', $request->id)
+            ->orwhere('name', $request->name)->get();
+        return $rol;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Rol $rol)
+    public function update(Request $request)
     {
-        //
+        $rol = Rol::where('id', $request->id)
+            ->orwhere('name', $request->name)->get();
+
+        $rol->update([
+            'name' => $request->name
+
+        ]);
+        $rol->save();
+        return $rol;
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rol $rol)
+    public function destroy(Request $request)
     {
-        //
+        $rol = Rol::where('id', $request->id)
+        ->orwhere('name', $request->name)->delete();
+        return $rol;
+
+
+
+
     }
 }
