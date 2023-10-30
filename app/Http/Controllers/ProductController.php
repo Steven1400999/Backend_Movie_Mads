@@ -12,7 +12,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::find(1);
+        return $product->inventories;
+
     }
 
     /**
@@ -28,38 +30,76 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $product = Product::create([
+            "name" => $request->name,
+            "description" => $request->description,
+            "price" => $request->price
+
+
+        ]);
+
+        $product->save();
+        return $request;
+
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Request $request)
     {
-        //
+        $product = Product::where('id', $request->id)
+            ->orwhere('name', $request->name)->get();
+        return $product;
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Request $request)
     {
-        //
+        $product = Product::where('id', $request->id)
+            ->orwhere('name', $request->name)->get();
+        return $product;
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
-        //
+
+        $product = Product::where('id', $request->id)
+            ->orwhere('name', $request->name)->first();
+
+        $product->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'product_category_id' => $request->product_category_id
+
+        ]);
+
+        $product->save();
+        return $product;
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
-        //
+
+
+        $product = Product::where('id', $request->id)
+            ->orwhere('name', $request->name)->delete();
+        return $product;
+
+
     }
 }

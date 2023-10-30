@@ -12,7 +12,8 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        //
+        $inventory = Inventory::find(1);
+        return $inventory->products->suppliers;
     }
 
     /**
@@ -28,38 +29,66 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inventory = Inventory::create([
+            'product_id' => $request->product_id,
+            'stock' => $request->stock,
+            'admission_date' => $request->admission_date,
+            'supplier_id' => $request->supplier_id
+
+        ]);
+
+        $inventory->save();
+        return $request;
+
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Inventory $inventory)
+    public function show(Request $request)
     {
-        //
+        $inventory = Inventory::where('id', $request->id)->get();
+        return $inventory;
+
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Inventory $inventory)
+    public function edit(Request $request)
     {
-        //
+        $inventory = Inventory::where('id', $request->id)->get();
+        return $inventory;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Inventory $inventory)
+    public function update(Request $request)
     {
-        //
+        $inventory = Inventory::where('id', $request->id)->first();
+
+        $inventory->update([
+            'product_id' => $request->product_id,
+            'stock' => $request->stock,
+            'admission_date' => $request->admission_date,
+            'supplier_id' => $request->supplier_id
+        ]);
+
+        $inventory->save();
+        return $inventory;
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Inventory $inventory)
+    public function destroy(Request $request)
     {
-        //
+        $inventory = Inventory::where('id', $request->id)->delete();
+        return $inventory;
+
     }
 }

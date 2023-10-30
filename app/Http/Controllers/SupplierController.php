@@ -50,7 +50,7 @@ class SupplierController extends Controller
     {
 
         $supplier = Supplier::where('name', $request->name)
-        ->orwhere('name', $request->name)->get();
+            ->orwhere('id', $request->id)->get();
         return $supplier;
 
     }
@@ -76,7 +76,7 @@ class SupplierController extends Controller
     {
 
         $supplier = Supplier::where('id', $request->id)
-        ->orwhere('name', $request->name)->get();
+            ->orwhere('name', $request->name)->first();
 
         $supplier->update([
             'name' => $request->name
@@ -84,6 +84,7 @@ class SupplierController extends Controller
         ]);
         $supplier->save();
         return $supplier;
+
 
     }
 
@@ -94,7 +95,7 @@ class SupplierController extends Controller
     {
 
         $supplier = Supplier::where('id', $request->id)
-        ->orwhere('name', $request->name)->delete();
+            ->orwhere('name', $request->name)->delete();
         return $supplier;
 
     }

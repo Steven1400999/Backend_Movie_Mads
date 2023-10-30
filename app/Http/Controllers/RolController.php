@@ -45,7 +45,7 @@ class RolController extends Controller
     {
 
         $rol = Rol::where('name', $request->name)
-            ->orwhere('name', $request->name)->get();
+            ->orwhere('id', $request->id)->get();
         return $rol;
 
     }
@@ -67,7 +67,7 @@ class RolController extends Controller
     public function update(Request $request)
     {
         $rol = Rol::where('id', $request->id)
-            ->orwhere('name', $request->name)->get();
+            ->orwhere('name', $request->name)->first();
 
         $rol->update([
             'name' => $request->name
@@ -84,7 +84,7 @@ class RolController extends Controller
     public function destroy(Request $request)
     {
         $rol = Rol::where('id', $request->id)
-        ->orwhere('name', $request->name)->delete();
+            ->orwhere('name', $request->name)->delete();
         return $rol;
 
 

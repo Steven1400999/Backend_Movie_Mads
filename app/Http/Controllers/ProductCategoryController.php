@@ -12,7 +12,9 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $category = Product_category::find(1);
+        return $category->products;
+
     }
 
     /**
@@ -28,38 +30,66 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = Product_category::create([
+            'name' => $request->name,
+
+        ]);
+
+        $category->save();
+        return $request;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product_category $product_category)
+    public function show(Request $request)
     {
-        //
+        $category = Product_category::where('id', $request->id)
+            ->orwhere('name', $request->name)->get();
+        return $category;
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product_category $product_category)
+    public function edit(Request $request)
     {
-        //
+        $category = Product_category::where('id', $request->id)
+            ->orwhere('name', $request->name)->get();
+        return $category;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product_category $product_category)
+    public function update(Request $request)
     {
-        //
+        $category = Product_category::where('id', $request->id)
+            ->orwhere('name', $request->name)->first();
+
+        $category->update([
+            'name' => $request->name
+
+        ]);
+
+        $category->save();
+        return $category;
+
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product_category $product_category)
+    public function destroy(Request $request)
     {
-        //
+
+
+        $category = Product_category::where('id', $request->id)
+            ->orwhere('name', $request->name)->delete();
+        return $category;
     }
+
 }
+
