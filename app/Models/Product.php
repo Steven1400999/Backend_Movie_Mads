@@ -24,10 +24,12 @@ class Product extends Model
 
     }
 
-    public function product_category(): BelongsTo
+    public function product_categorys(): BelongsTo
     {
-        return $this->belongsTo(Product_category::class, 'product_category_id');
+        return $this->belongsTo(Product_category::class);
     }
+
+    
 
 }
 

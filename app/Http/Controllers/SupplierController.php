@@ -12,7 +12,11 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+
+        $supplier = Supplier::find(1);
+        return $supplier->products;
+
+
     }
 
     /**
@@ -28,15 +32,27 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $supplier = Supplier::create([
+            'name' => $request->name,
+
+        ]);
+
+        $supplier->save();
+        return $request;
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Supplier $supplier)
+    public function show(Request $request)
     {
-        //
+
+        $supplier = Supplier::where('name', $request->name)->get();
+
+        return $supplier;
+
     }
 
     /**
