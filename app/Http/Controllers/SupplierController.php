@@ -13,8 +13,8 @@ class SupplierController extends Controller
     public function index()
     {
 
-        $supplier = Supplier::find(1);
-        return $supplier->products;
+        $supplier = Supplier::all();
+        return $supplier;
 
 
     }
@@ -49,8 +49,8 @@ class SupplierController extends Controller
     public function show(Request $request)
     {
 
-        $supplier = Supplier::where('name', $request->name)
-            ->orwhere('id', $request->id)->get();
+        $supplier = Supplier::where('id', $request->id)
+            ->orwhere('name', $request->name)->get();
         return $supplier;
 
     }
@@ -75,8 +75,7 @@ class SupplierController extends Controller
     public function update(Request $request)
     {
 
-        $supplier = Supplier::where('id', $request->id)
-            ->orwhere('name', $request->name)->first();
+        $supplier = Supplier::where('id', $request->id)->first();
 
         $supplier->update([
             'name' => $request->name

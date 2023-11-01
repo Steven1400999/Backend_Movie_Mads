@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Support\Facades\Validator;
-
 
 class RegisterController extends ResponseController
 {
@@ -21,6 +20,7 @@ class RegisterController extends ResponseController
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
+            'c_password'=> 'required|same:password',
             'rol_id' => 'requiered',
 
         ]);
