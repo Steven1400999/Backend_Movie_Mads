@@ -12,8 +12,8 @@ class RolController extends Controller
      */
     public function index()
     {
-        $rol = Rol::find(1);
-        return $rol->users;
+        $rol = Rol::all();
+        return $rol;
     }
 
     /**
@@ -35,7 +35,7 @@ class RolController extends Controller
         ]);
 
         $rol->save();
-        return $request;
+        return $rol;
     }
 
     /**
@@ -66,8 +66,7 @@ class RolController extends Controller
      */
     public function update(Request $request)
     {
-        $rol = Rol::where('id', $request->id)
-            ->orwhere('name', $request->name)->first();
+        $rol = Rol::where('id', $request->id)->first();
 
         $rol->update([
             'name' => $request->name
