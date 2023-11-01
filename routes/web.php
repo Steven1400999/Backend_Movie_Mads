@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
+use App\Models\Product_category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +39,13 @@ Route::post('/rol_update', [RolController::class, 'update']);
 Route::post('/rol_destroy', [RolController::class, 'destroy']);
 
 
+//Product_category Controller
+Route::get('/product_category_index', [ProductCategoryController::class, 'index']);
+Route::post('/product_category_store', [ProductCategoryController::class, 'store']);
+Route::post('/product_category_show', [ProductCategoryController::class, 'show']);
+Route::post('/product_category_edit', [ProductCategoryController::class, 'edit']);
+Route::post('/product_category_update', [ProductCategoryController::class, 'update']);
+Route::post('/product_category_destroy', [ProductCategoryController::class, 'destroy']);
 
 
 

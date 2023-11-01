@@ -12,8 +12,8 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $category = Product_category::find(1);
-        return $category->products;
+        $category = Product_category::all();
+        return $category;
 
     }
 
@@ -36,7 +36,7 @@ class ProductCategoryController extends Controller
         ]);
 
         $category->save();
-        return $request;
+        return $category;
     }
 
     /**
@@ -65,8 +65,7 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request)
     {
-        $category = Product_category::where('id', $request->id)
-            ->orwhere('name', $request->name)->first();
+        $category = Product_category::where('id', $request->id)->first();
 
         $category->update([
             'name' => $request->name
