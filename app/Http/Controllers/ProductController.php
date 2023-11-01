@@ -12,8 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::find(1);
-        return $product->inventories;
+        $product = Product::all();
+        return $product;
 
     }
 
@@ -34,7 +34,9 @@ class ProductController extends Controller
         $product = Product::create([
             "name" => $request->name,
             "description" => $request->description,
-            "price" => $request->price
+            "price" => $request->price,
+            "product_category_id" => $request->product_category_id,
+
 
 
         ]);
@@ -73,14 +75,13 @@ class ProductController extends Controller
     public function update(Request $request)
     {
 
-        $product = Product::where('id', $request->id)
-            ->orwhere('name', $request->name)->first();
+        $product = Product::where('id', $request->id)->first();
 
         $product->update([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'product_category_id' => $request->product_category_id
+            
 
         ]);
 

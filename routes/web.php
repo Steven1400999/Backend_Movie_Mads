@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
+use App\Models\Product;
 use App\Models\Product_category;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +49,15 @@ Route::post('/product_category_edit', [ProductCategoryController::class, 'edit']
 Route::post('/product_category_update', [ProductCategoryController::class, 'update']);
 Route::post('/product_category_destroy', [ProductCategoryController::class, 'destroy']);
 
+
+
+//Product Controller
+Route::get('/product_index', [ProductController::class, 'index']);
+Route::post('/product_store', [ProductController::class, 'store']);
+Route::post('/product_show', [ProductController::class, 'show']);
+Route::post('/product_edit', [ProductController::class, 'edit']);
+Route::post('/product_update', [ProductController::class, 'update']);
+Route::post('/product_destroy', [ProductController::class, 'destroy']);
 
 
 
