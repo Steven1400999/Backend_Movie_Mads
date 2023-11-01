@@ -95,6 +95,7 @@ class SupplierController extends Controller
 
         $supplier = Supplier::where('id', $request->id)
             ->orwhere('name', $request->name)->delete();
+            
         return $supplier;
 
     }
