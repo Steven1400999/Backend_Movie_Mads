@@ -12,8 +12,11 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $inventory = Inventory::find(1);
-        return $inventory->products->suppliers;
+        //$inventory = Inventory::with('supplier','product')->get();
+       // return $inventory;
+        
+        $inventory = Inventory::all();
+        return $inventory;
     }
 
     /**
