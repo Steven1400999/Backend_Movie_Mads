@@ -11,6 +11,10 @@ function Main() {
 
             <Route path="/proyecto_inventario/public/" element={<Login/>}>
             
+
+
+
+            
             <Route path="card" element={<Card_C/>}/>
             <Route path="listcards" element={<ListCards/>}/>
             <Route path="*" element={<Navigate replace to="/" />}/>

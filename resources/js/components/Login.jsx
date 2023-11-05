@@ -20,14 +20,14 @@ function Login() {
         const formData = new FormData();
         formData.append("email", formValue.email)
         formData.append("password", formValue.password)
-        axios.post("http://localhost/example-app/public/api/login", 
+        axios.post("http://localhost/Proyecto_Inventario/public/api/login", 
         formData,
         {headers: {'Content-Type': 'multipart/form-data',
         'Accept':'application/json'}}
         ).then(response => {
             console.log('response');
             console.log(response);
-            navigate("/example-app/public/listcards");
+            navigate("/Proyecto_Inventario/public/listcards");
         }).catch(error =>{
             console.log(error);
         });
