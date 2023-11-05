@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
-function Login({ setUserRolId }) {
+function Login() {
     const [formValue, setformValue] = useState({
         email: '',
         password: ''
@@ -31,10 +31,7 @@ function Login({ setUserRolId }) {
         ).then(response => {
             console.log('response');
             console.log(response);
-            const rol_id = response.data.rol_id;
-            setUserRolId(rol_id);
-            navigate("/Proyecto_Inventario/public/Menu")
-
+            navigate('/proyecto_inventario/public/ListCards');
         }).catch(error => {
             console.log(error);
         });

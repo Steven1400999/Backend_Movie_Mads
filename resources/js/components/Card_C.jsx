@@ -14,9 +14,8 @@ function Card_C(props) {
                 <Card.Subtitle>Name: {name}</Card.Subtitle>
                 <Card.Text>Email: {email}
                 
-                <p>Rol: {rol_id}</p>
                 </Card.Text>
-
+                
                {/* <Button variant="primary">Go Somewhere</Button> */}
             </Card.Body>
         </Card>

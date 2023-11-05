@@ -17,7 +17,9 @@ import Login from './components/Login';
 ReactDOM.createRoot(document.getElementById('app')).render(
     <BrowserRouter>
 
-<Main/>
+<Login/>
+
+
 
 
 

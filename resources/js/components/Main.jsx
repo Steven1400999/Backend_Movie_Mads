@@ -11,37 +11,17 @@ import { useState, useEffect } from "react";
 
 
 function Main() {
-   
-    const [userRolId, setUserRolId] = useState(null);
 
-    const adminComponents = (
-        <>
-            <Route path="listcards" element={<ListCards />} />
-            {/* Otros componentes para administradores */}
-        </>
-    );
-
-    const userComponents = (
-        <>
-            <Route path="card" element={<Card_C />} />
-            {/* Otros componentes para usuarios normales */}
-        </>
-    );
-    useEffect(() => {
-        
-    }, []);
-
-    return(
+    return (
         <Routes>
-        <Route path="/proyecto_inventario/public/" element={<Login setUserRolId={setUserRolId} />} />
 
-    
-        {userRolId === 1 ? adminComponents : userComponents}
+            <Route path="/proyecto_inventario/public/" element={<Login setUserRolId={setUserRolId} />} />
 
 
 
-      </Routes>
+
+        </Routes>
     );
-  }
-  
-  export default Main;
+}
+
+export default Main;
