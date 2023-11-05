@@ -1,13 +1,3 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
- */
-import ReactDOM from 'react-dom/client';
-import Main from './components/Main'
-
-import { BrowserRouter } from 'react-router-dom';
-
 import './bootstrap';
 
 /**
@@ -16,12 +6,20 @@ import './bootstrap';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import './components/Example';
+//import './components/ListCards';
 
-
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import Menu from './components/Menu';
+import Main from './components/main';
 
 ReactDOM.createRoot(document.getElementById('app')).render(
     <BrowserRouter>
-    <Main/>
-</BrowserRouter>
+
+<Main/>
+
+
+
+
+    </BrowserRouter>
 )
