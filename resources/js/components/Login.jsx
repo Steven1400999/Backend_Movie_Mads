@@ -31,7 +31,7 @@ function Login() {
         ).then(response => {
             console.log('response');
             console.log(response);
-            navigate('/proyecto_inventario/public/ListCards');
+            navigate("/Proyecto_Inventario/public/ListCards");
         }).catch(error => {
             console.log(error);
         });

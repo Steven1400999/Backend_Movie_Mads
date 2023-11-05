@@ -15,9 +15,9 @@ function Main() {
     return (
         <Routes>
 
-            <Route path="/proyecto_inventario/public/" element={<Login setUserRolId={setUserRolId} />} />
 
-
+            <Route path="/Proyecto_Inventario/public/" element={<Login />} />
+            <Route path="/Proyecto_Inventario/public/ListCards" element={<ListCards />} />
 
 
         </Routes>
