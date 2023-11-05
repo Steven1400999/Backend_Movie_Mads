@@ -20,6 +20,8 @@ class RegisterController extends ResponseController
             'email'     => 'required|email',
             'password'  => 'required',
             'c_password'=> 'required|same:password',
+            'rol_id'=> 'required',
+
         ]);
 
         if ($validator->fails()){

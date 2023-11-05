@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-
-
+Route::post('register',[RegisterController::class,'register']);
+Route::post('login',[RegisterController::class,'login']);
+Route::get('/user_index', [UserController::class, 'index']);
 
 
 
