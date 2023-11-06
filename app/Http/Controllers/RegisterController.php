@@ -44,6 +44,8 @@ class RegisterController extends ResponseController
             $success['token'] = $user->createToken('MyApp')->accessToken;
             $success['name'] = $user->name;
             $success['rol_id'] = $user->rol_id;
+         
+
 
 
             return $this->sendRequest($success,
