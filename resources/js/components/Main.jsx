@@ -17,7 +17,11 @@ function Main() {
 
 
             <Route path="/Proyecto_Inventario/public/" element={<Login />} />
-            <Route path="/Proyecto_Inventario/public/ListCards" element={<ListCards />} />
+
+
+
+            <Route path="/Proyecto_Inventario/public/ListCards" element={<Menu />} />
+            <Route path="/Proyecto_Inventario/public/Card" element={<Card_C />} />
 
 
         </Routes>

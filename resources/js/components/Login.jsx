@@ -35,8 +35,22 @@ function Login() {
             console.log(response.data.data.token);
 
 
+            const rol_id = response.data.data.rol_id;
+if(rol_id ==1){
 
-            navigate("/Proyecto_Inventario/public/ListCards");
+    navigate("/Proyecto_Inventario/public/ListCards");
+
+
+
+} else if(rol_id ==2){
+
+    navigate("/Proyecto_Inventario/public/Card");
+
+
+}
+
+
+
 
 
 
