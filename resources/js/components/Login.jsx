@@ -38,13 +38,13 @@ function Login() {
             const rol_id = response.data.data.rol_id;
 if(rol_id ==1){
 
-    navigate("/Proyecto_Inventario/public/Admin/");
+    navigate("/Proyecto_Inventario/public/Admin");
 
 
 
 } else if(rol_id ==2){
 
-    navigate("/Proyecto_Inventario/public/Employee/");
+    navigate("/Proyecto_Inventario/public/Employee");
 
 
 }
@@ -64,6 +64,14 @@ if(rol_id ==1){
         <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
 
             <Form onSubmit={handleSubmit}>
+                <br /><br /><br /><br />
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Label>InventiKS, keep your stock up to date</Form.Label>
+                </Form.Group>
+                <br />
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Label> <h3>Login</h3> </Form.Label>
+                </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email"
@@ -78,12 +86,11 @@ if(rol_id ==1){
                     <Form.Control type="password" placeholder="Password"
                         name="password" value={formValue.password} onChange={onChange} />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
+                
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+                
             </Form>
         </div>
 

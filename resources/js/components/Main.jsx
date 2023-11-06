@@ -8,10 +8,6 @@ import Employee from "./Employee";
 
 
 import { Navigate, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
-
-
-
 
 
 function Main() {
@@ -24,8 +20,8 @@ function Main() {
 
 
 
-            <Route path="/Proyecto_Inventario/public/Admin/" element={<Admin/>} />
-            <Route path="/Proyecto_Inventario/public/Employee/" element={<Employee/>} />
+            <Route path="/Proyecto_Inventario/public/Admin" element={<Admin/>} />
+            <Route path="/Proyecto_Inventario/public/Employee" element={<Employee/>} />
 
 
         </Routes>

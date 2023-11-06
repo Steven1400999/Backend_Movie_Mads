@@ -11,7 +11,7 @@ import './bootstrap';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import Menu from './components/Menu';
-import Main from "./components/main";
+import Main from "./components/Main";
 import Login from './components/Login';
 import ListCards from './components/ListCards';
 import { Card } from 'react-bootstrap';
