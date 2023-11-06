@@ -8,14 +8,17 @@ function Admin() {
     return (
         <>
 
+            <MenuAdmin />
+
             <Routes>
-                <Route path="/Proyecto_Inventario/public/Admin/*" element={<MenuAdmin />}>
+                <Route path="/Proyecto_Inventario/public/Admin/*">
+
                     <Route path="inventory" element={<Card_C />} />
                     <Route path="products" element={<ListCards />} />
                     <Route path="users" element={<ListCards />} />
-                    <Route  path="catch-all" element={<Navigate replace to="/" />}/>
-
+                    <Route path="*" element={<Navigate replace to="/" />}/>
                 </Route>
+
             </Routes>
         </>
     );

@@ -20,12 +20,12 @@ function Main() {
         <Routes>
 
 
-            <Route path="/Proyecto_Inventario/public/" element={<Login />} />
+            <Route path="/Proyecto_Inventario/public/" element={<Login/>} />
 
 
 
-            <Route path="/Proyecto_Inventario/public/Admin" element={<Admin />} />
-            <Route path="/Proyecto_Inventario/public/Employee" element={<Employee />} />
+            <Route path="/Proyecto_Inventario/public/Admin/" element={<Admin/>} />
+            <Route path="/Proyecto_Inventario/public/Employee/" element={<Employee/>} />
 
 
         </Routes>

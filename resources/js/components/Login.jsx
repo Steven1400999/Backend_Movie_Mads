@@ -38,13 +38,13 @@ function Login() {
             const rol_id = response.data.data.rol_id;
 if(rol_id ==1){
 
-    navigate("/Proyecto_Inventario/public/Admin");
+    navigate("/Proyecto_Inventario/public/Admin/");
 
 
 
 } else if(rol_id ==2){
 
-    navigate("/Proyecto_Inventario/public/Employee");
+    navigate("/Proyecto_Inventario/public/Employee/");
 
 
 }
