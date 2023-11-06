@@ -43,6 +43,8 @@ class RegisterController extends ResponseController
             $user = Auth::user();
             $success['token'] = $user->createToken('MyApp')->accessToken;
             $success['name'] = $user->name;
+            $success['rol_id'] = $user->rol_id;
+
 
             return $this->sendRequest($success,
             'User login successfully.');

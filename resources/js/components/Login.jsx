@@ -31,12 +31,21 @@ function Login() {
         ).then(response => {
             console.log('response');
             console.log(response);
+            console.log("Rol_id: ", response.data.data.rol_id);
+            console.log(response.data.data.token);
+
+
+
             navigate("/Proyecto_Inventario/public/ListCards");
+
+
+
+
         }).catch(error => {
             console.log(error);
         });
     };
-    
+
     return (
         <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
 
