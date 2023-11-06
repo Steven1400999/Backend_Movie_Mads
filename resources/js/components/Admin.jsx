@@ -2,33 +2,23 @@ import React from "react";
 import Card_C from "./Card_C";
 import ListCards from "./ListCards";
 import MenuAdmin from "./MenuAdmin";
-import Login from "./Login";
 import { Navigate, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
-
 
 function Admin() {
-
     return (
         <>
-<section>
-    
-    
-<MenuAdmin/>
 
+            <Routes>
+                <Route path="/Proyecto_Inventario/public/Admin/*" element={<MenuAdmin />}>
+                    <Route path="inventory" element={<Card_C />} />
+                    <Route path="products" element={<ListCards />} />
+                    <Route path="users" element={<ListCards />} />
+                    <Route  path="catch-all" element={<Navigate replace to="/" />}/>
 
-<Routes>
-
-<Route path="/Proyecto_Inventario/public/Admin/inventory" element={<Card_C/>}/>
-<Route path="/Proyecto_Inventario/public/Admin/products" element={<ListCards/>}/>
-<Route path="/Proyecto_Inventario/public/Admin/products/users" element={<Card_C/>}/>
-
-</Routes>
-
-</section>
-
-</>
-
+                </Route>
+            </Routes>
+        </>
     );
-    }
+}
+
 export default Admin;
