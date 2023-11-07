@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 
 function Card_C(props) {
-    const firstName = props.name
+    const name = props.name
     const email = props.email
     const id = props.id
     const rol_id=props.rol_id

@@ -11,11 +11,12 @@ import './bootstrap';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import Menu from './components/Menu';
-import Main from "./components/Main";
+import Main from "./components/main";
 import Login from './components/Login';
 import ListCards from './components/ListCards';
 import { Card } from 'react-bootstrap';
 import Card_C from './components/Card_C';
+import Admin from './components/Admin';
 
 ReactDOM.createRoot(document.getElementById('app')).render(
     <BrowserRouter>
@@ -25,7 +26,6 @@ ReactDOM.createRoot(document.getElementById('app')).render(
 
 
 <Main/>
-
 
 
 

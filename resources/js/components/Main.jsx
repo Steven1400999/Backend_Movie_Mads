@@ -24,6 +24,8 @@ function Main() {
             <Route path="/Proyecto_Inventario/public/Employee" element={<Employee/>} />
 
 
+
+
         </Routes>
     );
 }
