@@ -1,26 +1,30 @@
 import React from "react";
 import Card_C from "./Card_C";
 import ListCards from "./ListCards";
-import Menu from "./Menu";
-import Login from "./Login";
-import { Navigate, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import MenuAdmin from "./MenuAdmin";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+function Admin() {
+  return (
+    <>
+
+      <MenuAdmin />
 
 
+      
+      <Routes>
 
 
-
-function Employee() {
-
-    return (
-        <Routes>
-
-            <Route path="/Proyecto_Inventario/public/Admin" element={<Menu />} />
-            <Route path="/Proyecto_Inventario/public/Employee" element={<Employee />} />
+        <Route path="/" element={<Card_C />} />
+        <Route path="inventory" element={<Card_C/>} />
+        <Route path="products" element={<Card_C />} />
+        <Route path="users" element={<Card_C />} />
+        <Route path="*" element={<Navigate replace to="/" />} />
 
 
-        </Routes>
-    );
+      </Routes>
+    </>
+  );
 }
 
-export default Employee;
+export default Admin;

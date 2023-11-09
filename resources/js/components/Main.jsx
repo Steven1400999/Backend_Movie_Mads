@@ -12,22 +12,26 @@ import { Navigate, Routes, Route } from "react-router-dom";
 
 function Main() {
 
-    return (
-        <Routes>
+  return (
+    <Routes>
+
+    
+<Route>  </Route>
+      <Route path="/Proyecto_Inventario/public/" element={<Login />} />
 
 
-            <Route path="/Proyecto_Inventario/public/" element={<Login/>} />
+  <Route path="/Proyecto_Inventario/public/Admin" element={<Admin />} >
+        <Route path="inventory" element={<Card_C />} />
+        <Route path="products" element={<ListCards />} />
+        <Route path="users" element={<ListCards />} />
+        <Route path="*" element={<Navigate replace to="/" />} />
+        </Route >
+
+        <Route path="/Proyecto_Inventario/public/Employee" element={<Employee />} />
 
 
-
-            <Route path="/Proyecto_Inventario/public/Admin" element={<Admin/>} />
-            <Route path="/Proyecto_Inventario/public/Employee" element={<Employee/>} />
-
-
-
-
-        </Routes>
-    );
+    </Routes>
+  );
 }
 
 export default Main;

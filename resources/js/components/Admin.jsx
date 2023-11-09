@@ -12,15 +12,6 @@ function Admin() {
 
 
       
-      <Routes>
-
-        
-        <Route path="/" element={<ListCards />} />
-        <Route path="/Proyecto_Inventario/public/Admin/inventory" element={<Card_C />} />
-        <Route path="products" element={<ListCards />} />
-        <Route path="users" element={<ListCards />} />
-        <Route path="*" element={<Navigate replace to="/" />} />
-      </Routes>
     </>
   );
 }
