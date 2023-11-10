@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, Outlet } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 function MenuAdmin() {
     return (
@@ -14,6 +15,8 @@ function MenuAdmin() {
                         <Nav.Link as={Link} to="inventory">Inventory</Nav.Link>
                         <Nav.Link as={Link} to="products">Products</Nav.Link>
                         <Nav.Link as={Link} to="users">Users</Nav.Link>
+                        <Button variant="outline-info" as={Link} to="logout" style={{ position: "absolute", right: 200 }}>Logout</Button>{' '}
+
                     </Nav>
                 </Container>
             </Navbar>

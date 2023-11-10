@@ -34,6 +34,7 @@ function Main() {
         <Route path="inventory" element={<Card_C />} />
         <Route path="products" element={<ListCards />} />
         <Route path="users" element={<ListCards />} />
+        <Route path="logout" element={<Logout />} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Route >
 
