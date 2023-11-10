@@ -88,7 +88,7 @@ if(rol_id ==1){
                 </Form.Group>
                 
                 <Button variant="primary" type="submit">
-                    Submit
+                    Log in
                 </Button>
                 
             </Form>
