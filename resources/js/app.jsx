@@ -16,7 +16,6 @@ import Login from './components/Login';
 import ListCards from './components/ListCards';
 import { Card } from 'react-bootstrap';
 import Card_C from './components/Card_C';
-import Admin from './components/Admin';
 import MenuAdmin from "./components/MenuAdmin"
 
 ReactDOM.createRoot(document.getElementById('app')).render(
