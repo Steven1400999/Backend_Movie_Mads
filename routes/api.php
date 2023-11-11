@@ -72,7 +72,7 @@ Route::post('/product_destroy', [ProductController::class, 'destroy']);
 //Inventory Controller
 Route::get('/inventory_index', [InventoryController::class, 'index']);
 Route::post('/inventory_store', [InventoryController::class, 'store']);
-Route::post('/inventory_show', [InventoryController::class, 'show']);
+Route::get('/inventory_show', [InventoryController::class, 'show']);
 Route::post('/inventory_edit', [InventoryController::class, 'edit']);
 Route::post('/inventory_update', [InventoryController::class, 'update']);
 Route::post('/inventory_destroy', [InventoryController::class, 'destroy']);

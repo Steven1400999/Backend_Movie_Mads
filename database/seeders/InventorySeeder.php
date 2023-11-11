@@ -159,43 +159,6 @@ class InventorySeeder extends Seeder
         $inventory->supplier_id = 3;
         $inventory->save();
 
-        $inventory = new Inventory();
-        $inventory->product_id = 16;
-        $inventory->stock = 30;
-        $inventory->admission_date = '2023-11-14';
-        $inventory->supplier_id = 10;
-        $inventory->save();
-
-        $inventory = new Inventory();
-        $inventory->product_id = 17;
-        $inventory->stock = 80;
-        $inventory->admission_date = '2023-11-15';
-        $inventory->supplier_id = 11;
-        $inventory->save();
-
-        $inventory = new Inventory();
-        $inventory->product_id = 18;
-        $inventory->stock = 120;
-        $inventory->admission_date = '2023-11-16';
-        $inventory->supplier_id = 8;
-        $inventory->save();
-
-        $inventory = new Inventory();
-        $inventory->product_id = 19;
-        $inventory->stock = 50;
-        $inventory->admission_date = '2023-11-17';
-        $inventory->supplier_id = 5;
-        $inventory->save();
-
-        $inventory = new Inventory();
-        $inventory->product_id = 7;
-        $inventory->stock = 90;
-        $inventory->admission_date = '2023-11-18';
-        $inventory->supplier_id = 3;
-        $inventory->save();
-
-       
-
        
 
     }

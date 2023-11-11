@@ -71,6 +71,32 @@ function InventoryAdminUpdateForm() {
 
     }
   };
+
+
+  const handleDestroyItem = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_destroy', {
+        id: itemData.id,
+        
+      });
+
+      console.log('Item destroyed successfully:', response.data);
+      navigate('/Proyecto_Inventario/public/Admin/inventory');
+
+
+
+    toast.success('Item of the inventary destroyed successfully Updated data:' ,(response.data));
+
+    } catch (error) {
+      console.error('Error destroying item:', error);
+      toast.error('Error updating item on inventory');
+
+    }
+  };
+
+
   return (
     <Container>
       <br />
@@ -127,8 +153,14 @@ function InventoryAdminUpdateForm() {
 
           <Col>
 
-            <Button variant="danger" onClick={closeform}>
+            <Button variant="secondary" onClick={closeform}>
               Close
+            </Button>
+          </Col>
+          <Col>
+
+            <Button variant="danger" onClick={handleDestroyItem}>
+              Delete Item
             </Button>
           </Col>
         </Row>
