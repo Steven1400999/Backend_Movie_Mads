@@ -59,15 +59,11 @@ function InventoryAdminUpdateForm() {
       });
 
       console.log('Item updated successfully:', response.data);
+      
       navigate('/Proyecto_Inventario/public/Admin/inventory');
-
-
-
-      toast.success('Item of the inventary updated successfully Updated data:', (response.data));
 
     } catch (error) {
       console.error('Error updating item:', error);
-      toast.error('Error updating item on inventory');
 
     }
   };
@@ -87,11 +83,9 @@ function InventoryAdminUpdateForm() {
 
 
 
-      toast.success('Item of the inventary destroyed successfully Updated data:', (response.data));
 
     } catch (error) {
       console.error('Error destroying item:', error);
-      toast.error('Error updating item on inventory');
 
     }
   };
