@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import InventoryAdminUpdateForm from "./InventoryAdminUpdateForm";
 
 function InventoryAdminitem(props) {
     const navigate = useNavigate();
@@ -45,12 +46,7 @@ function InventoryAdminitem(props) {
     }, [props.supplier_id]);
 
 function showForm(props){
-
-    const id = props.id;
-    const product_id = props.product_id;
-    const stock = props.stock;
-    const admission_date = props.admission_date;
-    const supplier_id = props.supplier_id;
+ 
     navigate("/Proyecto_Inventario/public/Admin/update_form");
 }
 
@@ -66,6 +62,7 @@ function showForm(props){
                 <Button variant="warning" onClick={showForm}>Update</Button>
             </Card.Body>
         </Card>
+
     );
 }
 
