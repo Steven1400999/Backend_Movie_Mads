@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { Button, Card, Stack, Spinner, Container, Row, Dropdown } from 'react-bootstrap';
+import { Button, Card, Stack, Spinner, Container, Row, Col, DropdownButton, Dropdown } from 'react-bootstrap';
 import Card_C from './Card_C';
 import axios from 'axios';
 import InventoryAdminitem from './InventoryAdminItem';
 import InventoryAdminUpdateForm from './InventoryAdminUpdateForm';
+
 
 function InventoryAdmin() {
     const [inventoryData, setinventoryData] = useState({})
@@ -38,6 +39,46 @@ function InventoryAdmin() {
 
     return (
         <>
+            <Row className="mb-3">
+                <Col>
+                    <DropdownButton id="dropdown-basic-button" title="Product">
+                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    </DropdownButton>
+                </Col>
+
+                <Col>
+                    <DropdownButton id="dropdown-basic-button" title="Stock">
+                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    </DropdownButton>
+                </Col>
+
+                <Col>
+                    <DropdownButton id="dropdown-basic-button" title="Admission Date">
+                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    </DropdownButton>
+                </Col>
+
+                <Col>
+                    <DropdownButton id="dropdown-basic-button" title="Supplier">
+                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    </DropdownButton>
+                </Col>
+
+                <Col>
+                    <Button variant="primary">Eliminar filtros</Button>
+                </Col>
+
+
+            </Row>
+             <hr />
             <Container fluid>
                 <Row className="gap-6" >
                     {inventoryData.map((inventory) => (
@@ -54,9 +95,9 @@ function InventoryAdmin() {
                 </Row>
             </Container>
 
-        
-    </>
-  );
+
+        </>
+    );
 }
 
 export default InventoryAdmin;

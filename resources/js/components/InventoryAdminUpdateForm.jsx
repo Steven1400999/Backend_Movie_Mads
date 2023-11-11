@@ -52,7 +52,7 @@ function InventoryAdminUpdateForm() {
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_update', {
         id: itemData.id,
-        product_id: e.target.form.Product.value, 
+        product_id: e.target.form.Product.value,
         stock: e.target.form.Stock.value,
         supplier_id: e.target.form.Supplier.value,
         admission_date: e.target.form.Date.value,
@@ -63,7 +63,7 @@ function InventoryAdminUpdateForm() {
 
 
 
-    toast.success('Item of the inventary updated successfully Updated data:' ,(response.data));
+      toast.success('Item of the inventary updated successfully Updated data:', (response.data));
 
     } catch (error) {
       console.error('Error updating item:', error);
@@ -79,7 +79,7 @@ function InventoryAdminUpdateForm() {
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_destroy', {
         id: itemData.id,
-        
+
       });
 
       console.log('Item destroyed successfully:', response.data);
@@ -87,7 +87,7 @@ function InventoryAdminUpdateForm() {
 
 
 
-    toast.success('Item of the inventary destroyed successfully Updated data:' ,(response.data));
+      toast.success('Item of the inventary destroyed successfully Updated data:', (response.data));
 
     } catch (error) {
       console.error('Error destroying item:', error);
