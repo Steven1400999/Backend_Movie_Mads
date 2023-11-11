@@ -35,7 +35,7 @@ Route::get('/user_index', [UserController::class, 'index']);
 //Supplier Controller
 Route::get('/supplier_index', [SupplierController::class, 'index']);
 Route::post('/supplier_store', [SupplierController::class, 'store']);
-Route::post('/supplier_show', [SupplierController::class, 'show']);
+Route::get('/supplier_show', [SupplierController::class, 'show']);
 Route::get('/supplier_show', [SupplierController::class, 'show']);
 
 Route::post('/supplier_edit', [SupplierController::class, 'edit']);
@@ -64,7 +64,6 @@ Route::post('/product_category_destroy', [ProductCategoryController::class, 'des
 //Product Controller
 Route::get('/product_index', [ProductController::class, 'index']);
 Route::post('/product_store', [ProductController::class, 'store']);
-
 Route::get('/product_show', [ProductController::class, 'show']);
 Route::post('/product_edit', [ProductController::class, 'edit']);
 Route::post('/product_update', [ProductController::class, 'update']);

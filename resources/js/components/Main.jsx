@@ -43,7 +43,7 @@ function Main() {
       </Route >
 
 
-      <Route path="/Proyecto_Inventario/public/Admin/update_form" element={<InventoryAdminUpdateForm />} />
+      <Route path="/Proyecto_Inventario/public/Admin/update_form" element={<InventoryAdminUpdateForm  />} />
 
 
 //Employee

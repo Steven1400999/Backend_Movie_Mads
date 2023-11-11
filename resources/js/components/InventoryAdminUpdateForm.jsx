@@ -1,15 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { useNavigate, useLocation } from 'react-router-dom';
+import ProductTable from './componentsAdmin/ProductTable';
+import SupplierTable from './componentsAdmin/SupplierTable';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
-import InventoryAdminitem from './InventoryAdminItem';
 
-function InventoryAdminUpdateForm(props) {
+function InventoryAdminUpdateForm() {
   const navigate = useNavigate();
   const [currentDate, setCurrentDate] = useState(getFormattedDate());
+  const [itemData, setItemData] = useState();
+  const location = useLocation();
+  const [products, setProducts] = useState([]);
+  const [suppliers, setSuppliers] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (location.state && location.state.itemData) {
+          setItemData(location.state.itemData);
+        }
 
+        const productResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_index');
+        setProducts(productResponse.data);
 
+        const supplierResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/supplier_index');
+        setSuppliers(supplierResponse.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [location.state]);
 
   function getFormattedDate() {
     const date = new Date();
@@ -20,28 +42,54 @@ function InventoryAdminUpdateForm(props) {
   }
 
   function closeform() {
-
-    navigate("/Proyecto_Inventario/public/Admin/inventory");
+    navigate('/Proyecto_Inventario/public/Admin/inventory');
   }
+
+
+  const handleUpdateItem = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_update', {
+        id: itemData.id,
+        product_id: e.target.form.Product.value, // Utiliza los nombres de los campos del formulario
+        stock: e.target.form.Stock.value,
+        supplier_id: e.target.form.Supplier.value,
+        admission_date: e.target.form.Date.value,
+      });
+
+      console.log('Item updated successfully:', response.data);
+
+      // Redirige a la página de inventario después de la actualización
+      navigate('/Proyecto_Inventario/public/Admin/inventory');
+    } catch (error) {
+      console.error('Error updating item:', error);
+    }
+  };
   return (
     <Container>
-      <br /><br />
+      <br />
+      <br />
       <h4>Update an item of the inventory</h4>
-      <br /> <br />
+      <br />
+      <br />
+
       <Form>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="Product">
             <Form.Label>Product</Form.Label>
-            <Form.Select defaultValue="Choose..." className="mb-2">
-              <option>Choose...</option>
-              <option>Product 1</option>
-              <option>Product 2</option>
+            <Form.Select defaultValue={itemData?.product_id || ''} className="mb-2">
+              {[...products.filter(product => product.id === itemData?.product_id), ...products.filter(product => product.id !== itemData?.product_id)].map((product) => (
+                <option key={product.id} value={product.id}>
+                  {`${product.id} - ${product.name}`}
+                </option>
+              ))}
             </Form.Select>
           </Form.Group>
 
           <Form.Group as={Col} controlId="Stock">
             <Form.Label>Stock</Form.Label>
-            <Form.Control type="number" placeholder="Stock" />
+            <Form.Control type="number" placeholder="Stock" defaultValue={itemData?.stock || ''} />
           </Form.Group>
         </Row>
 
@@ -53,18 +101,33 @@ function InventoryAdminUpdateForm(props) {
 
           <Form.Group as={Col} controlId="Supplier">
             <Form.Label>Supplier</Form.Label>
-            <Form.Select defaultValue="Choose..." className="mb-2">
-              <option>Choose...</option>
-              <option>Supplier 1</option>
-              <option>Supplier 2</option>
+            <Form.Select defaultValue={itemData?.supplier_id || ''} className="mb-2">
+              {[...suppliers.filter(supplier => supplier.id === itemData?.supplier_id), ...suppliers.filter(supplier => supplier.id !== itemData?.supplier_id)].map((supplier) => (
+                <option key={supplier.id} value={supplier.id}>
+                  {`${supplier.id} - ${supplier.name}`}
+                </option>
+              ))}
             </Form.Select>
           </Form.Group>
         </Row>
+        <Row className="mb-3">
+          <Col>
 
-        <Button variant="success" type="submit"  >Update item</Button>
-        <br />
-        <br />
-        <Button variant="danger" onClick={closeform} >Close</Button>
+            <Button variant="success" type="submit" onClick={handleUpdateItem}>
+              Update item
+            </Button>
+            <br />
+            <br />
+          </Col>
+
+          <Col>
+
+            <Button variant="danger" onClick={closeform}>
+              Close
+            </Button>
+          </Col>
+        </Row>
+
 
       </Form>
     </Container>
