@@ -52,8 +52,7 @@ class ProductController extends Controller
      */
     public function show(Request $request)
     {
-        $product = Product::where('id', $request->id)
-            ->orwhere('name', $request->name)->get();
+        $product = Product::where('id', $request->id)->get();
         return $product;
 
     }

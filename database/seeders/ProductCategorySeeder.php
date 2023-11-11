@@ -22,5 +22,61 @@ class ProductCategorySeeder extends Seeder
         $categorie->name = "Sports";
         $categorie->save();
 
+        $category = new Product_Category();
+        $category->name = "Clothing";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Home Appliances";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Books";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Beauty";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Toys";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Furniture";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Jewelry";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Food";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Movies";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Music";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Fitness";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Automotive";
+        $category->save();
+
+        $category = new Product_Category();
+        $category->name = "Tools";
+        $category->save();
+
+
+
+
+
     }
 }

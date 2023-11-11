@@ -19,7 +19,9 @@ function MenuAdmin() {
 
                     </Nav>
                 </Container>
+
             </Navbar>
+            <br />
             <section>
                 <Container>
                     <Outlet>

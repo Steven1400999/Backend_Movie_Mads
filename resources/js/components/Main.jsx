@@ -3,8 +3,8 @@ import Card_C from "./Card_C";
 import ListCards from "./ListCards";
 import Menu from "./Menu";
 import Login from "./Login";
-
 import MenuAdmin from "./MenuAdmin";
+import InventoryAdmin from "./InventoryAdmin";
 
 import { Navigate, Routes, Route } from "react-router-dom";
 import MenuEmployee from "./MenuEmployee";
@@ -31,7 +31,7 @@ function Main() {
 
         <Route index element={<ListCards />} />
         <Route path="home" element={<ListCards />} />
-        <Route path="inventory" element={<Card_C />} />
+        <Route path="inventory" element={<InventoryAdmin />} />
         <Route path="products" element={<ListCards />} />
         <Route path="users" element={<ListCards />} />
         <Route path="logout" element={<Logout />} />q

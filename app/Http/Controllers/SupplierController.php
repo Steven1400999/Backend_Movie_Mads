@@ -93,8 +93,7 @@ class SupplierController extends Controller
     public function destroy(Request $request)
     {
 
-        $supplier = Supplier::where('id', $request->id)
-            ->orwhere('name', $request->name)->delete();
+        $supplier = Supplier::where('id', $request->id)->delete();
         return $supplier;
 
     }

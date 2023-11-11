@@ -59,7 +59,7 @@ if(rol_id ==1){
             console.log(error);
         });
     };
-
+    
     return (
         <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
 

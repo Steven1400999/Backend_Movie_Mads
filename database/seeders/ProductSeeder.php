@@ -31,6 +31,126 @@ class ProductSeeder extends Seeder
         $products->product_category_id = 2;
         $products->save();
 
+        $products = new Product();
+        $products->name = "Smartphone";
+        $products->description = "Latest Android/iOS smartphone with high-resolution camera, fast processor, and long-lasting battery life.";
+        $products->price = 999;
+        $products->product_category_id = 1;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Wireless Headphones";
+        $products->description = "Premium noise-canceling wireless headphones for an immersive audio experience.";
+        $products->price = 199;
+        $products->product_category_id = 1;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Mountain Bike";
+        $products->description = "High-performance mountain bike for off-road adventures with a durable frame and advanced suspension.";
+        $products->price = 1299;
+        $products->product_category_id = 2;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Running Shoes";
+        $products->description = "Lightweight and comfortable running shoes with advanced cushioning technology.";
+        $products->price = 89;
+        $products->product_category_id = 2;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Fitness Tracker";
+        $products->description = "Smart fitness tracker with heart rate monitor, GPS, and sleep tracking features.";
+        $products->price = 79;
+        $products->product_category_id = 2;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Gaming Laptop";
+        $products->description = "Powerful gaming laptop with dedicated graphics, high refresh rate display, and customizable RGB keyboard.";
+        $products->price = 1899;
+        $products->product_category_id = 1;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Smartwatch";
+        $products->description = "Fitness-focused smartwatch with health monitoring features, waterproof design, and long battery life.";
+        $products->price = 149;
+        $products->product_category_id = 1;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Mirrorless Camera";
+        $products->description = "High-resolution mirrorless camera with interchangeable lenses and 4K video recording capabilities.";
+        $products->price = 1099;
+        $products->product_category_id = 1;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Road Bike";
+        $products->description = "Sleek and lightweight road bike designed for speed and efficiency on paved roads.";
+        $products->price = 1599;
+        $products->product_category_id = 2;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Yoga Mat";
+        $products->description = "Premium quality yoga mat with non-slip surface, perfect for home workouts and yoga sessions.";
+        $products->price = 29;
+        $products->product_category_id = 2;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Hiking Boots";
+        $products->description = "Durable and waterproof hiking boots for outdoor adventures, providing stability and comfort.";
+        $products->price = 129;
+        $products->product_category_id = 2;
+        $products->save();
+
+
+        $products = new Product();
+        $products->name = "Tablet";
+        $products->description = "Slim and lightweight tablet with a high-resolution display, ideal for entertainment and productivity.";
+        $products->price = 499;
+        $products->product_category_id = 1;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Wireless Speaker";
+        $products->description = "Portable wireless speaker with Bluetooth connectivity, delivering premium sound quality.";
+        $products->price = 79;
+        $products->product_category_id = 1;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Gaming Console";
+        $products->description = "Next-gen gaming console with powerful hardware, immersive graphics, and a vast game library.";
+        $products->price = 399;
+        $products->product_category_id = 1;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Kayak";
+        $products->description = "Sturdy kayak for water enthusiasts, featuring adjustable seats and ample storage space.";
+        $products->price = 599;
+        $products->product_category_id = 2;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Fitness Dumbbells";
+        $products->description = "Set of premium quality dumbbells for home workouts, available in various weight options.";
+        $products->price = 49;
+        $products->product_category_id = 2;
+        $products->save();
+
+        $products = new Product();
+        $products->name = "Camping Tent";
+        $products->description = "Spacious and weather-resistant camping tent, perfect for outdoor camping adventures.";
+        $products->price = 149;
+        $products->product_category_id = 2;
+        $products->save();
+
 
 
 

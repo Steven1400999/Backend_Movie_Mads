@@ -26,6 +26,42 @@ class SupplierSeeder extends Seeder
         $suppliers->name = "Genoma";
         $suppliers->save();
 
+        $suppliers = new Supplier();
+        $suppliers->name = "Nestle";
+        $suppliers->save();
+
+        $suppliers = new Supplier();
+        $suppliers->name = "Pepsico";
+        $suppliers->save();
+
+        $suppliers = new Supplier();
+        $suppliers->name = "Unilever";
+        $suppliers->save();
+
+        $suppliers = new Supplier();
+        $suppliers->name = "Coca-Cola";
+        $suppliers->save();
+
+        $suppliers = new Supplier();
+        $suppliers->name = "Mars";
+        $suppliers->save();
+
+        $suppliers = new Supplier();
+        $suppliers->name = "Mondelez";
+        $suppliers->save();
+
+
+        $suppliers = new Supplier();
+        $suppliers->name = "General Mills";
+        $suppliers->save();
+
+        $suppliers = new Supplier();
+        $suppliers->name = "Ingram Micro";
+        $suppliers->save();
+
+
+
+
 
     }
 }
