@@ -8,6 +8,7 @@ import InventoryAdmin from "./InventoryAdmin";
 
 import { Navigate, Routes, Route } from "react-router-dom";
 import MenuEmployee from "./MenuEmployee";
+import InventoryAdminUpdateForm from "./InventoryAdminUpdateForm";
 
 const Logout = () => {
  
@@ -34,11 +35,15 @@ function Main() {
         <Route path="inventory" element={<InventoryAdmin />} />
         <Route path="products" element={<ListCards />} />
         <Route path="users" element={<ListCards />} />
-        <Route path="logout" element={<Logout />} />q
+        <Route path="logout" element={<Logout />} />
+
+
+        
         <Route path="*" element={<Navigate replace to="/" />} />
       </Route >
 
 
+      <Route path="/Proyecto_Inventario/public/Admin/update_form" element={<InventoryAdminUpdateForm />} />
 
 
 //Employee

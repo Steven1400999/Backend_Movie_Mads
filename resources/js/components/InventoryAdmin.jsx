@@ -4,10 +4,13 @@ import { Button, Card, Stack, Spinner, Container, Row } from 'react-bootstrap';
 import Card_C from './Card_C';
 import axios from 'axios';
 import InventoryAdminitem from './InventoryAdminItem';
-import InventoryAdminUpdateForm from './InventoryAdminUpdateForm.';
+import InventoryAdminUpdateForm from './InventoryAdminUpdateForm';
 
 function InventoryAdmin() {
     const [inventoryData, setinventoryData] = useState({})
+
+
+
     useEffect(() => {
         const getUsers = async () => {
             await axios.get("http://localhost/Proyecto_Inventario/public/api/inventory_index")
@@ -35,9 +38,6 @@ function InventoryAdmin() {
 
     return (
         <>
-
-<InventoryAdminUpdateForm/>
-
             <Container fluid>
                 <Row className="gap-6" >
                     {inventoryData.map((inventory) => (
@@ -47,20 +47,16 @@ function InventoryAdmin() {
                             stock={inventory.stock}
                             admission_date={inventory.admission_date}
                             supplier_id={inventory.supplier_id}
+
                         />
                     ))}
 
                 </Row>
             </Container>
 
-
-
-
-
-        </>
-    );
+        
+    </>
+  );
 }
-
-
 
 export default InventoryAdmin;
