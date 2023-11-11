@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Toast } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ProductTable from './componentsAdmin/ProductTable';
 import SupplierTable from './componentsAdmin/SupplierTable';
@@ -52,18 +52,23 @@ function InventoryAdminUpdateForm() {
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_update', {
         id: itemData.id,
-        product_id: e.target.form.Product.value, // Utiliza los nombres de los campos del formulario
+        product_id: e.target.form.Product.value, 
         stock: e.target.form.Stock.value,
         supplier_id: e.target.form.Supplier.value,
         admission_date: e.target.form.Date.value,
       });
 
       console.log('Item updated successfully:', response.data);
-
-      // Redirige a la página de inventario después de la actualización
       navigate('/Proyecto_Inventario/public/Admin/inventory');
+
+
+
+    toast.success('Item of the inventary updated successfully Updated data:' ,(response.data));
+
     } catch (error) {
       console.error('Error updating item:', error);
+      toast.error('Error updating item on inventory');
+
     }
   };
   return (
