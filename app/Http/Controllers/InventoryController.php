@@ -51,30 +51,14 @@ class InventoryController extends Controller
      */
     public function show(Request $request)
     {
-        $query = Inventory::query();
-        if ($request->has('id')) {
-            $query->where('id', $request->id);
-        }
-    
-        if ($request->has('product_id')) {
-            $query->where('product_id', $request->product_id);
-        }
-    
-        if ($request->has('stock')) {
-            $query->where('stock', $request->stock);
-        }
-    
-        if ($request->has('admission_date')) {
-            $query->where('admission_date', $request->admission_date);
-        }
-    
-        if ($request->has('supplier_id')) {
-            $query->where('supplier_id', $request->supplier_id);
-        }
-    
-        $filteredInventory = $query->get();
-    
-        return $filteredInventory;
+        $inventory = Inventory::where('id', $request->id)
+        ->orwhere('product_id', $request->product_id)
+        ->orwhere('stock', $request->stock)
+        ->orwhere('admission_date', $request->admission_date)
+        ->orwhere('supplier_id', $request->supplier_id)
+        ->get();
+
+    return $inventory;
     }
     
 

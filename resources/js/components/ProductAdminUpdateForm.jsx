@@ -7,11 +7,10 @@ import axios from 'axios';
 
 function InventoryAdminUpdateForm() {
   const navigate = useNavigate();
-  const [currentDate, setCurrentDate] = useState(getFormattedDate());
   const [itemData, setItemData] = useState();
   const location = useLocation();
   const [products, setProducts] = useState([]);
-  const [suppliers, setSuppliers] = useState([]);
+  const [product_category, setProduct_category] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,8 +22,8 @@ function InventoryAdminUpdateForm() {
         const productResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_index');
         setProducts(productResponse.data);
 
-        const supplierResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/supplier_index');
-        setSuppliers(supplierResponse.data);
+        const product_categoryResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_category_index');
+        setProduct_category(product_categoryResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -33,36 +32,52 @@ function InventoryAdminUpdateForm() {
     fetchData();
   }, [location.state]);
 
-  function getFormattedDate() {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
+  
   function closeform() {
     navigate('/Proyecto_Inventario/public/Admin/inventory');
   }
 
 
-  const handleStoreItem = async (e) => {
+  const handleUpdateProduct = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_store', {
-        product_id: e.target.form.Product.value,
-        stock: e.target.form.Stock.value,
-        supplier_id: e.target.form.Supplier.value,
-        admission_date: e.target.form.Date.value,
+      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_update', {
+        id: itemData.id,
+        name: e.target.form.Name.value,
+        description: e.target.form.Description.value,
+        price: e.target.form.Price.value,
+        product_category_id: e.target.form.Product_category.value,
       });
 
-      console.log('Item updated successfully:', response.data);
-
-      navigate('/Proyecto_Inventario/public/Admin/inventory');
+      console.log('Product updated successfully:', response.data);
+      
+      navigate('/Proyecto_Inventario/public/Admin/products');
 
     } catch (error) {
       console.error('Error updating item:', error);
+
+    }
+  };
+
+
+  const handleDestroyProduct = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_destroy', {
+        id: itemData.id,
+
+      });
+
+      console.log('Product destroyed successfully:', response.data);
+      navigate('/Proyecto_Inventario/public/Admin/inventory');
+
+
+
+
+    } catch (error) {
+      console.error('Error destroying item:', error);
 
     }
   };
@@ -72,14 +87,14 @@ function InventoryAdminUpdateForm() {
     <Container>
       <br />
       <br />
-      <h4>Create an item of the inventory</h4>
+      <h4>Update a product</h4>
       <br />
       <br />
 
       <Form>
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="Product">
-            <Form.Label>Product</Form.Label>
+          <Form.Group as={Col} controlId="Name">
+            <Form.Label>Name:</Form.Label>
             <Form.Select defaultValue={itemData?.product_id || ''} className="mb-2">
               {[...products.filter(product => product.id === itemData?.product_id), ...products.filter(product => product.id !== itemData?.product_id)].map((product) => (
                 <option key={product.id} value={product.id}>
@@ -89,24 +104,24 @@ function InventoryAdminUpdateForm() {
             </Form.Select>
           </Form.Group>
 
-          <Form.Group as={Col} controlId="Stock">
-            <Form.Label>Stock</Form.Label>
-            <Form.Control type="number" placeholder="Stock" defaultValue={itemData?.stock || ''} />
+          <Form.Group as={Col} controlId="Description">
+            <Form.Label>Description:</Form.Label>
+            <Form.Control type="text" placeholder="Description" defaultValue={itemData?.description || ''} />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="Date">
-            <Form.Label>Date</Form.Label>
-            <Form.Control type="date" placeholder="Update Date" defaultValue={currentDate} />
+        <Form.Group as={Col} controlId="Price">
+            <Form.Label>Price:</Form.Label>
+            <Form.Control type="number" placeholder="Stock" defaultValue={itemData?.price || ''} />
           </Form.Group>
 
-          <Form.Group as={Col} controlId="Supplier">
-            <Form.Label>Supplier</Form.Label>
-            <Form.Select defaultValue={itemData?.supplier_id || ''} className="mb-2">
-              {[...suppliers.filter(supplier => supplier.id === itemData?.supplier_id), ...suppliers.filter(supplier => supplier.id !== itemData?.supplier_id)].map((supplier) => (
-                <option key={supplier.id} value={supplier.id}>
-                  {`${supplier.id} - ${supplier.name}`}
+          <Form.Group as={Col} controlId="Product_category">
+            <Form.Label>Product category:</Form.Label>
+            <Form.Select defaultValue={itemData?.product_category || ''} className="mb-2">
+              {[...product_category.filter(product_category => product_category.id === itemData?.product_category_id), ...product_category.filter(product_category => product_category.id !== itemData?.product_category_id)].map((product_category) => (
+                <option key={product_category.id} value={product_category.id}>
+                  {`${product_category.id} - ${product_category.name}`}
                 </option>
               ))}
             </Form.Select>
@@ -115,9 +130,9 @@ function InventoryAdminUpdateForm() {
         <Row className="mb-3">
           <Col>
 
-            <Button variant="success" type="submit" onClick={handleStoreItem}>
-              Create (Store) an item           
-              </Button>
+            <Button variant="success" type="submit" onClick={handleUpdateProduct}>
+              Update product
+            </Button>
             <br />
             <br />
           </Col>
@@ -130,7 +145,9 @@ function InventoryAdminUpdateForm() {
           </Col>
           <Col>
 
-           
+            <Button variant="danger" onClick={handleDestroyProduct}>
+              Delete product
+            </Button>
           </Col>
         </Row>
 

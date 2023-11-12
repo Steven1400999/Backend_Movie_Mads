@@ -43,6 +43,7 @@ function InventoryAdmin() {
                 },
             });
             setInventoryData(response.data);
+            console.log(response.data)
         } catch (error) {
             console.error('Error fetching filtered data:', error);
         }
@@ -121,7 +122,7 @@ function InventoryAdmin() {
                 </Col>
 
                 <Col>
-                    <Button variant="primary" onClick={handleFilter}>
+                    <Button variant="success" onClick={handleFilter}>
                         Apply filters</Button>
                 </Col>
 
@@ -135,7 +136,7 @@ function InventoryAdmin() {
 
                 <hr />
                 <Col>
-                    <Button variant="success" onClick={showFormStore}>Create an item</Button>
+                    <Button variant="outline-dark" onClick={showFormStore}>Create an item</Button>
                 </Col>
             </Row>
 

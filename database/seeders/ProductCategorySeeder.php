@@ -50,33 +50,5 @@ class ProductCategorySeeder extends Seeder
         $category->name = "Jewelry";
         $category->save();
 
-        $category = new Product_Category();
-        $category->name = "Food";
-        $category->save();
-
-        $category = new Product_Category();
-        $category->name = "Movies";
-        $category->save();
-
-        $category = new Product_Category();
-        $category->name = "Music";
-        $category->save();
-
-        $category = new Product_Category();
-        $category->name = "Fitness";
-        $category->save();
-
-        $category = new Product_Category();
-        $category->name = "Automotive";
-        $category->save();
-
-        $category = new Product_Category();
-        $category->name = "Tools";
-        $category->save();
-
-
-
-
-
     }
 }
