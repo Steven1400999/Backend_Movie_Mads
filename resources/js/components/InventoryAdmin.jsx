@@ -80,6 +80,11 @@ function InventoryAdmin() {
 
     return (
         <>
+            <Col>
+                <Button variant="outline-dark" onClick={showFormStore}>Create an item</Button>
+            </Col>
+            <hr />
+
             <Row className="mb-3">
                 <Col>
                     <DropdownButton id="dropdown-product" title="Product">
@@ -131,13 +136,9 @@ function InventoryAdmin() {
                         Delete filters
                     </Button>
                 </Col>
-                <br />
-                <br />
 
-                <hr />
-                <Col>
-                    <Button variant="outline-dark" onClick={showFormStore}>Create an item</Button>
-                </Col>
+
+
             </Row>
 
             <hr />

@@ -73,7 +73,14 @@ function ProductsAdmin() {
     }
 
     return (
-        <> <Row className="mb-3">
+        <> 
+        <Col>
+            <Button variant="outline-secondary" onClick={showFormStore}>Create an item</Button>
+        </Col>
+        
+        <hr />
+        <Row className="mb-3">
+            
         <Col>
             <DropdownButton id="dropdown-product" title="Name">
                 {productData.map((product) => (
@@ -114,13 +121,8 @@ function ProductsAdmin() {
                 Delete filters
             </Button>
         </Col>
-        <br />
-        <br />
-
-        <hr />
-        <Col>
-            <Button variant="outline-dark" onClick={showFormStore}>Create an item</Button>
-        </Col>
+        
+        
     </Row>
 
     
