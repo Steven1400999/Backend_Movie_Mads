@@ -1,5 +1,5 @@
 import React from "react";
-import Card_C from "./Card_C";
+import UserItem from "./UserItem";
 import ListCards from "./ListCards";
 import Menu from "./Menu";
 import Login from "./Login";
@@ -15,6 +15,7 @@ import ProductAdminUpdateForm from "./ProductAdminUpdateForm";
 import ProductAdminStoreForm from "./ProductAdminStoreForm";
 import ProductAdminCategories from "./ProductAdminCategories";
 import ProductCategoriesAdminStoreForm from "./ProductCategoriesAdminStoreForm";
+import UserStore from "./UserStore";
 
 const Logout = () => {
  
@@ -58,7 +59,7 @@ function Main() {
       <Route path="/Proyecto_Inventario/public/Admin/product_categories" element={<ProductAdminCategories />} />
       <Route path="/Proyecto_Inventario/public/Admin/product_categories_store_form" element={<ProductCategoriesAdminStoreForm />} />
 
-
+      <Route path="/Proyecto_Inventario/public/Admin/user_store_form" element={<UserStore/>} />
 
 
 //Employee
@@ -67,7 +68,7 @@ function Main() {
 
         <Route index element={<ListCards />} />
         <Route path="home" element={<ListCards />} />
-        <Route path="inventory" element={<Card_C />} />
+        <Route path="inventory" element={<UserItem />} />
         <Route path="products" element={<ListCards />} />
         <Route path="users" element={<ListCards />} />
         <Route path="logout" element={<Logout />} />

@@ -79,10 +79,18 @@ function InventoryAdmin() {
     }
 
     return (
-        <>
+        <>           
+         <Row className="mb-3">
+
             <Col>
                 <Button variant="outline-dark" onClick={showFormStore}>Create an item</Button>
             </Col>
+            <Col>
+                <Button variant="outline-dark" onClick={showFormStore}>Create an item</Button>
+            </Col>
+
+
+</Row>
             
             <hr />
 

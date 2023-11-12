@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { Button, Card, Stack, Spinner } from 'react-bootstrap';
-import Card_C from './Card_C';
+import { Button, Card, Stack, Spinner, Container, Row } from 'react-bootstrap';
+import UserItem from './UserItem';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 
 function ListCards() {
     const[userData, setUserData]=useState({})
+    const navigate = useNavigate();
     useEffect(()=>{
         const getUsers = async() =>{
             await axios.get("http://localhost/Proyecto_Inventario/public/api/user_index")
@@ -25,6 +28,14 @@ function ListCards() {
         getUsers()
     },[])
 
+
+        function showstoreform() {
+            navigate("/Proyecto_Inventario/public/Admin/user_store_form");
+        }
+
+
+    
+
     if (!userData.length) return
         <Spinner animation="border" role="status">
         <span className="visually-hidden">Loading...</span>
@@ -32,13 +43,25 @@ function ListCards() {
 
     return (
         <>
+
+<Button variant="warning" onClick={showstoreform}>Create a user</Button>
+
+<hr />
+        <Container fluid>
+        <Row className="gap-6">
         {userData.map((user)=>(
-        <Card_C key={user.id} id={user.id}  name={user.name} email={user.email} rol_id={user.rol_id} />
+        <UserItem key={user.id} 
+        id={user.id}  
+        name={user.name} 
+        email={user.email}
+        rol_id={user.rol_id} />
+
         ))}
-
-
+</Row>
+</Container>
         </>
     );
 }
+
 
 export default ListCards;

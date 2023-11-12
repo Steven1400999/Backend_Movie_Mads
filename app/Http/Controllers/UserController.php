@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,7 +28,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $user = User::create([
+            'name' => $request->name,
+
+        ]);
+
+        $user->save();
+        return $request;
+
     }
 
     /**
@@ -49,20 +58,30 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
-    }
+        $user = User::where('id', $request->id)->first();
 
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'rol_id' => $request->rol_id,
+
+        ]);
+        $user->save();
+        return $user;
+
+    }
+  
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $user = User::where('id', $request->id)->delete();
+        return $user;
     }
 
-    public function token(){
-        return csrf_token();
-    }
+    
 }

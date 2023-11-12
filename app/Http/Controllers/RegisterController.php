@@ -19,7 +19,6 @@ class RegisterController extends ResponseController
             'name'      => 'required',
             'email'     => 'required|email',
             'password'  => 'required',
-            'c_password'=> 'required|same:password',
             'rol_id'=> 'required',
 
         ]);
