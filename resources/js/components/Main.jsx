@@ -13,7 +13,8 @@ import InventoryAdminStoreForm from "./InventoryAdminStoreForm";
 import ProductsAdmin from "./ProductsAdmin";
 import ProductAdminUpdateForm from "./ProductAdminUpdateForm";
 import ProductAdminStoreForm from "./ProductAdminStoreForm";
-
+import ProductAdminCategories from "./ProductAdminCategories";
+import ProductCategoriesAdminStoreForm from "./ProductCategoriesAdminStoreForm";
 
 const Logout = () => {
  
@@ -54,6 +55,8 @@ function Main() {
 
       <Route path="/Proyecto_Inventario/public/Admin/product_update_form" element={<ProductAdminUpdateForm  />} />
       <Route path="/Proyecto_Inventario/public/Admin/product_store_form" element={<ProductAdminStoreForm />} />
+      <Route path="/Proyecto_Inventario/public/Admin/product_categories" element={<ProductAdminCategories />} />
+      <Route path="/Proyecto_Inventario/public/Admin/product_categories_store_form" element={<ProductCategoriesAdminStoreForm />} />
 
 
 

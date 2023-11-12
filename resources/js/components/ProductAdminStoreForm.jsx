@@ -65,7 +65,7 @@ function ProductAdminStoreForm() {
     <Container>
       <br />
       <br />
-      <h4>Update a product</h4>
+      <h4>Create a product</h4>
       <br />
       <br />
 

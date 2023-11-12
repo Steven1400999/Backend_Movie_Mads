@@ -62,6 +62,9 @@ function ProductsAdmin() {
         navigate("/Proyecto_Inventario/public/Admin/product_store_form");
     }
 
+    function showproductcategories() {
+        navigate("/Proyecto_Inventario/public/Admin/product_categories");
+    }
 
 
     if (!productData.length) {
@@ -74,10 +77,14 @@ function ProductsAdmin() {
 
     return (
         <> 
+        <Row className="mb-3">
         <Col>
             <Button variant="outline-secondary" onClick={showFormStore}>Create an item</Button>
         </Col>
-        
+        <Col>
+            <Button variant="outline-secondary" onClick={showproductcategories}>Product categories</Button>
+        </Col>
+        </Row>
         <hr />
         <Row className="mb-3">
             
