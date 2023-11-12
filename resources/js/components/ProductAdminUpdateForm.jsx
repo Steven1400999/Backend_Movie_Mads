@@ -46,12 +46,11 @@ function InventoryAdminUpdateForm() {
   }
 
 
-  const handleUpdateItem = async (e) => {
+  const handleStoreItem = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_update', {
-        id: itemData.id,
+      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_store', {
         product_id: e.target.form.Product.value,
         stock: e.target.form.Stock.value,
         supplier_id: e.target.form.Supplier.value,
@@ -59,7 +58,7 @@ function InventoryAdminUpdateForm() {
       });
 
       console.log('Item updated successfully:', response.data);
-      
+
       navigate('/Proyecto_Inventario/public/Admin/inventory');
 
     } catch (error) {
@@ -69,33 +68,11 @@ function InventoryAdminUpdateForm() {
   };
 
 
-  const handleDestroyItem = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_destroy', {
-        id: itemData.id,
-
-      });
-
-      console.log('Item destroyed successfully:', response.data);
-      navigate('/Proyecto_Inventario/public/Admin/inventory');
-
-
-
-
-    } catch (error) {
-      console.error('Error destroying item:', error);
-
-    }
-  };
-
-
   return (
     <Container>
       <br />
       <br />
-      <h4>Update an item of the inventory</h4>
+      <h4>Create an item of the inventory</h4>
       <br />
       <br />
 
@@ -138,9 +115,9 @@ function InventoryAdminUpdateForm() {
         <Row className="mb-3">
           <Col>
 
-            <Button variant="success" type="submit" onClick={handleUpdateItem}>
-              Update item
-            </Button>
+            <Button variant="success" type="submit" onClick={handleStoreItem}>
+              Create (Store) an item           
+              </Button>
             <br />
             <br />
           </Col>
@@ -153,9 +130,7 @@ function InventoryAdminUpdateForm() {
           </Col>
           <Col>
 
-            <Button variant="danger" onClick={handleDestroyItem}>
-              Delete Item
-            </Button>
+           
           </Col>
         </Row>
 

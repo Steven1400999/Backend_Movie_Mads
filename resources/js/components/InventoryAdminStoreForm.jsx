@@ -73,7 +73,7 @@ function InventoryAdminUpdateForm() {
     <Container>
       <br />
       <br />
-      <h4>Update an item of the inventory</h4>
+      <h4>Store or create an item of the inventory</h4>
       <br />
       <br />
 
@@ -117,7 +117,7 @@ function InventoryAdminUpdateForm() {
           <Col>
 
             <Button variant="success" type="submit" onClick={handleStoreItem}>
-              Update item
+              Create an item
             </Button>
             <br />
             <br />

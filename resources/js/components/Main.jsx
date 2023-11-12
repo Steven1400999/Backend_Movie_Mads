@@ -10,6 +10,8 @@ import { Navigate, Routes, Route } from "react-router-dom";
 import MenuEmployee from "./MenuEmployee";
 import InventoryAdminUpdateForm from "./InventoryAdminUpdateForm";
 import InventoryAdminStoreForm from "./InventoryAdminStoreForm";
+import ProductsAdmin from "./ProductsAdmin";
+import ProductAdminUpdateForm from "./ProductAdminUpdateForm";
 
 
 const Logout = () => {
@@ -35,7 +37,7 @@ function Main() {
         <Route index element={<ListCards />} />
         <Route path="home" element={<ListCards />} />
         <Route path="inventory" element={<InventoryAdmin />} />
-        <Route path="products" element={<ListCards />} />
+        <Route path="products" element={<ProductsAdmin />} />
         <Route path="users" element={<ListCards />} />
         <Route path="logout" element={<Logout />} />
 
@@ -47,6 +49,12 @@ function Main() {
 
       <Route path="/Proyecto_Inventario/public/Admin/update_form" element={<InventoryAdminUpdateForm  />} />
       <Route path="/Proyecto_Inventario/public/Admin/store_form" element={<InventoryAdminStoreForm  />} />
+
+
+      <Route path="/Proyecto_Inventario/public/Admin/product_update_form" element={<ProductAdminUpdateForm  />} />
+      <Route path="/Proyecto_Inventario/public/Admin/product_store_form" element={<InventoryAdminStoreForm  />} />
+
+
 
 
 //Employee
