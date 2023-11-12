@@ -16,6 +16,7 @@ import ProductAdminStoreForm from "./ProductAdminStoreForm";
 import ProductAdminCategories from "./ProductAdminCategories";
 import ProductCategoriesAdminStoreForm from "./ProductCategoriesAdminStoreForm";
 import UserStore from "./UserStore";
+import InventoryAdminSupplierForm from "./InventoryAdminSupplierForm"
 
 const Logout = () => {
  
@@ -29,10 +30,6 @@ function Main() {
 
 //Login
       <Route path="/Proyecto_Inventario/public/" element={<Login />} />
-
-
-
-
 
 //Admin
       <Route path="/Proyecto_Inventario/public/Admin" element={<MenuAdmin />} >
@@ -52,6 +49,7 @@ function Main() {
 
       <Route path="/Proyecto_Inventario/public/Admin/update_form" element={<InventoryAdminUpdateForm  />} />
       <Route path="/Proyecto_Inventario/public/Admin/store_form" element={<InventoryAdminStoreForm  />} />
+      <Route path="/Proyecto_Inventario/public/Admin/store_supplier_form" element={<InventoryAdminSupplierForm/>} />
 
 
       <Route path="/Proyecto_Inventario/public/Admin/product_update_form" element={<ProductAdminUpdateForm  />} />

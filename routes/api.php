@@ -74,8 +74,7 @@ Route::get('/inventory_show', [InventoryController::class, 'show']);
 Route::post('/inventory_edit', [InventoryController::class, 'edit']);
 Route::post('/inventory_update', [InventoryController::class, 'update']);
 Route::post('/inventory_destroy', [InventoryController::class, 'destroy']);
-
-
+Route::post('/inventory_update_stock', [InventoryController::class, 'updateemployee']);
 
 
 

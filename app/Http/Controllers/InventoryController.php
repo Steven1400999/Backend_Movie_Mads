@@ -90,6 +90,22 @@ class InventoryController extends Controller
 
     }
 
+
+    public function updateemployee(Request $request)
+    {
+        $inventory = Inventory::where('id', $request->id)->first();
+
+        $inventory->update([
+            'stock' => $request->stock
+        ]);
+
+        $inventory->save();
+        return $inventory;
+
+    }
+
+
+
     /**
      * Remove the specified resource from storage.
      */
