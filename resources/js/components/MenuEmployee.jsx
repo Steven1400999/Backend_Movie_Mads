@@ -15,7 +15,6 @@ function MenuEmployee() {
                     <Nav className="me-auto" >
                         <Nav.Link as={Link} to="home">Home</Nav.Link>
                         <Nav.Link as={Link} to="inventory">Inventory</Nav.Link>
-                        <Nav.Link as={Link} to="products">Products</Nav.Link>
                         <Button variant="outline-info" as={Link} to="logout" style={{ position: "absolute", right: 200 }}>Logout</Button>{' '}
 
                     </Nav>

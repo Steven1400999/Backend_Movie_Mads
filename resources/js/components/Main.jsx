@@ -17,6 +17,9 @@ import ProductAdminCategories from "./ProductAdminCategories";
 import ProductCategoriesAdminStoreForm from "./ProductCategoriesAdminStoreForm";
 import UserStore from "./UserStore";
 import InventoryAdminSupplierForm from "./InventoryAdminSupplierForm"
+import InventoryEmployee from "./EmployeeComponents/InventoryEmployee"
+import InventoryEmployeeItem from "./EmployeeComponents/InventoryEmployeeItem";
+import InventoryEmployeeUpdateForm from "./EmployeeComponents/InventoryEmployeeUpdateForm"
 
 const Logout = () => {
  
@@ -66,15 +69,14 @@ function Main() {
 
         <Route index element={<ListCards />} />
         <Route path="home" element={<ListCards />} />
-        <Route path="inventory" element={<UserItem />} />
-        <Route path="products" element={<ListCards />} />
-        <Route path="users" element={<ListCards />} />
+        <Route path="inventory" element={<InventoryEmployee />} />
         <Route path="logout" element={<Logout />} />
 
         <Route path="*" element={<Navigate replace to="/" />} />
       </Route >
 
 
+      <Route path="/Proyecto_Inventario/public/Admin/update_inventory_stock" element={<InventoryEmployeeUpdateForm  />} />
 
 
 
