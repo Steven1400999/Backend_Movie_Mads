@@ -12,6 +12,7 @@ import InventoryAdminUpdateForm from "./InventoryAdminUpdateForm";
 import InventoryAdminStoreForm from "./InventoryAdminStoreForm";
 import ProductsAdmin from "./ProductsAdmin";
 import ProductAdminUpdateForm from "./ProductAdminUpdateForm";
+import ProductAdminStoreForm from "./ProductAdminStoreForm";
 
 
 const Logout = () => {
@@ -52,7 +53,7 @@ function Main() {
 
 
       <Route path="/Proyecto_Inventario/public/Admin/product_update_form" element={<ProductAdminUpdateForm  />} />
-      <Route path="/Proyecto_Inventario/public/Admin/product_store_form" element={<InventoryAdminStoreForm  />} />
+      <Route path="/Proyecto_Inventario/public/Admin/product_store_form" element={<ProductAdminStoreForm />} />
 
 
 

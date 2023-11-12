@@ -45,7 +45,7 @@ Route::post('/supplier_destroy', [SupplierController::class, 'destroy']);
 //Rol Controller
 Route::get('/rol_index', [RolController::class, 'index']);
 Route::post('/rol_store', [RolController::class, 'store']);
-Route::post('/rol_show', [RolController::class, 'show']);
+Route::get('/rol_show', [RolController::class, 'show']);
 Route::post('/rol_edit', [RolController::class, 'edit']);
 Route::post('/rol_update', [RolController::class, 'update']);
 Route::post('/rol_destroy', [RolController::class, 'destroy']);
@@ -54,7 +54,7 @@ Route::post('/rol_destroy', [RolController::class, 'destroy']);
 //Product_category Controller
 Route::get('/product_category_index', [ProductCategoryController::class, 'index']);
 Route::post('/product_category_store', [ProductCategoryController::class, 'store']);
-Route::post('/product_category_show', [ProductCategoryController::class, 'show']);
+Route::get('/product_category_show', [ProductCategoryController::class, 'show']);
 Route::post('/product_category_edit', [ProductCategoryController::class, 'edit']);
 Route::post('/product_category_update', [ProductCategoryController::class, 'update']);
 Route::post('/product_category_destroy', [ProductCategoryController::class, 'destroy']);

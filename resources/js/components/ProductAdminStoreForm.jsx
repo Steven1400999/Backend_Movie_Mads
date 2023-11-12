@@ -5,7 +5,7 @@ import ProductTable from './componentsAdmin/ProductTable';
 import SupplierTable from './componentsAdmin/SupplierTable';
 import axios from 'axios';
 
-function InventoryAdminUpdateForm() {
+function ProductAdminStoreForm() {
   const navigate = useNavigate();
   const [itemData, setItemData] = useState();
   const location = useLocation();
@@ -38,12 +38,11 @@ function InventoryAdminUpdateForm() {
   }
 
 
-  const handleUpdateProduct = async (e) => {
+  const handleStoreProduct = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_update', {
-        id: itemData.id,
+      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_store', {
         name: e.target.form.Name.value,
         description: e.target.form.Description.value,
         price: e.target.form.Price.value,
@@ -61,28 +60,7 @@ function InventoryAdminUpdateForm() {
   };
 
 
-  const handleDestroyProduct = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_destroy', {
-        id: itemData.id,
-
-      });
-
-      console.log('Product destroyed successfully:', response.data);
-      navigate('/Proyecto_Inventario/public/Admin/products');
-
-
-
-
-    } catch (error) {
-      console.error('Error destroying item:', error);
-
-    }
-  };
-
-
+  
   return (
     <Container>
       <br />
@@ -95,13 +73,8 @@ function InventoryAdminUpdateForm() {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="Name">
             <Form.Label>Name:</Form.Label>
-            <Form.Select defaultValue={itemData?.id || ''} className="mb-2">
-              {[...products.filter(product => product.id === itemData?.id), ...products.filter(product => product.id !== itemData?.product_id)].map((product) => (
-                <option key={product.id} value={product.name}>
-                  {`${product.id} - ${product.name}`}
-                </option>
-              ))}
-            </Form.Select>
+            <Form.Control type="text" placeholder="Product name" defaultValue={itemData?.description || ''} />
+
           </Form.Group>
 
           <Form.Group as={Col} controlId="Description">
@@ -113,7 +86,7 @@ function InventoryAdminUpdateForm() {
         <Row className="mb-3">
         <Form.Group as={Col} controlId="Price">
             <Form.Label>Price:</Form.Label>
-            <Form.Control type="number" placeholder="Stock" defaultValue={itemData?.price || ''} />
+            <Form.Control type="number" placeholder="Price" defaultValue={itemData?.price || ''} />
           </Form.Group>
 
           <Form.Group as={Col} controlId="Product_category">
@@ -130,8 +103,8 @@ function InventoryAdminUpdateForm() {
         <Row className="mb-3">
           <Col>
 
-            <Button variant="success" type="submit" onClick={handleUpdateProduct}>
-              Update product
+            <Button variant="success" type="submit" onClick={handleStoreProduct}>
+              Create product
             </Button>
             <br />
             <br />
@@ -145,9 +118,7 @@ function InventoryAdminUpdateForm() {
           </Col>
           <Col>
 
-            <Button variant="danger" onClick={handleDestroyProduct}>
-              Delete product
-            </Button>
+           
           </Col>
         </Row>
 
@@ -157,4 +128,4 @@ function InventoryAdminUpdateForm() {
   );
 }
 
-export default InventoryAdminUpdateForm;
+export default ProductAdminStoreForm;

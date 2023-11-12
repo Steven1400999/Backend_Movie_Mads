@@ -8,10 +8,9 @@ import ProductAdminItem from './ProductAdminItem';
 function ProductsAdmin() {
     const [productData, setProductData] = useState([]);
     const [product_categoryData, setProduct_categoryData] = useState([]);
-    const [selectedProduct, setSelectedProduct] = useState(null);
-    const [selectedStock, setSelectedStock] = useState(null);
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [selectedSupplier, setSelectedSupplier] = useState(null);
+    const [selectedproduct_category, setSelectedproduct_category] = useState(null);
+    const [selectedName, setSelectedName] = useState(null);
+    const [selectedPrice, setSelectedPrice] = useState(null);
     const navigate = useNavigate();
     useEffect(() => {
         const fetchData = async () => {
@@ -32,12 +31,11 @@ function ProductsAdmin() {
 
     const handleFilter = async () => {
         try {
-            const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/inventory_show", {
+            const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/product_show", {
                 params: {
-                    product_id: selectedProduct,
-                    stock: selectedStock,
-                    admission_date: selectedDate,
-                    supplier_id: selectedSupplier,
+                    name: selectedName,
+                    price: selectedPrice,
+                    product_category_id: selectedproduct_category,
                 },
             });
             setProductData(response.data);
@@ -48,12 +46,11 @@ function ProductsAdmin() {
 
     const handleClearFilters = async () => {
         try {
-            const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/inventory_index");
+            const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/product_index");
             setProductData(response.data);
-            setSelectedProduct(null);
-            setSelectedStock(null);
-            setSelectedDate(null);
-            setSelectedSupplier(null);
+            setSelectedName(null);
+            setSelectedPrice(null);
+            setSelectedproduct_category(null);
         } catch (error) {
             console.error('Error clearing filters:', error);
         }
@@ -76,7 +73,57 @@ function ProductsAdmin() {
     }
 
     return (
-        <>
+        <> <Row className="mb-3">
+        <Col>
+            <DropdownButton id="dropdown-product" title="Name">
+                {productData.map((product) => (
+                    <Dropdown.Item key={product.id} onClick={() => setSelectedName(product.name)}>
+                        {product.name}
+                    </Dropdown.Item>
+                ))}
+            </DropdownButton>
+        </Col>
+
+        <Col>
+            <DropdownButton id="dropdown-stock" title="Price">
+                {productData.map((product) => (
+                    <Dropdown.Item key={product.id} onClick={() => setSelectedPrice(product.price)}>
+                        {product.price}
+                    </Dropdown.Item>
+                ))}
+            </DropdownButton>
+        </Col>
+
+        <Col>
+            <DropdownButton id="dropdown-supplier" title="Product_category">
+                {product_categoryData.map((product_category) => (
+                    <Dropdown.Item key={product_category.id} onClick={() => setSelectedproduct_category(product_category.id)}>
+                        {`${product_category.id} - ${product_category.name}`}
+                    </Dropdown.Item>
+                ))}
+            </DropdownButton>
+        </Col>
+
+        <Col>
+            <Button variant="success" onClick={handleFilter}>
+                Apply filters</Button>
+        </Col>
+
+        <Col>
+            <Button variant="danger" onClick={handleClearFilters}>
+                Delete filters
+            </Button>
+        </Col>
+        <br />
+        <br />
+
+        <hr />
+        <Col>
+            <Button variant="outline-dark" onClick={showFormStore}>Create an item</Button>
+        </Col>
+    </Row>
+
+    
 
             <hr />
             <Container fluid>
