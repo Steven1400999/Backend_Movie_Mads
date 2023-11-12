@@ -58,7 +58,7 @@ function InventoryAdminUpdateForm() {
       });
 
       console.log('Item updated successfully:', response.data);
-
+      
       navigate('/Proyecto_Inventario/public/Admin/inventory');
 
     } catch (error) {
@@ -68,11 +68,12 @@ function InventoryAdminUpdateForm() {
   };
 
 
+
   return (
     <Container>
       <br />
       <br />
-      <h4>Create an item of the inventory</h4>
+      <h4>Update an item of the inventory</h4>
       <br />
       <br />
 
@@ -116,8 +117,8 @@ function InventoryAdminUpdateForm() {
           <Col>
 
             <Button variant="success" type="submit" onClick={handleStoreItem}>
-              Create (Store) an item           
-              </Button>
+              Update item
+            </Button>
             <br />
             <br />
           </Col>
@@ -130,7 +131,7 @@ function InventoryAdminUpdateForm() {
           </Col>
           <Col>
 
-           
+            
           </Col>
         </Row>
 

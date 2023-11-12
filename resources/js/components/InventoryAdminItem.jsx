@@ -59,6 +59,10 @@ function InventoryAdminitem(props) {
         });
 }
 
+
+
+
+
     return (
         <Card style={{width: '18rem'}}>
             <Card.Body>

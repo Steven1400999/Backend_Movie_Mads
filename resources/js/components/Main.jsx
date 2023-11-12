@@ -9,6 +9,8 @@ import InventoryAdmin from "./InventoryAdmin";
 import { Navigate, Routes, Route } from "react-router-dom";
 import MenuEmployee from "./MenuEmployee";
 import InventoryAdminUpdateForm from "./InventoryAdminUpdateForm";
+import InventoryAdminStoreForm from "./InventoryAdminStoreForm";
+
 
 const Logout = () => {
  
@@ -44,6 +46,7 @@ function Main() {
 
 
       <Route path="/Proyecto_Inventario/public/Admin/update_form" element={<InventoryAdminUpdateForm  />} />
+      <Route path="/Proyecto_Inventario/public/Admin/store_form" element={<InventoryAdminStoreForm  />} />
 
 
 //Employee
