@@ -45,7 +45,7 @@ class InventorySeeder extends Seeder
 
 
         $inventory = new Inventory();
-        $inventory->product_id = 3; 
+        $inventory->product_id = 3;
         $inventory->stock = 150;
         $inventory->admission_date = '2023-11-01';
         $inventory->supplier_id = 2;

@@ -10,15 +10,15 @@ function ProductAdminCategoriesItem(props) {
     const id = props.id;
     const name = props.name;
 
-    
-        
+
+
     function showForm() {
         navigate("/Proyecto_Inventario/public/Admin/product_categories");
     }
 
 
     return (
-        <Card style={{ width: '18rem', borderColor:'purple'}}>
+        <Card style={{ width: '18rem', borderColor: 'purple' }}>
             <Card.Body>
                 <Card.Title>ID: {id}</Card.Title>
                 <hr />

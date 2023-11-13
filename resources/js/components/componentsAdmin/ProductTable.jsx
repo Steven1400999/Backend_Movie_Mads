@@ -1,6 +1,6 @@
 // ProductTable.jsx
 import React from 'react';
-import './tablas.css'; 
+import './tablas.css';
 
 function ProductTable({ products }) {
   return (

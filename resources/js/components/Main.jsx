@@ -23,7 +23,7 @@ import InventoryEmployeeUpdateForm from "./EmployeeComponents/InventoryEmployeeU
 import Home from './Home'
 
 const Logout = () => {
- 
+
   return <Navigate to="/Proyecto_Inventario/public/" />;
 };
 
@@ -46,22 +46,22 @@ function Main() {
         <Route path="logout" element={<Logout />} />
 
 
-        
+
         <Route path="*" element={<Navigate replace to="/" />} />
       </Route >
 
 
-      <Route path="/Proyecto_Inventario/public/Admin/update_form" element={<InventoryAdminUpdateForm  />} />
-      <Route path="/Proyecto_Inventario/public/Admin/store_form" element={<InventoryAdminStoreForm  />} />
-      <Route path="/Proyecto_Inventario/public/Admin/store_supplier_form" element={<InventoryAdminSupplierForm/>} />
+      <Route path="/Proyecto_Inventario/public/Admin/update_form" element={<InventoryAdminUpdateForm />} />
+      <Route path="/Proyecto_Inventario/public/Admin/store_form" element={<InventoryAdminStoreForm />} />
+      <Route path="/Proyecto_Inventario/public/Admin/store_supplier_form" element={<InventoryAdminSupplierForm />} />
 
 
-      <Route path="/Proyecto_Inventario/public/Admin/product_update_form" element={<ProductAdminUpdateForm  />} />
+      <Route path="/Proyecto_Inventario/public/Admin/product_update_form" element={<ProductAdminUpdateForm />} />
       <Route path="/Proyecto_Inventario/public/Admin/product_store_form" element={<ProductAdminStoreForm />} />
       <Route path="/Proyecto_Inventario/public/Admin/product_categories" element={<ProductAdminCategories />} />
       <Route path="/Proyecto_Inventario/public/Admin/product_categories_store_form" element={<ProductCategoriesAdminStoreForm />} />
 
-      <Route path="/Proyecto_Inventario/public/Admin/user_store_form" element={<UserStore/>} />
+      <Route path="/Proyecto_Inventario/public/Admin/user_store_form" element={<UserStore />} />
 
 
 //Employee
@@ -77,7 +77,7 @@ function Main() {
       </Route >
 
 
-      <Route path="/Proyecto_Inventario/public/Admin/update_inventory_stock" element={<InventoryEmployeeUpdateForm  />} />
+      <Route path="/Proyecto_Inventario/public/Admin/update_inventory_stock" element={<InventoryEmployeeUpdateForm />} />
 
 
 

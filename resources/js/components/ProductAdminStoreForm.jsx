@@ -32,7 +32,7 @@ function ProductAdminStoreForm() {
     fetchData();
   }, [location.state]);
 
-  
+
   function closeform() {
     navigate('/Proyecto_Inventario/public/Admin/products');
   }
@@ -50,7 +50,7 @@ function ProductAdminStoreForm() {
       });
 
       console.log('Product updated successfully:', response.data);
-      
+
       navigate('/Proyecto_Inventario/public/Admin/products');
 
     } catch (error) {
@@ -60,7 +60,7 @@ function ProductAdminStoreForm() {
   };
 
 
-  
+
   return (
     <Container>
       <br />
@@ -84,7 +84,7 @@ function ProductAdminStoreForm() {
         </Row>
 
         <Row className="mb-3">
-        <Form.Group as={Col} controlId="Price">
+          <Form.Group as={Col} controlId="Price">
             <Form.Label>Price:</Form.Label>
             <Form.Control type="number" placeholder="Price" defaultValue={itemData?.price || ''} />
           </Form.Group>
@@ -118,7 +118,7 @@ function ProductAdminStoreForm() {
           </Col>
           <Col>
 
-           
+
           </Col>
         </Row>
 

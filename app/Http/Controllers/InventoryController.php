@@ -13,8 +13,8 @@ class InventoryController extends Controller
     public function index()
     {
         //$inventory = Inventory::with('supplier','product')->get();
-       // return $inventory;
-        
+        // return $inventory;
+
         $inventory = Inventory::all();
         return $inventory;
     }
@@ -52,15 +52,15 @@ class InventoryController extends Controller
     public function show(Request $request)
     {
         $inventory = Inventory::where('id', $request->id)
-        ->orwhere('product_id', $request->product_id)
-        ->orwhere('stock', $request->stock)
-        ->orwhere('admission_date', $request->admission_date)
-        ->orwhere('supplier_id', $request->supplier_id)
-        ->get();
+            ->orwhere('product_id', $request->product_id)
+            ->orwhere('stock', $request->stock)
+            ->orwhere('admission_date', $request->admission_date)
+            ->orwhere('supplier_id', $request->supplier_id)
+            ->get();
 
-    return $inventory;
+        return $inventory;
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.

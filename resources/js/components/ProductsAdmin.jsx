@@ -76,63 +76,63 @@ function ProductsAdmin() {
     }
 
     return (
-        <> 
-        <Row className="mb-3">
-        <Col>
-            <Button variant="outline-secondary" onClick={showFormStore}>Create an item</Button>
-        </Col>
-        <Col>
-            <Button variant="outline-secondary" onClick={showproductcategories}>Product categories</Button>
-        </Col>
-        </Row>
-        <hr />
-        <Row className="mb-3">
-            
-        <Col>
-            <DropdownButton id="dropdown-product" title="Name">
-                {productData.map((product) => (
-                    <Dropdown.Item key={product.id} onClick={() => setSelectedName(product.name)}>
-                        {product.name}
-                    </Dropdown.Item>
-                ))}
-            </DropdownButton>
-        </Col>
+        <>
+            <Row className="mb-3">
+                <Col>
+                    <Button variant="outline-secondary" onClick={showFormStore}>Create an item</Button>
+                </Col>
+                <Col>
+                    <Button variant="outline-secondary" onClick={showproductcategories}>Product categories</Button>
+                </Col>
+            </Row>
+            <hr />
+            <Row className="mb-3">
 
-        <Col>
-            <DropdownButton id="dropdown-stock" title="Price">
-                {productData.map((product) => (
-                    <Dropdown.Item key={product.id} onClick={() => setSelectedPrice(product.price)}>
-                        {product.price}
-                    </Dropdown.Item>
-                ))}
-            </DropdownButton>
-        </Col>
+                <Col>
+                    <DropdownButton id="dropdown-product" title="Name">
+                        {productData.map((product) => (
+                            <Dropdown.Item key={product.id} onClick={() => setSelectedName(product.name)}>
+                                {product.name}
+                            </Dropdown.Item>
+                        ))}
+                    </DropdownButton>
+                </Col>
 
-        <Col>
-            <DropdownButton id="dropdown-supplier" title="Product_category">
-                {product_categoryData.map((product_category) => (
-                    <Dropdown.Item key={product_category.id} onClick={() => setSelectedproduct_category(product_category.id)}>
-                        {`${product_category.id} - ${product_category.name}`}
-                    </Dropdown.Item>
-                ))}
-            </DropdownButton>
-        </Col>
+                <Col>
+                    <DropdownButton id="dropdown-stock" title="Price">
+                        {productData.map((product) => (
+                            <Dropdown.Item key={product.id} onClick={() => setSelectedPrice(product.price)}>
+                                {product.price}
+                            </Dropdown.Item>
+                        ))}
+                    </DropdownButton>
+                </Col>
 
-        <Col>
-            <Button variant="success" onClick={handleFilter}>
-                Apply filters</Button>
-        </Col>
+                <Col>
+                    <DropdownButton id="dropdown-supplier" title="Product_category">
+                        {product_categoryData.map((product_category) => (
+                            <Dropdown.Item key={product_category.id} onClick={() => setSelectedproduct_category(product_category.id)}>
+                                {`${product_category.id} - ${product_category.name}`}
+                            </Dropdown.Item>
+                        ))}
+                    </DropdownButton>
+                </Col>
 
-        <Col>
-            <Button variant="danger" onClick={handleClearFilters}>
-                Delete filters
-            </Button>
-        </Col>
-        
-        
-    </Row>
+                <Col>
+                    <Button variant="success" onClick={handleFilter}>
+                        Apply filters</Button>
+                </Col>
 
-    
+                <Col>
+                    <Button variant="danger" onClick={handleClearFilters}>
+                        Delete filters
+                    </Button>
+                </Col>
+
+
+            </Row>
+
+
 
             <hr />
             <Container fluid>

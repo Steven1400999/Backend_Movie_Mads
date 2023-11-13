@@ -14,19 +14,19 @@ function InventoryAdminSupplierForm() {
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-           
-            const supplierResponse = await axios.get("http://localhost/Proyecto_Inventario/public/api/supplier_index");
-            setSupplierData(supplierResponse.data);
+      try {
 
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+        const supplierResponse = await axios.get("http://localhost/Proyecto_Inventario/public/api/supplier_index");
+        setSupplierData(supplierResponse.data);
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
     fetchData();
-}, []);
-  
+  }, []);
+
   function closeform() {
     navigate('/Proyecto_Inventario/public/Admin/inventory');
   }
@@ -38,11 +38,11 @@ function InventoryAdminSupplierForm() {
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/supplier_store', {
         name: e.target.form.Name.value,
-        
+
       });
 
       console.log('Product updated successfully:', response.data);
-      
+
       navigate('/Proyecto_Inventario/public/Admin/inventory');
 
     } catch (error) {
@@ -52,7 +52,7 @@ function InventoryAdminSupplierForm() {
   };
 
 
-  
+
   return (
     <Container>
       <br />
@@ -88,7 +88,7 @@ function InventoryAdminSupplierForm() {
           </Col>
           <Col>
 
-           
+
           </Col>
         </Row>
 

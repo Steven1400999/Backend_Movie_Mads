@@ -1,6 +1,6 @@
 // SupplierTable.jsx
 import React from 'react';
-import './tablas.css'; 
+import './tablas.css';
 
 function SupplierTable({ suppliers }) {
   return (

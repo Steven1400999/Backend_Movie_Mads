@@ -37,18 +37,18 @@ function Login() {
 
 
             const rol_id = response.data.data.rol_id;
-if(rol_id ==1){
+            if (rol_id == 1) {
 
-    navigate("/Proyecto_Inventario/public/Admin");
-
-
-
-} else if(rol_id ==2){
-
-    navigate("/Proyecto_Inventario/public/Employee");
+                navigate("/Proyecto_Inventario/public/Admin");
 
 
-}
+
+            } else if (rol_id == 2) {
+
+                navigate("/Proyecto_Inventario/public/Employee");
+
+
+            }
 
 
 
@@ -63,14 +63,14 @@ if(rol_id ==1){
 
     return (
 
-        <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh'}}  >
+        <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}  >
 
-<Form onSubmit={handleSubmit} style={{ fontSize: '1.2em', color:'black', borderColor:'black',border: '2px solid black',borderRadius: '8px',boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',padding:'5%',marginTop: '20%',zIndex:'+1', backgroundColor:'white'}}>
+            <Form onSubmit={handleSubmit} style={{ fontSize: '1.2em', color: 'black', borderColor: 'black', border: '2px solid black', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', padding: '5%', marginTop: '20%', zIndex: '+1', backgroundColor: 'white' }}>
                 <br /><br />
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Label>InventiKS, keep your stock up to date</Form.Label>
                 </Form.Group>
-                
+
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Label> <h3>Login</h3> </Form.Label>
                 </Form.Group>
@@ -88,13 +88,13 @@ if(rol_id ==1){
                     <Form.Control type="password" placeholder="Password"
                         name="password" value={formValue.password} onChange={onChange} />
                 </Form.Group>
-                
+
                 <Button variant="primary" type="submit">
                     Log in
                 </Button>
                 <br /><br />
             </Form>
-            <div style={{ 
+            <div style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
@@ -103,10 +103,10 @@ if(rol_id ==1){
                 backgroundImage: `url(${fondologin})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
-                opacity: 0.7,  // Ajusta la opacidad según tus necesidades (de 0 a 1)
-                zIndex: -1,   // Envia la imagen de fondo detrás del contenido
+                opacity: 0.7,
+                zIndex: -1,
             }}>
-                
+
             </div>
 
         </div>

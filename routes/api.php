@@ -22,13 +22,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('login',[RegisterController::class,'login']);
+Route::post('login', [RegisterController::class, 'login']);
 
 //User Controller
 Route::get('/user_index', [UserController::class, 'index']);
 Route::post('/user_update', [UserController::class, 'update']);
 Route::post('/user_destroy', [UserController::class, 'destroy']);
-Route::post('/register', [RegisterController::class,'register']);
+Route::post('/register', [RegisterController::class, 'register']);
 
 //Supplier Controller
 Route::get('/supplier_index', [SupplierController::class, 'index']);

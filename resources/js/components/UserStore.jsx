@@ -18,7 +18,7 @@ function InventoryAdminUpdateForm() {
         name: e.target.form.Name.value,
         email: e.target.form.email.value,
         password: e.target.form.Password.value,
-        rol_id:2,
+        rol_id: 2,
 
 
       });
@@ -27,11 +27,10 @@ function InventoryAdminUpdateForm() {
       navigate('/Proyecto_Inventario/public/Admin/users');
     } catch (error) {
       console.error('Error updating User:', error);
-      // Add error handling and user feedback here
     }
   };
 
- 
+
   return (
     <Container>
       <br />
@@ -75,7 +74,7 @@ function InventoryAdminUpdateForm() {
               Close
             </Button>
           </Col>
-          
+
         </Row>
       </Form>
     </Container>

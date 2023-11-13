@@ -32,7 +32,7 @@ function InventoryAdminUpdateForm() {
     fetchData();
   }, [location.state]);
 
-  
+
   function closeform() {
     navigate('/Proyecto_Inventario/public/Admin/products');
   }
@@ -51,7 +51,7 @@ function InventoryAdminUpdateForm() {
       });
 
       console.log('Product updated successfully:', response.data);
-      
+
       navigate('/Proyecto_Inventario/public/Admin/products');
 
     } catch (error) {
@@ -111,7 +111,7 @@ function InventoryAdminUpdateForm() {
         </Row>
 
         <Row className="mb-3">
-        <Form.Group as={Col} controlId="Price">
+          <Form.Group as={Col} controlId="Price">
             <Form.Label>Price:</Form.Label>
             <Form.Control type="number" placeholder="Stock" defaultValue={itemData?.price || ''} />
           </Form.Group>

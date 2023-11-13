@@ -1,12 +1,12 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link, Outlet} from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 function Menu() {
   return (
     <>
-        <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="dark" data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
@@ -18,8 +18,8 @@ function Menu() {
       </Navbar>
       <section>
         <Container>
-            <Outlet>
-            </Outlet>
+          <Outlet>
+          </Outlet>
         </Container>
       </section>
     </>

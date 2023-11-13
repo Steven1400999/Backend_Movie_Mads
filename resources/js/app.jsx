@@ -21,13 +21,7 @@ ReactDOM.createRoot(document.getElementById('app')).render(
     <BrowserRouter>
 
 
-
-<Main/>
-
-
-
-
-
+        <Main />
 
 
     </BrowserRouter>

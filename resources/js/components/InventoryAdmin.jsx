@@ -67,11 +67,11 @@ function InventoryAdmin() {
     function showFormStore() {
         navigate("/Proyecto_Inventario/public/Admin/store_form");
     }
-    
+
     function showFormSupplierStore() {
         navigate("/Proyecto_Inventario/public/Admin/store_supplier_form");
     }
-    
+
 
     if (!inventoryData.length) {
         return (
@@ -82,19 +82,19 @@ function InventoryAdmin() {
     }
 
     return (
-        <>           
-         <Row className="mb-3">
+        <>
+            <Row className="mb-3">
 
-            <Col>
-                <Button variant="outline-dark" onClick={showFormStore}>Create an item</Button>
-            </Col>
-            <Col>
-                <Button variant="outline-dark" onClick={showFormSupplierStore}>Add a supplier</Button>
-            </Col>
+                <Col>
+                    <Button variant="outline-dark" onClick={showFormStore}>Create an item</Button>
+                </Col>
+                <Col>
+                    <Button variant="outline-dark" onClick={showFormSupplierStore}>Add a supplier</Button>
+                </Col>
 
 
-</Row>
-            
+            </Row>
+
             <hr />
 
             <Row className="mb-3">

@@ -43,25 +43,9 @@ class UserSeeder extends Seeder
         $users->rol_id = 2;
         $users->save();
 
-        $users = new User();
-        $users->name = "Cesar";
-        $users->email = "cesar@gmail.com";
-        $users->password = bcrypt("root");
-        $users->rol_id = 2;
-        $users->save();
 
-        $users = new User();
-        $users->name = "Yaheñ";
-        $users->email = "yahel@gmail.com";
-        $users->password = bcrypt("root");
-        $users->rol_id = 2;
-        $users->save();
 
-        $users = new User();
-        $users->name = "Diego";
-        $users->email = "diego@gmail.com";
-        $users->password = bcrypt("root");
-        $users->rol_id = 2;
-        $users->save();
+
+
     }
 }

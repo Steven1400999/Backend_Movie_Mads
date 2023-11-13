@@ -37,7 +37,7 @@ function InventoryAdminitem(props) {
                 const supplierDetails = response.data;
                 const supplierName = supplierDetails.find((supplier) => supplier.id === props.supplier_id).name;
                 setSupplierName(supplierName);
-                
+
             } catch (error) {
                 console.error(error);
             }
@@ -47,24 +47,24 @@ function InventoryAdminitem(props) {
     }, [props.supplier_id]);
 
     const itemData = {
-        id :props.id,
-        product_id : props.product_id,
-       stock : props.stock,
-         admission_date: props.admission_date,
-         supplier_id: props.supplier_id,
+        id: props.id,
+        product_id: props.product_id,
+        stock: props.stock,
+        admission_date: props.admission_date,
+        supplier_id: props.supplier_id,
     };
     function showForm(props) {
         navigate("/Proyecto_Inventario/public/Admin/update_form", {
-            state: {itemData}
+            state: { itemData }
         });
-}
+    }
 
 
 
 
 
     return (
-        <Card style={{width: '18rem'}}>
+        <Card style={{ width: '18rem' }}>
             <Card.Body>
                 <Card.Title>ID: {id}</Card.Title>
                 <hr />

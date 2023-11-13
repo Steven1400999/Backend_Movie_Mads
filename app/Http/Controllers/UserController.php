@@ -73,7 +73,7 @@ class UserController extends Controller
         return $user;
 
     }
-  
+
     /**
      * Remove the specified resource from storage.
      */
@@ -83,5 +83,5 @@ class UserController extends Controller
         return $user;
     }
 
-    
+
 }

@@ -18,19 +18,19 @@ function UserItem(props) {
         password: props.password,
         rol_id: props.rol_id
     };
-  
-  
+
+
 
     const handleClose = () => {
-       
+
     };
 
     return (
         <>
 
 
-        
-            <Card style={{ width: '18rem', borderColor: 'blue'}}>
+
+            <Card style={{ width: '18rem', borderColor: 'blue' }}>
                 <Card.Body>
                     <Card.Title>ID: {id}</Card.Title>
                     <Card.Subtitle>Name: {name}</Card.Subtitle>

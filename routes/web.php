@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::view('/{path?}','welcome')
-    ->where('path','.*');
+Route::view('/{path?}', 'welcome')
+    ->where('path', '.*');
 
-Route::get('/token',[UserController::class, 'token']);
+Route::get('/token', [UserController::class, 'token']);
 
 
 //Supplier Controller

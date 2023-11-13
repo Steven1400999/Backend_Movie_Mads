@@ -24,7 +24,7 @@ function ProductAdminCategories() {
         fetchData();
     }, []);
 
-    
+
 
     function closeFormStore() {
         navigate("/Proyecto_Inventario/public/Admin/products");
@@ -45,37 +45,37 @@ function ProductAdminCategories() {
     }
 
     return (
-        <> 
-<br />
-<br />
-<br />
-        <Container className='text-center'>
-        <Row className="mb-3">   
-        <h4 >Product Categories</h4>
-        </Row>
-        <Row className="mb-3">
-        <Col>
-            <Button variant="success" onClick={showFormStore}>Create a product category</Button>
-        </Col>
-        <Col>
-            <Button variant="danger" onClick={closeFormStore}>Close</Button>
-        </Col>
-        </Row>
-        
-
-            <hr />
-            <Container fluid>
-                <Row className="gap-6">
-                    {productData.map((product) => (
-                        <ProductAdminCategoriesItem
-                            key={product.id}
-                            id={product.id}
-                            name={product.name}
-                        />
-                    ))}
+        <>
+            <br />
+            <br />
+            <br />
+            <Container className='text-center'>
+                <Row className="mb-3">
+                    <h4 >Product Categories</h4>
                 </Row>
-            </Container>
-            
+                <Row className="mb-3">
+                    <Col>
+                        <Button variant="success" onClick={showFormStore}>Create a product category</Button>
+                    </Col>
+                    <Col>
+                        <Button variant="danger" onClick={closeFormStore}>Close</Button>
+                    </Col>
+                </Row>
+
+
+                <hr />
+                <Container fluid>
+                    <Row className="gap-6">
+                        {productData.map((product) => (
+                            <ProductAdminCategoriesItem
+                                key={product.id}
+                                id={product.id}
+                                name={product.name}
+                            />
+                        ))}
+                    </Row>
+                </Container>
+
             </Container>
         </>
     );

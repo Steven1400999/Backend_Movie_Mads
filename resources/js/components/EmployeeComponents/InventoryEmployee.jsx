@@ -62,7 +62,7 @@ function InventoryEmployee() {
         }
     };
 
-    
+
     if (!inventoryData.length) {
         return (
             <Spinner animation="border" role="status">
@@ -72,10 +72,10 @@ function InventoryEmployee() {
     }
 
     return (
-        <>      
+        <>
 
-        <br />     
-        
+            <br />
+
             <hr />
 
             <Row className="mb-3">

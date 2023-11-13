@@ -7,58 +7,58 @@ import { useNavigate } from "react-router-dom";
 
 
 function ListCards() {
-    const[userData, setUserData]=useState({})
+    const [userData, setUserData] = useState({})
     const navigate = useNavigate();
-    useEffect(()=>{
-        const getUsers = async() =>{
+    useEffect(() => {
+        const getUsers = async () => {
             await axios.get("http://localhost/Proyecto_Inventario/public/api/user_index")
-            .then(function(response){
-                console.log(userData);
-                setUserData(response.data)
-            })
-            .catch(function (error) {
-                // manejar error
-                console.log(error);
-              })
-              .finally(function () {
-                // siempre sera executado
-              });
+                .then(function (response) {
+                    console.log(userData);
+                    setUserData(response.data)
+                })
+                .catch(function (error) {
+                    // manejar error
+                    console.log(error);
+                })
+                .finally(function () {
+                    // siempre sera executado
+                });
 
         }
         getUsers()
-    },[])
+    }, [])
 
 
-        function showstoreform() {
-            navigate("/Proyecto_Inventario/public/Admin/user_store_form");
-        }
+    function showstoreform() {
+        navigate("/Proyecto_Inventario/public/Admin/user_store_form");
+    }
 
 
-    
+
 
     if (!userData.length) return
-        <Spinner animation="border" role="status">
+    <Spinner animation="border" role="status">
         <span className="visually-hidden">Loading...</span>
-        </Spinner>
+    </Spinner>
 
     return (
         <>
 
-<Button variant="warning" onClick={showstoreform}>Create a user</Button>
+            <Button variant="warning" onClick={showstoreform}>Create a user</Button>
 
-<hr />
-        <Container fluid>
-        <Row className="gap-6">
-        {userData.map((user)=>(
-        <UserItem key={user.id} 
-        id={user.id}  
-        name={user.name} 
-        email={user.email}
-        rol_id={user.rol_id} />
+            <hr />
+            <Container fluid>
+                <Row className="gap-6">
+                    {userData.map((user) => (
+                        <UserItem key={user.id}
+                            id={user.id}
+                            name={user.name}
+                            email={user.email}
+                            rol_id={user.rol_id} />
 
-        ))}
-</Row>
-</Container>
+                    ))}
+                </Row>
+            </Container>
         </>
     );
 }

@@ -58,7 +58,7 @@ function InventoryAdminUpdateForm() {
       });
 
       console.log('Item updated successfully:', response.data);
-      
+
       navigate('/Proyecto_Inventario/public/Admin/inventory');
 
     } catch (error) {
@@ -131,7 +131,7 @@ function InventoryAdminUpdateForm() {
           </Col>
           <Col>
 
-            
+
           </Col>
         </Row>
 

@@ -53,9 +53,9 @@ class ProductController extends Controller
     public function show(Request $request)
     {
         $product = Product::where('id', $request->id)
-        ->orwhere ('name', $request->name)
-        ->orwhere ('price', $request->price)
-        ->orwhere ('product_category_id', $request->product_category_id)->get();
+            ->orwhere('name', $request->name)
+            ->orwhere('price', $request->price)
+            ->orwhere('product_category_id', $request->product_category_id)->get();
         return $product;
 
     }
@@ -83,7 +83,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            
+
 
         ]);
 

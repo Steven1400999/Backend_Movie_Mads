@@ -12,7 +12,7 @@ function ProductCategoriesAdminStoreForm() {
   const [products, setProducts] = useState([]);
   const [product_category, setProduct_category] = useState([]);
 
-  
+
   function closeform() {
     navigate('/Proyecto_Inventario/public/Admin/products');
   }
@@ -24,11 +24,11 @@ function ProductCategoriesAdminStoreForm() {
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_category_store', {
         name: e.target.form.Name.value,
-        
+
       });
 
       console.log('Product updated successfully:', response.data);
-      
+
       navigate('/Proyecto_Inventario/public/Admin/products');
 
     } catch (error) {
@@ -38,7 +38,7 @@ function ProductCategoriesAdminStoreForm() {
   };
 
 
-  
+
   return (
     <Container>
       <br />
@@ -74,7 +74,7 @@ function ProductCategoriesAdminStoreForm() {
           </Col>
           <Col>
 
-           
+
           </Col>
         </Row>
 
