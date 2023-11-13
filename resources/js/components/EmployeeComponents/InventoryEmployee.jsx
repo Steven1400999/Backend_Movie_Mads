@@ -13,6 +13,8 @@ function InventoryEmployee() {
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedSupplier, setSelectedSupplier] = useState(null);
     const navigate = useNavigate();
+
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
