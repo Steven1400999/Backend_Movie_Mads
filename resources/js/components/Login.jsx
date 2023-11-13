@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import fondologin from '../../../public/fondologin.jpg'
 
 function Login() {
     const [formValue, setformValue] = useState({
@@ -59,18 +60,19 @@ if(rol_id ==1){
             console.log(error);
         });
     };
-    
-    return (
-        <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
 
-            <Form onSubmit={handleSubmit}>
-                <br /><br /><br /><br />
+    return (
+
+        <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh'}}  >
+
+<Form onSubmit={handleSubmit} style={{ fontSize: '1.4em', color:'black', borderColor:'black',border: '2px solid black',borderRadius: '8px',boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',padding:'5%',marginTop: '20%',zIndex:'+1', backgroundColor:'white'}}>
+                <br /><br />
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Label>InventiKS, keep your stock up to date</Form.Label>
+                    <Form.Label>InventiKS, keep your stock up to date</Form.Label>
                 </Form.Group>
-                <br />
+                
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Label> <h3>Login</h3> </Form.Label>
+                    <Form.Label> <h3>Login</h3> </Form.Label>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -90,8 +92,23 @@ if(rol_id ==1){
                 <Button variant="primary" type="submit">
                     Log in
                 </Button>
-                
+                <br /><br />
             </Form>
+            <div style={{ 
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundImage: `url(${fondologin})`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                opacity: 0.7,  // Ajusta la opacidad según tus necesidades (de 0 a 1)
+                zIndex: -1,   // Envia la imagen de fondo detrás del contenido
+            }}>
+                {/* Contenido que estará detrás de la imagen de fondo */}
+            </div>
+
         </div>
 
 
