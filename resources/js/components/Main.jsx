@@ -20,6 +20,7 @@ import InventoryAdminSupplierForm from "./InventoryAdminSupplierForm"
 import InventoryEmployee from "./EmployeeComponents/InventoryEmployee"
 import InventoryEmployeeItem from "./EmployeeComponents/InventoryEmployeeItem";
 import InventoryEmployeeUpdateForm from "./EmployeeComponents/InventoryEmployeeUpdateForm"
+import Home from './Home'
 
 const Logout = () => {
  
@@ -37,8 +38,8 @@ function Main() {
 //Admin
       <Route path="/Proyecto_Inventario/public/Admin" element={<MenuAdmin />} >
 
-        <Route index element={<ListCards />} />
-        <Route path="home" element={<ListCards />} />
+        <Route index element={<Home />} />
+        <Route path="home" element={<Home />} />
         <Route path="inventory" element={<InventoryAdmin />} />
         <Route path="products" element={<ProductsAdmin />} />
         <Route path="users" element={<ListCards />} />
@@ -67,8 +68,8 @@ function Main() {
 
       <Route path="/Proyecto_Inventario/public/Employee" element={<MenuEmployee />}>
 
-        <Route index element={<ListCards />} />
-        <Route path="home" element={<ListCards />} />
+        <Route index element={<Home />} />
+        <Route path="home" element={<Home />} />
         <Route path="inventory" element={<InventoryEmployee />} />
         <Route path="logout" element={<Logout />} />
 
