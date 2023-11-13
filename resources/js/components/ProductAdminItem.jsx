@@ -7,6 +7,8 @@ import InventoryAdminUpdateForm from "./InventoryAdminUpdateForm";
 function ProductAdminItem(props) {
     const navigate = useNavigate();
 
+    const token = sessionStorage.getItem("token");
+    const id_rol = sessionStorage.getItem("id_rol");
 
     const [product_category, setProduct_category] = useState('');
 
@@ -17,6 +19,14 @@ function ProductAdminItem(props) {
     const product_category_id = props.product_category_id;
 
     useEffect(() => {
+        if (!token) {
+            navigate("/Proyecto_Inventario/public/"); 
+          }
+          if(id_rol != 1){
+            navigate("/Proyecto_Inventario/public/Employee");
+    
+          }
+    
         const fetchProduct_CategoryName = async () => {
             try {
                 const response = await axios.get(`http://localhost/Proyecto_Inventario/public/api/product_category_index`);

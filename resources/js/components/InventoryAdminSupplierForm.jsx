@@ -11,8 +11,18 @@ function InventoryAdminSupplierForm() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [suppliers, setSupplierData] = useState([]);
+  const token = sessionStorage.getItem("token");
+  const id_rol = sessionStorage.getItem("id_rol");
+
 
   useEffect(() => {
+    if (!token) {
+      navigate("/Proyecto_Inventario/public/"); 
+    }if(id_rol != 1){
+      navigate("/Proyecto_Inventario/public/Employee");
+
+    }
+
     const fetchData = async () => {
       try {
 

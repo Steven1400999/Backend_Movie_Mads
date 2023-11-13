@@ -14,8 +14,14 @@ function InventoryEmployeeitem(props) {
     const stock = props.stock;
     const admission_date = props.admission_date;
     const supplier_id = props.supplier_id;
+    const token = sessionStorage.getItem("token");
+    const id_rol = sessionStorage.getItem("id_rol");
 
     useEffect(() => {
+        if (!token) {
+            navigate("/Proyecto_Inventario/public/"); 
+          }
+    
         const fetchProductDetails = async () => {
             try {
                 const response = await axios.get(`http://localhost/Proyecto_Inventario/public/api/product_index`);
@@ -54,7 +60,7 @@ function InventoryEmployeeitem(props) {
         supplier_id: props.supplier_id,
     };
     function showForm(props) {
-        navigate("/Proyecto_Inventario/public/Admin/update_inventory_stock", {
+        navigate("/Proyecto_Inventario/public/Employee/update_inventory_stock", {
             state: { itemData }
         });
     }

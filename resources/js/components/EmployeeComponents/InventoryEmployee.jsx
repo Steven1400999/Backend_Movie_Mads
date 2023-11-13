@@ -13,9 +13,16 @@ function InventoryEmployee() {
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedSupplier, setSelectedSupplier] = useState(null);
     const navigate = useNavigate();
+    const token = sessionStorage.getItem("token");
+    const id_rol = sessionStorage.getItem("id_rol");
 
-    
+
     useEffect(() => {
+        
+    if (!token) {
+        navigate("/Proyecto_Inventario/public/"); 
+      }
+
         const fetchData = async () => {
             try {
                 const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/inventory_index");

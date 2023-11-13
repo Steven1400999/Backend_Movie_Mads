@@ -10,8 +10,14 @@ function InventoryAdminUpdateForm() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
+  const token = sessionStorage.getItem("token");
+  const id_rol = sessionStorage.getItem("id_rol");
 
   useEffect(() => {
+    if (!token) {
+      navigate("/Proyecto_Inventario/public/"); 
+    }
+
     const fetchData = async () => {
       try {
         if (location.state && location.state.itemData) {
@@ -56,7 +62,8 @@ function InventoryAdminUpdateForm() {
 
       console.log('Item updated successfully:', response.data);
 
-      navigate('/Proyecto_Inventario/public/Employee/inventory');
+navigate('/Proyecto_Inventario/public/Employee/inventory');
+
 
     } catch (error) {
       console.error('Error updating item:', error);

@@ -11,8 +11,19 @@ function ProductCategoriesAdminStoreForm() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [product_category, setProduct_category] = useState([]);
+  const token = sessionStorage.getItem("token");
+  const id_rol = sessionStorage.getItem("id_rol");
 
 
+  useEffect(() => {
+    if (!token) {
+        navigate("/Proyecto_Inventario/public/"); 
+      }
+      if(id_rol != 1){
+        navigate("/Proyecto_Inventario/public/Employee");
+
+      }
+    }, []);
   function closeform() {
     navigate('/Proyecto_Inventario/public/Admin/products');
   }

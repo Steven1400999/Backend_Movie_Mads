@@ -5,6 +5,10 @@ import InventoryAdminitem from './InventoryAdminItem';
 import { useNavigate } from "react-router-dom";
 
 function InventoryAdmin() {
+
+    const token = sessionStorage.getItem("token");
+    const id_rol = sessionStorage.getItem("id_rol");
+
     const [inventoryData, setInventoryData] = useState([]);
     const [productData, setProductData] = useState([]);
     const [supplierData, setSupplierData] = useState([]);
@@ -13,7 +17,18 @@ function InventoryAdmin() {
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedSupplier, setSelectedSupplier] = useState(null);
     const navigate = useNavigate();
+    
     useEffect(() => {
+
+
+    if (!token) {
+        navigate("/Proyecto_Inventario/public/"); 
+      }  if(id_rol != 1){
+        navigate("/Proyecto_Inventario/public/Employee");
+
+      }
+
+
         const fetchData = async () => {
             try {
                 const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/inventory_index");

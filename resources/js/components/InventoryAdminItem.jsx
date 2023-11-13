@@ -14,8 +14,17 @@ function InventoryAdminitem(props) {
     const stock = props.stock;
     const admission_date = props.admission_date;
     const supplier_id = props.supplier_id;
+    const token = sessionStorage.getItem("token");
+    const id_rol = sessionStorage.getItem("id_rol");
 
     useEffect(() => {
+        if (!token) {
+            navigate("/Proyecto_Inventario/public/"); 
+          }if(id_rol != 1){
+            navigate("/Proyecto_Inventario/public/Employee");
+    
+          }
+    
         const fetchProductDetails = async () => {
             try {
                 const response = await axios.get(`http://localhost/Proyecto_Inventario/public/api/product_index`);

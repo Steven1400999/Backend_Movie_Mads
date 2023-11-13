@@ -5,7 +5,19 @@ import axios from 'axios';
 
 function InventoryAdminUpdateForm() {
   const navigate = useNavigate();
+  const token = sessionStorage.getItem("token");
+  const id_rol = sessionStorage.getItem("id_rol");
 
+  useEffect(() => {
+      if (!token) {
+          navigate("/Proyecto_Inventario/public/"); 
+         
+        }
+        if(id_rol != 1){
+          navigate("/Proyecto_Inventario/public/Employee");
+  
+        }
+      }, []);
   const closeform = () => {
     navigate('/Proyecto_Inventario/public/Admin/users');
   };

@@ -35,7 +35,7 @@ function Login() {
             console.log("Rol_id: ", response.data.data.rol_id);
             console.log(response.data.data.token);
             sessionStorage.setItem("token", response.data.data.token);
-            sessionStorage.setItem("rol_id", response.data.data.rol_id);
+            sessionStorage.setItem("id_rol", response.data.data.rol_id);
 
 
 

@@ -6,9 +6,22 @@ import Foto1 from '../../../public/foto1.jpg';
 import Foto2 from '../../../public/foto2.jpg';
 import Foto3 from '../../../public/foto3.jpg';
 import Foto4 from '../../../public/foto4.jpg';
+import { useNavigate } from 'react-router-dom';
+
 
 function Home() {
 
+  const  navigate= useNavigate();
+  const token = sessionStorage.getItem("token");
+  const id_rol = sessionStorage.getItem("id_rol");
+
+
+  useEffect(() => {
+    if (!token) {
+        navigate("/Proyecto_Inventario/public/");
+    }  
+
+}, []);
 
   return (
     <>
@@ -35,7 +48,7 @@ function Home() {
 
 
         <Carousel style={{ maxHeight: '450px', overflow: 'hidden' }}>
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={3000}>
             <img
               className="d-block w-100"
               src={Foto4}
@@ -46,7 +59,7 @@ function Home() {
             <Carousel.Caption>
             </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={3000}>
             <img
               className="d-block w-100"
               src={Foto2}
@@ -58,7 +71,7 @@ function Home() {
             </Carousel.Caption>
           </Carousel.Item>
 
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={3000}>
             <img
               className="d-block w-100"
               src={Foto3}
@@ -69,7 +82,7 @@ function Home() {
             <Carousel.Caption>
             </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={3000}>
             <img
               className="d-block w-100"
               src={Foto2}

@@ -9,7 +9,19 @@ import { useNavigate } from "react-router-dom";
 function ListCards() {
     const [userData, setUserData] = useState({})
     const navigate = useNavigate();
+    const token = sessionStorage.getItem("token");
+    const id_rol = sessionStorage.getItem("id_rol");
+
+
     useEffect(() => {
+        if (!token) {
+            navigate("/Proyecto_Inventario/public/"); 
+          }
+          if(id_rol != 1){
+            navigate("/Proyecto_Inventario/public/Employee");
+    
+          }
+    
         const getUsers = async () => {
             await axios.get("http://localhost/Proyecto_Inventario/public/api/user_index")
                 .then(function (response) {

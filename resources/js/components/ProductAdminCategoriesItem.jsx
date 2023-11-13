@@ -9,9 +9,19 @@ function ProductAdminCategoriesItem(props) {
 
     const id = props.id;
     const name = props.name;
+    const token = sessionStorage.getItem("token");
+    const id_rol = sessionStorage.getItem("id_rol");
 
+    useEffect(() => {
+        if (!token) {
+            navigate("/Proyecto_Inventario/public/"); 
+          }
+          if(id_rol != 1){
+            navigate("/Proyecto_Inventario/public/Employee");
+    
+          }
 
-
+        }, []);
     function showForm() {
         navigate("/Proyecto_Inventario/public/Admin/product_categories");
     }
