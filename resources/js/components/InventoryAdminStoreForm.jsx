@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Form, Button, Container, Row, Col, Toast } from 'react-bootstrap';
-import { useNavigate, useLocation } from 'react-router-dom';
-import ProductTable from './componentsAdmin/ProductTable';
-import SupplierTable from './componentsAdmin/SupplierTable';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Context } from '../Context';
-
 
 function InventoryAdminUpdateForm() {
   const navigate = useNavigate();
@@ -14,36 +11,30 @@ function InventoryAdminUpdateForm() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
-  const { token, rol_id } = useContext(Context);
+  const { token } = useContext(Context);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         if (location.state && location.state.itemData) {
           setItemData(location.state.itemData);
         }
 
-        const productResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_index',
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
-          }
-
-        );
+        const productResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_index', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setProducts(productResponse.data);
 
-        const supplierResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/supplier_index',
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
-          }
-
-        );
+        const supplierResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/supplier_index', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setSuppliers(supplierResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -51,7 +42,7 @@ function InventoryAdminUpdateForm() {
     };
 
     fetchData();
-  }, [location.state]);
+  }, [location.state, token]);
 
   function getFormattedDate() {
     const date = new Date();
@@ -65,24 +56,35 @@ function InventoryAdminUpdateForm() {
     navigate('/Proyecto_Inventario/public/Admin/inventory');
   }
 
-
   const handleStoreItem = async (e) => {
     e.preventDefault();
 
+    const product = e.target.form.Product.value;
+    const stock = e.target.form.Stock.value.trim();
+    const supplier = e.target.form.Supplier.value;
+    const date = e.target.form.Date.value;
+
+    const stockRegex = /^\d+$/;
+
+    if (!product || !stockRegex.test(stock) || !supplier || !date) {
+      setError('All fields are required, or the stock format is incorrect.');
+      return;
+    } else {
+      setError('');
+    }
+
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_store', {
-        product_id: e.target.form.Product.value,
-        stock: e.target.form.Stock.value,
-        supplier_id: e.target.form.Supplier.value,
-        admission_date: e.target.form.Date.value,
-      }, 
-      {
+        product_id: product,
+        stock: stock,
+        supplier_id: supplier,
+        admission_date: date,
+      }, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-      }
-        , );
+      });
 
       console.log('Item updated successfully:', response.data);
 
@@ -90,11 +92,8 @@ function InventoryAdminUpdateForm() {
 
     } catch (error) {
       console.error('Error updating item:', error);
-
     }
   };
-
-
 
   return (
     <Container>
@@ -142,28 +141,29 @@ function InventoryAdminUpdateForm() {
         </Row>
         <Row className="mb-3">
           <Col>
-
             <Button variant="success" type="submit" onClick={handleStoreItem}>
               Create an item
             </Button>
             <br />
             <br />
           </Col>
-
           <Col>
-
             <Button variant="secondary" onClick={closeform}>
               Close
             </Button>
           </Col>
           <Col>
-
-
           </Col>
         </Row>
-
-
       </Form>
+
+      {error && (
+        <Row>
+          <Col>
+            <p style={{ color: 'red' }}>{error}</p>
+          </Col>
+        </Row>
+      )}
     </Container>
   );
 }
