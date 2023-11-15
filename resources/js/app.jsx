@@ -7,7 +7,7 @@ import './bootstrap';
  */
 
 //import './components/ListCards';
-
+import { ContextProvider } from './Context';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import Menu from './components/Menu';
@@ -18,11 +18,13 @@ import { Card } from 'react-bootstrap';
 import MenuAdmin from "./components/MenuAdmin"
 
 ReactDOM.createRoot(document.getElementById('app')).render(
+
+
     <BrowserRouter>
 
-
-        <Main />
-
+        <ContextProvider>
+            <Main />
+        </ContextProvider>
 
     </BrowserRouter>
 )

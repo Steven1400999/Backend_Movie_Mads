@@ -15,14 +15,6 @@ class SupplierSeeder extends Seeder
     {
 
         $suppliers = new Supplier();
-        $suppliers->name = "Femsa";
-        $suppliers->save();
-
-        $suppliers = new Supplier();
-        $suppliers->name = "ARCA Continental";
-        $suppliers->save();
-
-        $suppliers = new Supplier();
         $suppliers->name = "Genoma";
         $suppliers->save();
 
@@ -31,15 +23,7 @@ class SupplierSeeder extends Seeder
         $suppliers->save();
 
         $suppliers = new Supplier();
-        $suppliers->name = "Pepsico";
-        $suppliers->save();
-
-        $suppliers = new Supplier();
         $suppliers->name = "Unilever";
-        $suppliers->save();
-
-        $suppliers = new Supplier();
-        $suppliers->name = "Coca-Cola";
         $suppliers->save();
 
         $suppliers = new Supplier();
@@ -49,7 +33,6 @@ class SupplierSeeder extends Seeder
         $suppliers = new Supplier();
         $suppliers->name = "Mondelez";
         $suppliers->save();
-
 
         $suppliers = new Supplier();
         $suppliers->name = "General Mills";

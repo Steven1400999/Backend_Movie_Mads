@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button, Container, Row, Col, Toast } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ProductTable from './componentsAdmin/ProductTable';
 import SupplierTable from './componentsAdmin/SupplierTable';
 import axios from 'axios';
+import { Context } from '../Context';
+
 
 function InventoryAdminUpdateForm() {
   const navigate = useNavigate();
@@ -12,17 +14,9 @@ function InventoryAdminUpdateForm() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
-  const token = sessionStorage.getItem("token");
-  const id_rol = sessionStorage.getItem("id_rol");
-
+  const { token, rol_id } = useContext(Context);
 
   useEffect(() => {
-    if (!token) {
-      navigate("/Proyecto_Inventario/public/"); 
-    }if(id_rol != 1){
-      navigate("/Proyecto_Inventario/public/Employee");
-
-    }
 
     const fetchData = async () => {
       try {
@@ -30,10 +24,26 @@ function InventoryAdminUpdateForm() {
           setItemData(location.state.itemData);
         }
 
-        const productResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_index');
+        const productResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_index',
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+
+        );
         setProducts(productResponse.data);
 
-        const supplierResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/supplier_index');
+        const supplierResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/supplier_index',
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+
+        );
         setSuppliers(supplierResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -65,7 +75,14 @@ function InventoryAdminUpdateForm() {
         stock: e.target.form.Stock.value,
         supplier_id: e.target.form.Supplier.value,
         admission_date: e.target.form.Date.value,
-      });
+      }, 
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }
+        , );
 
       console.log('Item updated successfully:', response.data);
 

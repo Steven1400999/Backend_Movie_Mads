@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button, Container, Row, Col, Toast } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ProductTable from './componentsAdmin/ProductTable';
 import SupplierTable from './componentsAdmin/SupplierTable';
 import axios from 'axios';
+import { Context } from '../Context';
 
 function ProductCategoriesAdminStoreForm() {
   const navigate = useNavigate();
@@ -11,19 +12,8 @@ function ProductCategoriesAdminStoreForm() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [product_category, setProduct_category] = useState([]);
-  const token = sessionStorage.getItem("token");
-  const id_rol = sessionStorage.getItem("id_rol");
+  const { token, rol_id } = useContext(Context);
 
-
-  useEffect(() => {
-    if (!token) {
-        navigate("/Proyecto_Inventario/public/"); 
-      }
-      if(id_rol != 1){
-        navigate("/Proyecto_Inventario/public/Employee");
-
-      }
-    }, []);
   function closeform() {
     navigate('/Proyecto_Inventario/public/Admin/products');
   }
@@ -33,10 +23,20 @@ function ProductCategoriesAdminStoreForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_category_store', {
-        name: e.target.form.Name.value,
+      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_category_store',
+        {
+          name: e.target.form.Name.value,
 
-      });
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+
+        ,
+      );
 
       console.log('Product updated successfully:', response.data);
 

@@ -1,23 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { Context } from '../Context';
 
 function InventoryAdminUpdateForm() {
   const navigate = useNavigate();
-  const token = sessionStorage.getItem("token");
-  const id_rol = sessionStorage.getItem("id_rol");
+  const { token, rol_id } = useContext(Context);
 
-  useEffect(() => {
-      if (!token) {
-          navigate("/Proyecto_Inventario/public/"); 
-         
-        }
-        if(id_rol != 1){
-          navigate("/Proyecto_Inventario/public/Employee");
-  
-        }
-      }, []);
   const closeform = () => {
     navigate('/Proyecto_Inventario/public/Admin/users');
   };
@@ -31,9 +21,13 @@ function InventoryAdminUpdateForm() {
         email: e.target.form.email.value,
         password: e.target.form.Password.value,
         rol_id: 2,
-
-
-      });
+      },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
       console.log('User updated successfully:', response.data);
 
       navigate('/Proyecto_Inventario/public/Admin/users');

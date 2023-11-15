@@ -22,8 +22,6 @@ class ProductSeeder extends Seeder
         $products->product_category_id = 1;
         $products->save();
 
-
-
         $products = new Product();
         $products->name = "Bicicle";
         $products->description = "Marlin 6 is the perfect bike to improve your skills on the slopes. Its updated slacker frame geometry makes it easier to control on descents, while the suspension fork takes advantage on rough trails. Integrated rack and kickstand mounts make it easy to add accessories to this versatile bike.";
@@ -45,46 +43,19 @@ class ProductSeeder extends Seeder
         $products->product_category_id = 1;
         $products->save();
 
-        $products = new Product();
-        $products->name = "Mountain Bike";
-        $products->description = "High-performance mountain bike for off-road adventures with a durable frame and advanced suspension.";
-        $products->price = 1299;
-        $products->product_category_id = 2;
-        $products->save();
-
-        $products = new Product();
-        $products->name = "Running Shoes";
-        $products->description = "Lightweight and comfortable running shoes with advanced cushioning technology.";
-        $products->price = 89;
-        $products->product_category_id = 2;
-        $products->save();
-
+       
         $products = new Product();
         $products->name = "Fitness Tracker";
         $products->description = "Smart fitness tracker with heart rate monitor, GPS, and sleep tracking features.";
         $products->price = 79;
-        $products->product_category_id = 2;
-        $products->save();
-
-        $products = new Product();
-        $products->name = "Gaming Laptop";
-        $products->description = "Powerful gaming laptop with dedicated graphics, high refresh rate display, and customizable RGB keyboard.";
-        $products->price = 1899;
-        $products->product_category_id = 1;
+        $products->product_category_id = 3;
         $products->save();
 
         $products = new Product();
         $products->name = "Smartwatch";
         $products->description = "Fitness-focused smartwatch with health monitoring features, waterproof design, and long battery life.";
         $products->price = 149;
-        $products->product_category_id = 1;
-        $products->save();
-
-        $products = new Product();
-        $products->name = "Mirrorless Camera";
-        $products->description = "High-resolution mirrorless camera with interchangeable lenses and 4K video recording capabilities.";
-        $products->price = 1099;
-        $products->product_category_id = 1;
+        $products->product_category_id = 4;
         $products->save();
 
 

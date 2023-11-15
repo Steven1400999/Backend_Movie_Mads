@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from 'react';
 import { Card, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import InventoryAdminUpdateForm from "./InventoryAdminUpdateForm";
+import { Context } from '../Context';
 
 function ProductAdminItem(props) {
     const navigate = useNavigate();
-
-    const token = sessionStorage.getItem("token");
-    const id_rol = sessionStorage.getItem("id_rol");
-
+    const { token, rol_id } = useContext(Context);
     const [product_category, setProduct_category] = useState('');
 
     const id = props.id;
@@ -19,17 +16,18 @@ function ProductAdminItem(props) {
     const product_category_id = props.product_category_id;
 
     useEffect(() => {
-        if (!token) {
-            navigate("/Proyecto_Inventario/public/"); 
-          }
-          if(id_rol != 1){
-            navigate("/Proyecto_Inventario/public/Employee");
-    
-          }
-    
+
         const fetchProduct_CategoryName = async () => {
             try {
-                const response = await axios.get(`http://localhost/Proyecto_Inventario/public/api/product_category_index`);
+                const response = await axios.get(`http://localhost/Proyecto_Inventario/public/api/product_category_index`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+
+                );
                 const product_categoryDetails = response.data;
                 const product_category = product_categoryDetails.find((product_category) => product_category.id === props.product_category_id).name;
                 setProduct_category(product_category);

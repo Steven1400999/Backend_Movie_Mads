@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Button, Card, Stack, Spinner, Container, Row } from 'react-bootstrap';
 import UserItem from './UserItem';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { Context } from '../Context';
 
 
 function ListCards() {
     const [userData, setUserData] = useState({})
     const navigate = useNavigate();
-    const token = sessionStorage.getItem("token");
-    const id_rol = sessionStorage.getItem("id_rol");
-
+    const { token, rol_id } = useContext(Context);
 
     useEffect(() => {
-        if (!token) {
-            navigate("/Proyecto_Inventario/public/"); 
-          }
-          if(id_rol != 1){
-            navigate("/Proyecto_Inventario/public/Employee");
-    
-          }
-    
+
         const getUsers = async () => {
-            await axios.get("http://localhost/Proyecto_Inventario/public/api/user_index")
+            await axios.get("http://localhost/Proyecto_Inventario/public/api/user_index",
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            )
                 .then(function (response) {
                     console.log(userData);
                     setUserData(response.data)

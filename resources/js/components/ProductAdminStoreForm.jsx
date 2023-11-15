@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button, Container, Row, Col, Toast } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ProductTable from './componentsAdmin/ProductTable';
 import SupplierTable from './componentsAdmin/SupplierTable';
 import axios from 'axios';
+import { Context } from '../Context';
 
 function ProductAdminStoreForm() {
   const navigate = useNavigate();
@@ -11,17 +12,9 @@ function ProductAdminStoreForm() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [product_category, setProduct_category] = useState([]);
-  const token = sessionStorage.getItem("token");
-  const id_rol = sessionStorage.getItem("id_rol");
+  const { token, rol_id } = useContext(Context);
 
   useEffect(() => {
-    if (!token) {
-      navigate("/Proyecto_Inventario/public/"); 
-    }
-    if(id_rol != 1){
-      navigate("/Proyecto_Inventario/public/Employee");
-
-    }
 
     const fetchData = async () => {
       try {
@@ -29,10 +22,26 @@ function ProductAdminStoreForm() {
           setItemData(location.state.itemData);
         }
 
-        const productResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_index');
+        const productResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_index',
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+
+        );
         setProducts(productResponse.data);
 
-        const product_categoryResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_category_index');
+        const product_categoryResponse = await axios.get('http://localhost/Proyecto_Inventario/public/api/product_category_index',
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+
+        );
         setProduct_category(product_categoryResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -52,12 +61,21 @@ function ProductAdminStoreForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_store', {
-        name: e.target.form.Name.value,
-        description: e.target.form.Description.value,
-        price: e.target.form.Price.value,
-        product_category_id: e.target.form.Product_category.value,
-      });
+      const response = await axios.post(
+        'http://localhost/Proyecto_Inventario/public/api/product_store',
+        {
+          name: e.target.form.Name.value,
+          description: e.target.form.Description.value,
+          price: e.target.form.Price.value,
+          product_category_id: e.target.form.Product_category.value,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       console.log('Product updated successfully:', response.data);
 
@@ -79,7 +97,7 @@ function ProductAdminStoreForm() {
       <br />
       <br />
 
-      <Form>
+      <Form onSubmit={handleStoreProduct}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="Name">
             <Form.Label>Name:</Form.Label>

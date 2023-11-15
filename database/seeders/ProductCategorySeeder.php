@@ -23,22 +23,6 @@ class ProductCategorySeeder extends Seeder
         $categorie->save();
 
         $category = new Product_Category();
-        $category->name = "Clothing";
-        $category->save();
-
-        $category = new Product_Category();
-        $category->name = "Home Appliances";
-        $category->save();
-
-        $category = new Product_Category();
-        $category->name = "Books";
-        $category->save();
-
-        $category = new Product_Category();
-        $category->name = "Beauty";
-        $category->save();
-
-        $category = new Product_Category();
         $category->name = "Toys";
         $category->save();
 

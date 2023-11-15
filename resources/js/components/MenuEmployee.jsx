@@ -8,18 +8,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 function MenuEmployee() {
-    const token = sessionStorage.getItem("token");
-    const id_rol = sessionStorage.getItem("id_rol");
-    const navigate = useNavigate();
-    useEffect(() => {
-        if (!token) {
-            navigate("/Proyecto_Inventario/public/"); 
-        
-          }
-          
-        }, []);
-
-        const handlelogout=()=>{sessionStorage.clear();}
+   
+       const handlelogout=()=>{}
 
     return (
         <>

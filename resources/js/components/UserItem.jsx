@@ -10,19 +10,6 @@ function UserItem(props) {
     const password = props.password
     const navigate = useNavigate();
     const location = useLocation();
-    const token = sessionStorage.getItem("token");
-    const id_rol = sessionStorage.getItem("id_rol");
-
-    useEffect(() => {
-        if (!token) {
-            navigate("/Proyecto_Inventario/public/"); 
-         
-          }
-          if(id_rol != 1){
-            navigate("/Proyecto_Inventario/public/Employee");
-    
-          }
-        }, []);
 
     const itemData = {
         id: props.id,

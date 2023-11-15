@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import fondologin from '../../../public/fondologin.jpg'
+import { Context } from "../Context";
 
 function Login() {
+
+    const { token, setGlobalToken } = useContext(Context);
+    const {  setGlobalRol_id } = useContext(Context);
+
+
     const [formValue, setformValue] = useState({
         email: '',
         password: ''
@@ -26,21 +32,23 @@ function Login() {
             {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Accept': 'application/json'
+                    Accept: 'application/json'
+
+                    
                 }
             }
         ).then(response => {
             console.log('response');
             console.log(response);
-            console.log("Rol_id: ", response.data.data.rol_id);
-            console.log(response.data.data.token);
-            sessionStorage.setItem("token", response.data.data.token);
-            sessionStorage.setItem("id_rol", response.data.data.rol_id);
+            console.log("Rol_id: ", response.data.rol_id);
+            console.log(response.data.token);
+            
+
+            setGlobalToken(response.data.token);
+            setGlobalRol_id(response.data.rol_idl);
 
 
-
-
-            const rol_id = response.data.data.rol_id;
+            const rol_id = response.data.rol_id;
             if (rol_id == 1) {
 
                 navigate("/Proyecto_Inventario/public/Admin");
@@ -53,12 +61,6 @@ function Login() {
 
 
             }
-
-
-
-
-
-
 
         }).catch(error => {
             console.log(error);

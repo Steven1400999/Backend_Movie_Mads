@@ -3,27 +3,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, Outlet } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 
 
 function MenuAdmin() {
-    const token = sessionStorage.getItem("token");
-    const id_rol = sessionStorage.getItem("id_rol");
-    const navigate = useNavigate();
+ 
 
-    useEffect(() => {
-        if (!token) {
-            navigate("/Proyecto_Inventario/public/");
-        }
-         if(id_rol != 1){
-            navigate("/Proyecto_Inventario/public/Employee");
-    
-          }
 
-    }, []);
-
- const handlelogout=()=>{sessionStorage.clear();}
+ const handlelogout=()=>{}
 
     return (
         <>

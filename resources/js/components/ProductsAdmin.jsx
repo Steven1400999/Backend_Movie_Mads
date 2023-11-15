@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, Container, Row, Col, DropdownButton, Dropdown, Spinner } from 'react-bootstrap';
 import axios from 'axios';
 import InventoryAdminitem from './InventoryAdminItem';
 import { useNavigate } from "react-router-dom";
 import ProductAdminItem from './ProductAdminItem';
+import { Context } from '../Context';
 
 function ProductsAdmin() {
     const [productData, setProductData] = useState([]);
@@ -12,24 +13,32 @@ function ProductsAdmin() {
     const [selectedName, setSelectedName] = useState(null);
     const [selectedPrice, setSelectedPrice] = useState(null);
     const navigate = useNavigate();
-    const token = sessionStorage.getItem("token");
-    const id_rol = sessionStorage.getItem("id_rol");
+    const { token, rol_id } = useContext(Context);
 
     useEffect(() => {
-        if (!token) {
-            navigate("/Proyecto_Inventario/public/"); 
-          }
-          if(id_rol != 1){
-            navigate("/Proyecto_Inventario/public/Employee");
-    
-          }
-    
+
+
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/product_index");
+                const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/product_index",
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
                 setProductData(response.data);
 
-                const Product_categoryData = await axios.get("http://localhost/Proyecto_Inventario/public/api/product_category_index");
+                const Product_categoryData = await axios.get("http://localhost/Proyecto_Inventario/public/api/product_category_index",
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+
+                );
                 setProduct_categoryData(Product_categoryData.data);
 
             } catch (error) {
@@ -42,13 +51,20 @@ function ProductsAdmin() {
 
     const handleFilter = async () => {
         try {
-            const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/product_show", {
-                params: {
+            const response = await axios.post("http://localhost/Proyecto_Inventario/public/api/product_show",
+                {
                     name: selectedName,
                     price: selectedPrice,
                     product_category_id: selectedproduct_category,
                 },
-            });
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+
+                ,);
             setProductData(response.data);
         } catch (error) {
             console.error('Error fetching filtered data:', error);
@@ -57,7 +73,15 @@ function ProductsAdmin() {
 
     const handleClearFilters = async () => {
         try {
-            const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/product_index");
+            const response = await axios.get("http://localhost/Proyecto_Inventario/public/api/product_index",
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+
+            );
             setProductData(response.data);
             setSelectedName(null);
             setSelectedPrice(null);
