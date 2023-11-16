@@ -14,8 +14,9 @@ function InventoryAdminUpdateForm() {
   const { token } = useContext(Context);
   const [errors, setErrors] = useState({
     stock: '',
-    date:''
+    date: '',
   });
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -70,17 +71,17 @@ function InventoryAdminUpdateForm() {
 
     const newErrors = {
       stock: '',
-      date:'',
+      date: '',
     };
     if (!stockRegex.test(stock)) {
-      newErrors.stock = 'Stock have to be positive.';
+      newErrors.stock = 'Stock has to be positive.';
     }
     const selectedYear = new Date(date).getFullYear();
     const currentYearPlusFour = new Date().getFullYear() + 4;
     if (selectedYear >= currentYearPlusFour) {
       newErrors.date = 'Date should not be 2024 or more.';
     }
-    
+
     setErrors(newErrors);
 
     if (Object.values(newErrors).some(error => error !== '')) {
@@ -111,12 +112,9 @@ function InventoryAdminUpdateForm() {
   return (
     <Container>
       <br />
+      <h4 className="text-center">Store or create an item of the inventory</h4>
       <br />
-      <h4>Store or create an item of the inventory</h4>
-      <br />
-      <br />
-
-      <Form  onSubmit={handleStoreItem}>
+      <Form onSubmit={handleStoreItem}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="Product">
             <Form.Label>Product</Form.Label>
@@ -155,23 +153,18 @@ function InventoryAdminUpdateForm() {
           </Form.Group>
         </Row>
         <Row className="mb-3">
-          <Col>
-            <Button variant="success" type="submit">
+          <Col xs={12} md={6}>
+            <Button variant="success" type="submit" className="w-100">
               Create an item
             </Button>
-            <br />
-            <br />
           </Col>
-          <Col>
-            <Button variant="secondary" onClick={closeform}>
+          <Col xs={12} md={6}>
+            <Button variant="secondary" onClick={closeform} className="w-100 mt-md-0 mt-2">
               Close
             </Button>
           </Col>
-          <Col>
-          </Col>
         </Row>
       </Form>
-
     </Container>
   );
 }

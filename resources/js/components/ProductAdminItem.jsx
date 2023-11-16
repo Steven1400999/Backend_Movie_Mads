@@ -58,7 +58,7 @@ function ProductAdminItem(props) {
 
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem',boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)' }}>
             <Card.Body>
                 <Card.Title>ID: {id}</Card.Title>
                 <hr />

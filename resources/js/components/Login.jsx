@@ -84,7 +84,7 @@ function Login() {
 
     return (
         <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
-            <Form onSubmit={handleSubmit} style={{ fontSize: '1.2em', color: 'black', borderColor: 'black', border: '2px solid black', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', padding: '5%', marginTop: '20%', zIndex: '+1', backgroundColor: 'white' }}>
+            <Form onSubmit={handleSubmit} style={{ fontSize: '1.2em', color: 'black', borderColor: 'black', border: '2px solid black', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', padding: '5%', marginTop: '20%', zIndex: '+1', backgroundColor: '#F3F3F3' }}>
                 <br /><br />
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Label>InventiKS, keep your stock up to date</Form.Label>
