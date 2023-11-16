@@ -30,23 +30,36 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+{
+    $existingProduct = Product::where('name', $request->name)->first();
 
-        $product = Product::create([
-            "name" => $request->name,
-            "description" => $request->description,
-            "price" => $request->price,
-            "product_category_id" => $request->product_category_id,
+    if ($existingProduct) {
+        if ($existingProduct->price != $request->price) {
 
+            $product = Product::create([
+                "name" => $request->name,
+                "description" => $request->description,
+                "price" => $request->price,
+                "product_category_id" => $request->product_category_id,
+            ]);
 
-
-        ]);
-
-        $product->save();
-        return $request;
-
-
+            return response()->json($product, 201);
+        } else {
+            return response()->json(['message' => 'Product with the same name and price already exists.'], 409);
+        }
     }
+
+    $product = Product::create([
+        "name" => $request->name,
+        "description" => $request->description,
+        "price" => $request->price,
+        "product_category_id" => $request->product_category_id,
+    ]);
+
+    return response()->json($product, 201);
+}
+
+
 
     /**
      * Display the specified resource.

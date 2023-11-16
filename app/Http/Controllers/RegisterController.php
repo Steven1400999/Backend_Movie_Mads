@@ -68,6 +68,7 @@ class RegisterController extends ResponseController
                 'Unauthorized.',
                 ['error' => 'Unauthorized']
             );
+            alert('Invalid Email or password.');
         }
     }
 }

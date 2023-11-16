@@ -84,7 +84,7 @@ function InventoryAdminUpdateForm() {
     }
 
     if (!priceRegex.test(price)) {
-      newErrors.price = 'Price have to be positive integer.';
+      newErrors.price = 'Price have to be positive.';
     }
 
     if (!product_category_id) {

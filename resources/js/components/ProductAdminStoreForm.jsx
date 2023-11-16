@@ -123,7 +123,9 @@ function ProductAdminStoreForm() {
 
     } catch (error) {
       console.error('Error updating item:', error);
-
+      if (error.response.status === 409) {
+        alert('Product is already on the database with same name and price.');
+      }
     }
   };
 
