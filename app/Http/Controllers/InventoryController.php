@@ -51,6 +51,7 @@ class InventoryController extends Controller
      */
     public function show(Request $request)
     {
+
         $inventory = Inventory::where('id', $request->id)
             ->orwhere('product_id', $request->product_id)
             ->orwhere('stock', $request->stock)
@@ -58,7 +59,7 @@ class InventoryController extends Controller
             ->orwhere('supplier_id', $request->supplier_id)
             ->get();
 
-        return $inventory;
+        return response()->json($inventory, 201);
     }
 
 
@@ -115,4 +116,8 @@ class InventoryController extends Controller
         return $inventory;
 
     }
+
+
+
+
 }

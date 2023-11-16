@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventory;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -97,11 +98,21 @@ class ProductController extends Controller
      */
     public function destroy(Request $request)
     {
+        $product = Product::find($request->id);
 
+    if (!$product) {
+        return response()->json(['message' => 'Product not found'], 404);
+    }
 
-        $product = Product::where('id', $request->id)
-            ->orwhere('name', $request->name)->delete();
-        return $product;
+    $existingProductOnInventory = Inventory::where('product_id', $request->id)->first();
+    
+    if ($existingProductOnInventory) {
+        return response()->json(['message' => 'Product is being used in the inventory'], 409);
+    }
+
+    $product->delete();
+    return response()->json(['message' => 'Product deleted successfully'], 200);
+
 
 
     }

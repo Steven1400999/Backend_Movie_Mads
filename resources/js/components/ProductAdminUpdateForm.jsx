@@ -13,7 +13,12 @@ function InventoryAdminUpdateForm() {
   const [products, setProducts] = useState([]);
   const [product_category, setProduct_category] = useState([]);
   const { token, rol_id } = useContext(Context);
-
+  const [errors, setErrors] = useState({
+    name: '',
+    description: '',
+    price: '',
+    product_category_id: '',
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,7 +62,40 @@ function InventoryAdminUpdateForm() {
 
   const handleUpdateProduct = async (e) => {
     e.preventDefault();
+    const name = e.target.form.Name.value;
+    const description = e.target.form.Description.value;
+    const price = e.target.form.Price.value;
+    const product_category_id = e.target.form.Product_category.value;
+    const priceRegex = /^\d+$/;
 
+
+    const newErrors = {
+      name: '',
+      description: '',
+      price: '',
+      product_category_id: '',
+    };
+
+    if (!name) {
+      newErrors.name = 'Name is required.';
+    }
+    if (!description) {
+      newErrors.description = 'Description is required.';
+    }
+
+    if (!priceRegex.test(price)) {
+      newErrors.price = 'Price have to be positive integer.';
+    }
+
+    if (!product_category_id) {
+      newErrors.product_category_id = 'Product category is required.';
+    }
+
+    setErrors(newErrors);
+
+    if (Object.values(newErrors).some(error => error !== '')) {
+      return;
+    }
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_update',
         {
@@ -90,17 +128,20 @@ function InventoryAdminUpdateForm() {
   const handleDestroyProduct = async (e) => {
     e.preventDefault();
 
+
+
+
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_destroy',
         {
           id: itemData.id,
 
         }, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }
 
         ,);
 
@@ -112,7 +153,9 @@ function InventoryAdminUpdateForm() {
 
     } catch (error) {
       console.error('Error destroying item:', error);
-
+      if (error.response.status === 409) {
+        alert('Product is being used on the inventory');
+      }
     }
   };
 
@@ -136,11 +179,13 @@ function InventoryAdminUpdateForm() {
                 </option>
               ))}
             </Form.Select>
+            {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
           </Form.Group>
 
           <Form.Group as={Col} controlId="Description">
             <Form.Label>Description:</Form.Label>
             <Form.Control type="text" placeholder="Description" defaultValue={itemData?.description || ''} />
+            {errors.description && <p style={{ color: 'red' }}>{errors.description}</p>}
           </Form.Group>
         </Row>
 
@@ -148,6 +193,7 @@ function InventoryAdminUpdateForm() {
           <Form.Group as={Col} controlId="Price">
             <Form.Label>Price:</Form.Label>
             <Form.Control type="number" placeholder="Stock" defaultValue={itemData?.price || ''} />
+            {errors.price && <p style={{ color: 'red' }}>{errors.price}</p>}
           </Form.Group>
 
           <Form.Group as={Col} controlId="Product_category">
@@ -159,6 +205,7 @@ function InventoryAdminUpdateForm() {
                 </option>
               ))}
             </Form.Select>
+            {errors.product_category_id && <p style={{ color: 'red' }}>{errors.product_category_id}</p>}
           </Form.Group>
         </Row>
         <Row className="mb-3">

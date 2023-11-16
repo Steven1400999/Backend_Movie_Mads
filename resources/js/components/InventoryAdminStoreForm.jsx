@@ -12,8 +12,10 @@ function InventoryAdminUpdateForm() {
   const [products, setProducts] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
   const { token } = useContext(Context);
-  const [error, setError] = useState('');
-
+  const [errors, setErrors] = useState({
+    stock: '',
+    date:''
+  });
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,20 +61,31 @@ function InventoryAdminUpdateForm() {
   const handleStoreItem = async (e) => {
     e.preventDefault();
 
-    const product = e.target.form.Product.value;
-    const stock = e.target.form.Stock.value.trim();
-    const supplier = e.target.form.Supplier.value;
-    const date = e.target.form.Date.value;
+    const product = e.target.elements.Product.value;
+    const stock = e.target.elements.Stock.value;
+    const supplier = e.target.elements.Supplier.value;
+    const date = e.target.elements.Date.value;
 
     const stockRegex = /^\d+$/;
 
-    if (!product || !stockRegex.test(stock) || !supplier || !date) {
-      setError('All fields are required, or the stock format is incorrect.');
-      return;
-    } else {
-      setError('');
+    const newErrors = {
+      stock: '',
+      date:'',
+    };
+    if (!stockRegex.test(stock)) {
+      newErrors.stock = 'Stock have to be positive.';
     }
+    const selectedYear = new Date(date).getFullYear();
+    const currentYearPlusFour = new Date().getFullYear() + 4;
+    if (selectedYear >= currentYearPlusFour) {
+      newErrors.date = 'Date should not be 2024 or more.';
+    }
+    
+    setErrors(newErrors);
 
+    if (Object.values(newErrors).some(error => error !== '')) {
+      return;
+    }
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_store', {
         product_id: product,
@@ -103,7 +116,7 @@ function InventoryAdminUpdateForm() {
       <br />
       <br />
 
-      <Form>
+      <Form  onSubmit={handleStoreItem}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="Product">
             <Form.Label>Product</Form.Label>
@@ -119,6 +132,7 @@ function InventoryAdminUpdateForm() {
           <Form.Group as={Col} controlId="Stock">
             <Form.Label>Stock</Form.Label>
             <Form.Control type="number" placeholder="Stock" defaultValue={itemData?.stock || ''} />
+            {errors.stock && <p style={{ color: 'red' }}>{errors.stock}</p>}
           </Form.Group>
         </Row>
 
@@ -126,6 +140,7 @@ function InventoryAdminUpdateForm() {
           <Form.Group as={Col} controlId="Date">
             <Form.Label>Date</Form.Label>
             <Form.Control type="date" placeholder="Update Date" defaultValue={currentDate} />
+            {errors.date && <p style={{ color: 'red' }}>{errors.date}</p>}
           </Form.Group>
 
           <Form.Group as={Col} controlId="Supplier">
@@ -141,7 +156,7 @@ function InventoryAdminUpdateForm() {
         </Row>
         <Row className="mb-3">
           <Col>
-            <Button variant="success" type="submit" onClick={handleStoreItem}>
+            <Button variant="success" type="submit">
               Create an item
             </Button>
             <br />
@@ -157,13 +172,6 @@ function InventoryAdminUpdateForm() {
         </Row>
       </Form>
 
-      {error && (
-        <Row>
-          <Col>
-            <p style={{ color: 'red' }}>{error}</p>
-          </Col>
-        </Row>
-      )}
     </Container>
   );
 }

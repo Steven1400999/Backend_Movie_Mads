@@ -42,7 +42,7 @@ Route::middleware('auth:api')->group(function () {
     //Supplier Controller
     Route::get('/supplier_index', [SupplierController::class, 'index']);
     Route::post('/supplier_store', [SupplierController::class, 'store']);
-    Route::get('/supplier_show', [SupplierController::class, 'show']);
+    Route::post('/supplier_show', [SupplierController::class, 'show']);
     Route::get('/supplier_show', [SupplierController::class, 'show']);
     
     Route::post('/supplier_edit', [SupplierController::class, 'edit']);
@@ -61,7 +61,7 @@ Route::middleware('auth:api')->group(function () {
     //Product_category Controller
     Route::get('/product_category_index', [ProductCategoryController::class, 'index']);
     Route::post('/product_category_store', [ProductCategoryController::class, 'store']);
-    Route::get('/product_category_show', [ProductCategoryController::class, 'show']);
+    Route::post('/product_category_show', [ProductCategoryController::class, 'show']);
     Route::post('/product_category_edit', [ProductCategoryController::class, 'edit']);
     Route::post('/product_category_update', [ProductCategoryController::class, 'update']);
     Route::post('/product_category_destroy', [ProductCategoryController::class, 'destroy']);
@@ -84,6 +84,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/inventory_update', [InventoryController::class, 'update']);
     Route::post('/inventory_destroy', [InventoryController::class, 'destroy']);
     Route::post('/inventory_update_stock', [InventoryController::class, 'updateemployee']);
+    Route::post('/check_usage', [InventoryController::class, 'checkInventoryUsage']);
+
     
 
 

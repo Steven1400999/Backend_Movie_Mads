@@ -33,14 +33,17 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
 
+        $existingSupplier = Supplier::where('name', $request->name)->first();
+
+        if ($existingSupplier) {
+            return response()->json(['message' => 'Supplier already exists'], 409);
+        }
+
         $supplier = Supplier::create([
             'name' => $request->name,
-
         ]);
 
-        $supplier->save();
-        return $request;
-
+        return response()->json($supplier, 201);
     }
 
     /**
@@ -50,7 +53,7 @@ class SupplierController extends Controller
     {
 
         $supplier = Supplier::where('id', $request->id)
-            ->orwhere('name', $request->name)->get();
+            ->orwhere('name', $request->name)->find();
         return $supplier;
 
     }

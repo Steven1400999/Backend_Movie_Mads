@@ -35,7 +35,7 @@ function InventoryAdminSupplierForm() {
     navigate('/Proyecto_Inventario/public/Admin/inventory');
   }
 
-  const handleStoreProductCategory = async (e) => {
+  const handleStoresuppliery = async (e) => {
     e.preventDefault();
 
     const supplierName = e.target.form.Name.value.trim();
@@ -48,6 +48,7 @@ function InventoryAdminSupplierForm() {
     }
 
     try {
+     
       const response = await axios.post(
         'http://localhost/Proyecto_Inventario/public/api/supplier_store',
         {
@@ -65,6 +66,7 @@ function InventoryAdminSupplierForm() {
 
       navigate('/Proyecto_Inventario/public/Admin/inventory');
     } catch (error) {
+      alert('Supplier already exists');
       console.error('Error adding supplier:', error);
     }
   };
@@ -86,7 +88,7 @@ function InventoryAdminSupplierForm() {
         </Row>
         <Row className="mb-3">
           <Col>
-            <Button variant="success" type="submit" onClick={handleStoreProductCategory}>
+            <Button variant="success" type="submit" onClick={handleStoresuppliery}>
               Add supplier
             </Button>
             <br />

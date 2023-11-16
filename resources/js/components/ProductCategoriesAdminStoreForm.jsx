@@ -1,32 +1,49 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button, Container, Row, Col, Toast } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
-import ProductTable from './componentsAdmin/ProductTable';
-import SupplierTable from './componentsAdmin/SupplierTable';
 import axios from 'axios';
 import { Context } from '../Context';
+
 
 function ProductCategoriesAdminStoreForm() {
   const navigate = useNavigate();
   const [itemData, setItemData] = useState();
+  const [productData, setProductData] = useState([]);
+
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [product_category, setProduct_category] = useState([]);
   const { token, rol_id } = useContext(Context);
+  const [errors, setErrors] = useState({
+    name: ''
+  });
+
 
   function closeform() {
     navigate('/Proyecto_Inventario/public/Admin/products');
   }
 
-
   const handleStoreProductCategory = async (e) => {
     e.preventDefault();
+    const name = e.target.form.Name.value;
+
+    const newErrors = {
+      name: ''
+    };
+
+    if (!name) {
+      newErrors.name = 'Name is required.';
+    }
+    setErrors(newErrors);
+
+    if (Object.values(newErrors).some(error => error !== '')) {
+      return;
+    }
 
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/product_category_store',
         {
           name: e.target.form.Name.value,
-
         },
         {
           headers: {
@@ -34,22 +51,19 @@ function ProductCategoriesAdminStoreForm() {
             Authorization: `Bearer ${token}`,
           },
         }
-
-        ,
       );
-
-      console.log('Product updated successfully:', response.data);
-
+  
+      console.log('Product category created successfully:', response.data);
+  
       navigate('/Proyecto_Inventario/public/Admin/products');
-
     } catch (error) {
-      console.error('Error updating item:', error);
+      alert('Product category already exists');
+      console.error('Product category error:', error);
+    }
+  
 
     }
-  };
-
-
-
+  
   return (
     <Container>
       <br />
@@ -63,7 +77,7 @@ function ProductCategoriesAdminStoreForm() {
           <Form.Group as={Col} controlId="Name">
             <Form.Label>Name:</Form.Label>
             <Form.Control type="text" placeholder="Category product name" defaultValue={itemData?.description || ''} />
-
+            {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
           </Form.Group>
 
         </Row>
@@ -91,8 +105,12 @@ function ProductCategoriesAdminStoreForm() {
 
 
       </Form>
+
+      <hr />
+                
     </Container>
   );
-}
+
+  }
 
 export default ProductCategoriesAdminStoreForm;

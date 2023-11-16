@@ -124,7 +124,8 @@ function InventoryAdminUpdateForm() {
     } catch (error) {
       console.error('Error updating item:', error);
     }
-  };const handleDestroyItem = async (e) => {
+  };
+  const handleDestroyItem = async (e) => {
     e.preventDefault();
 
     try {

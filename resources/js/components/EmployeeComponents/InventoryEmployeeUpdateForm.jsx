@@ -12,6 +12,9 @@ function InventoryAdminUpdateForm() {
   const [products, setProducts] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
   const { token, rol_id } = useContext(Context);
+  const [errors, setErrors] = useState({
+    stock: '',
+  });
 
   useEffect(() => {
 
@@ -65,6 +68,22 @@ function InventoryAdminUpdateForm() {
 
   const handleUpdateItem = async (e) => {
     e.preventDefault();
+    const stock = e.target.form.Stock.value.trim();
+
+    const stockRegex = /^\d+$/;
+    
+    const newErrors = {
+      stock: '',
+    };
+    
+    if (!stockRegex.test(stock)) {
+      newErrors.stock = 'Stock have to be positive.';
+    }
+    setErrors(newErrors);
+
+    if (Object.values(newErrors).some(error => error !== '')) {
+      return;
+    }
 
     try {
       const response = await axios.post('http://localhost/Proyecto_Inventario/public/api/inventory_update_stock',
@@ -99,13 +118,14 @@ function InventoryAdminUpdateForm() {
       <br />
       <h4>Update an item of the inventory</h4>
       <br />
+      <h5>In this form, you can only modify the stock </h5>
       <br />
 
       <Form>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="Product">
             <Form.Label>Product</Form.Label>
-            <Form.Select defaultValue={itemData?.product_id || ''} className="mb-2">
+            <Form.Select defaultValue={itemData?.product_id || ''} className="mb-2" disabled>
               {[...products.filter(product => product.id === itemData?.product_id), ...products.filter(product => product.id !== itemData?.product_id)].map((product) => (
                 <option key={product.id} value={product.id}>
                   {`${product.id} - ${product.name}`}
@@ -116,19 +136,20 @@ function InventoryAdminUpdateForm() {
 
           <Form.Group as={Col} controlId="Stock">
             <Form.Label>Stock</Form.Label>
-            <Form.Control type="number" placeholder="Stock" defaultValue={itemData?.stock || ''} />
+            <Form.Control type="number" placeholder="Stock" defaultValue={itemData?.stock || ''}   />
+            {errors.stock && <p style={{ color: 'red' }}>{errors.stock}</p>}
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="Date">
             <Form.Label>Date</Form.Label>
-            <Form.Control type="date" placeholder="Update Date" defaultValue={currentDate} />
+            <Form.Control type="date" placeholder="Update Date" defaultValue={currentDate} readOnly  />
           </Form.Group>
 
           <Form.Group as={Col} controlId="Supplier">
             <Form.Label>Supplier</Form.Label>
-            <Form.Select defaultValue={itemData?.supplier_id || ''} className="mb-2">
+            <Form.Select defaultValue={itemData?.supplier_id || ''} className="mb-2" disabled>
               {[...suppliers.filter(supplier => supplier.id === itemData?.supplier_id), ...suppliers.filter(supplier => supplier.id !== itemData?.supplier_id)].map((supplier) => (
                 <option key={supplier.id} value={supplier.id}>
                   {`${supplier.id} - ${supplier.name}`}

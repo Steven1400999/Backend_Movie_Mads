@@ -114,7 +114,7 @@ function ProductsAdmin() {
         <>
             <Row className="mb-3">
                 <Col>
-                    <Button variant="outline-secondary" onClick={showFormStore}>Create an item</Button>
+                    <Button variant="outline-secondary" onClick={showFormStore}>Create a product</Button>
                 </Col>
                 <Col>
                     <Button variant="outline-secondary" onClick={showproductcategories}>Product categories</Button>
