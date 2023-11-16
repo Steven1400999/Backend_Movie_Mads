@@ -3,14 +3,24 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, Outlet } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+import { Context } from "../Context";
 
 
 function MenuAdmin() {
- 
+
+    const { token, setGlobalToken, setGlobalRol_id } = useContext(Context);
 
 
- const handlelogout=()=>{}
+    const handlelogout = () => {
+
+        token('');
+        setGlobalToken('');
+        setGlobalRol_id('');
+
+
+
+    }
 
     return (
         <>

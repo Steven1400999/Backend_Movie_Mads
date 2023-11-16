@@ -4,13 +4,23 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { Context } from "../Context";
 
 function MenuEmployee() {
-   
-       const handlelogout=()=>{}
+    const { token, setGlobalToken, setGlobalRol_id } = useContext(Context);
 
+       
+    const handlelogout = () => {
+
+        token('');
+        setGlobalToken('');
+        setGlobalRol_id('');
+
+
+
+    }
     return (
         <>
             <Navbar bg="dark" data-bs-theme="dark">
