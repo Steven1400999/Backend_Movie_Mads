@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
     {
 
         $products = new Product();
-        $products->name = "Laptop";
+        $products->name = "Laptop Legion-H5";
         $products->description = "LENOVO ThinkPad T490 - 14 Inch FHD Laptop, 8th Gen Intel Core i7-8665U, 16GB DDR4 RAM, 256GB SSD, HDMI, Backlit Keyboard, Fingerprint, Windows 10 Pro";
         $products->price = 7528;
         $products->product_category_id = 1;
@@ -25,35 +25,35 @@ class ProductSeeder extends Seeder
 
 
         $products = new Product();
-        $products->name = "Bicicle";
+        $products->name = "Bicicle Marlin 6";
         $products->description = "Marlin 6 is the perfect bike to improve your skills on the slopes. Its updated slacker frame geometry makes it easier to control on descents, while the suspension fork takes advantage on rough trails. Integrated rack and kickstand mounts make it easy to add accessories to this versatile bike.";
         $products->price = 16999;
         $products->product_category_id = 2;
         $products->save();
 
         $products = new Product();
-        $products->name = "Smartphone";
+        $products->name = "Smartphone Galaxy S10";
         $products->description = "Latest Android/iOS smartphone with high-resolution camera, fast processor, and long-lasting battery life.";
         $products->price = 999;
         $products->product_category_id = 1;
         $products->save();
 
         $products = new Product();
-        $products->name = "Wireless Headphones";
+        $products->name = "Wireless Headphones AirPhones";
         $products->description = "Premium noise-canceling wireless headphones for an immersive audio experience.";
         $products->price = 199;
         $products->product_category_id = 1;
         $products->save();
 
         $products = new Product();
-        $products->name = "Mountain Bike";
+        $products->name = "Mountain Bike Gravel R29";
         $products->description = "High-performance mountain bike for off-road adventures with a durable frame and advanced suspension.";
         $products->price = 1299;
         $products->product_category_id = 2;
         $products->save();
 
         $products = new Product();
-        $products->name = "Running Shoes";
+        $products->name = "Running Shoes Foam-Runner";
         $products->description = "Lightweight and comfortable running shoes with advanced cushioning technology.";
         $products->price = 89;
         $products->product_category_id = 2;
@@ -67,14 +67,14 @@ class ProductSeeder extends Seeder
         $products->save();
 
         $products = new Product();
-        $products->name = "Gaming Laptop";
+        $products->name = "Gaming Laptop Rzrz";
         $products->description = "Powerful gaming laptop with dedicated graphics, high refresh rate display, and customizable RGB keyboard.";
         $products->price = 1899;
         $products->product_category_id = 1;
         $products->save();
 
         $products = new Product();
-        $products->name = "Smartwatch";
+        $products->name = "Smartwatch Huawei";
         $products->description = "Fitness-focused smartwatch with health monitoring features, waterproof design, and long battery life.";
         $products->price = 149;
         $products->product_category_id = 1;
