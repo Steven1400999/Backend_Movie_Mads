@@ -62,6 +62,7 @@ function InventoryAdminSupplierForm() {
         }
       );
 
+      
       console.log('Supplier added successfully:', response.data);
 
       navigate('/Proyecto_Inventario/public/Admin/inventory');
