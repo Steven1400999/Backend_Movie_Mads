@@ -19,22 +19,27 @@ function UserItem(props) {
         rol_id: props.rol_id
     };
 
-
-
-    const handleClose = () => {
-
-    };
+    function getJobPosition(rol_id) {
+        if (rol_id === 1) {
+          return 'Administrator';
+        } else if (rol_id === 2) {
+          return 'Employee';
+        } else {
+          return 'Unknown';
+        }
+      }
+    
+      const jobPosition = getJobPosition(rol_id);
 
     return (
         <>
-
-
-
             <Card style={{ width: '18rem', borderColor: 'blue' }}>
                 <Card.Body>
                     <Card.Title>ID: {id}</Card.Title>
                     <Card.Subtitle>Name: {name}</Card.Subtitle>
                     <Card.Text>Email: {email} </Card.Text>
+                    <Card.Text>Job postion: {jobPosition} </Card.Text>
+
                 </Card.Body>
             </Card>
         </>

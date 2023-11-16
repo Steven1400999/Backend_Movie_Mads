@@ -30,6 +30,12 @@ class RegisterController extends ResponseController
                 $validator->errors()
             );
         }
+        $existingemail = User::where('email', $request->email)->first();
+
+        if ($existingemail) {
+            return response()->json(['message' => 'Email already exists'], 409);
+        }
+
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);

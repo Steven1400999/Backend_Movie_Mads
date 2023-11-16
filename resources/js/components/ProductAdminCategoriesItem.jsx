@@ -44,7 +44,7 @@ const handleDestroyItem = async (e) => {
     } catch (error) {
       console.error('Error destroying product catergory:', error);
       if (error.response.status === 409) {
-        alert('Product catergory is being used on the inventory');
+        alert('Product catergory is being used on a product, you cant delete this.');
       }
     }
   };

@@ -56,7 +56,10 @@ function InventoryAdminUpdateForm() {
 
       navigate('/Proyecto_Inventario/public/Admin/users');
     } catch (error) {
-      console.error('Error updating User:', error);
+      console.error('Error creating  User:', error);
+      if (error.response.status === 409) {
+        alert('Email is already used by a user.Try another one.');
+      }
     }
   };
 

@@ -17,21 +17,21 @@ class UserSeeder extends Seeder
         $users = new User();
         $users->name = "Steven";
         $users->email = "steven@gmail.com";
-        $users->password = bcrypt("root");
+        $users->password = bcrypt("123456789");
         $users->rol_id = 1;
         $users->save();
 
         $users = new User();
         $users->name = "Kevin";
         $users->email = "kevin@gmail.com";
-        $users->password = bcrypt("root");
+        $users->password = bcrypt("123456789");
         $users->rol_id = 2;
         $users->save();
 
         $users = new User();
         $users->name = "Alexis";
         $users->email = "alexis@gmail.com";
-        $users->password = bcrypt("root");
+        $users->password = bcrypt("123456789");
         $users->rol_id = 2;
         $users->save();
 
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         $users = new User();
         $users->name = "Daniel";
         $users->email = "daniel@gmail.com";
-        $users->password = bcrypt("root");
+        $users->password = bcrypt("123456789");
         $users->rol_id = 2;
         $users->save();
 
