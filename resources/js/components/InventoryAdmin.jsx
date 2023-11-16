@@ -64,18 +64,18 @@ function InventoryAdmin() {
     const handleFilter = async () => {
         try {
             const response = await axios.post("http://localhost/Proyecto_Inventario/public/api/inventory_show", {
-                    product_id: selectedProduct,
-                    stock: selectedStock,
-                    admission_date: selectedDate,
-                    supplier_id: selectedSupplier,
-                },
+                product_id: selectedProduct,
+                stock: selectedStock,
+                admission_date: selectedDate,
+                supplier_id: selectedSupplier,
+            },
                 {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
                     },
                 }
-                
+
 
             );
             setInventoryData(response.data);
@@ -123,6 +123,12 @@ function InventoryAdmin() {
         );
     }
 
+    const productsWithLowStock = productData.filter(product => {
+        const inventoryItems = inventoryData.filter(item => item.product_id === product.id && item.stock < 20);
+        return inventoryItems.length > 0;
+      });
+    
+
     return (
         <>
             <Row className="mb-3">
@@ -135,6 +141,35 @@ function InventoryAdmin() {
                 </Col>
 
 
+
+                <Col>
+                <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            To fill stock
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            {productsWithLowStock.length > 0 ? (
+                                productsWithLowStock.map((product, index) => {
+                                    const inventoryItems = inventoryData.filter(item => item.product_id === product.id && item.stock < 20);
+
+                                    return (
+                                        <React.Fragment key={index}>
+                                            {inventoryItems.map((inventoryItem, itemIndex) => (
+                                                <Dropdown.Item key={itemIndex} onClick={() => setSelectedProduct(product.id)}>
+                                                    {`${product.id} - ${product.name} (Stock: ${inventoryItem.stock})`}
+                                                </Dropdown.Item>
+                                            ))}
+                                        </React.Fragment>
+                                    );
+                                })
+                            ) : (
+                                <Dropdown.Item disabled>No products with low stock</Dropdown.Item>
+                            )}
+                        </Dropdown.Menu>
+                    </Dropdown>
+
+                </Col>
             </Row>
 
             <hr />
