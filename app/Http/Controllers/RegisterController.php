@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends ResponseController
@@ -20,7 +21,7 @@ class RegisterController extends ResponseController
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
-            'rol_id' => 'required',
+            'role' => 'required',
 
         ]);
 
@@ -46,7 +47,7 @@ class RegisterController extends ResponseController
             'token'=> $token,
             'id'=>$user->id,
             'name'=>$user->name,
-            'rol_id'=>$user->rol_id,
+            'role'=>$user->role,
             'messagge' =>'Register succesful'],200);
 
     }
@@ -56,11 +57,13 @@ class RegisterController extends ResponseController
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
             $token = $user->createToken('MyApp')->accessToken;
+            Cookie::queue('access_token', $token, 60);
+
             return response()->json([
                 'token'=> $token,
                 'id'=>$user->id,
                 'name'=>$user->name,
-                'rol_id'=>$user->rol_id,
+                'role'=>$user->role,
                 'messagge' =>'Login succesful'],200);
     
         } else {

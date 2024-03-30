@@ -78,7 +78,7 @@ class LanguageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Requestequest $request)
+    public function destroy(Request $request)
     {
         $language = Language::where('id', $request->id)->delete();
         return $language;

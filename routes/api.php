@@ -1,13 +1,17 @@
 <?php
 
-use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\ProductCategoryController;
-use App\Http\Controllers\ProductController;
+
+use App\Http\Controllers\DubbingController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\RolController;
-use App\Http\Controllers\SupplierController;
+
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\SeatController;
+use App\Http\Controllers\SubtitleController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
+
+use App\Http\Controllers\UserSeatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +32,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('login', [RegisterController::class, 'login']);
+Route::post('register', [RegisterController::class, 'register']);
+Route::get('/dubbing_index', [DubbingController::class, 'index']);
+Route::post('/dubbing_store', [DubbingController::class, 'store']);
 
 
 
@@ -36,57 +43,79 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/user_index', [UserController::class, 'index']);
     Route::post('/user_update', [UserController::class, 'update']);
     Route::post('/user_destroy', [UserController::class, 'destroy']);
-    Route::post('register', [RegisterController::class, 'register']);
 
     
-    //Supplier Controller
-    Route::get('/supplier_index', [SupplierController::class, 'index']);
-    Route::post('/supplier_store', [SupplierController::class, 'store']);
-    Route::post('/supplier_show', [SupplierController::class, 'show']);
-    Route::get('/supplier_show', [SupplierController::class, 'show']);
     
-    Route::post('/supplier_edit', [SupplierController::class, 'edit']);
-    Route::post('/supplier_update', [SupplierController::class, 'update']);
-    Route::post('/supplier_destroy', [SupplierController::class, 'destroy']);
-    
-    //Rol Controller
-    Route::get('/rol_index', [RolController::class, 'index']);
-    Route::post('/rol_store', [RolController::class, 'store']);
-    Route::get('/rol_show', [RolController::class, 'show']);
-    Route::post('/rol_edit', [RolController::class, 'edit']);
-    Route::post('/rol_update', [RolController::class, 'update']);
-    Route::post('/rol_destroy', [RolController::class, 'destroy']);
-    
-    
-    //Product_category Controller
-    Route::get('/product_category_index', [ProductCategoryController::class, 'index']);
-    Route::post('/product_category_store', [ProductCategoryController::class, 'store']);
-    Route::post('/product_category_show', [ProductCategoryController::class, 'show']);
-    Route::post('/product_category_edit', [ProductCategoryController::class, 'edit']);
-    Route::post('/product_category_update', [ProductCategoryController::class, 'update']);
-    Route::post('/product_category_destroy', [ProductCategoryController::class, 'destroy']);
-    
-    
-    
-    //Product Controller
-    Route::get('/product_index', [ProductController::class, 'index']);
-    Route::post('/product_store', [ProductController::class, 'store']);
-    Route::post('/product_show', [ProductController::class, 'show']);
-    Route::post('/product_edit', [ProductController::class, 'edit']);
-    Route::post('/product_update', [ProductController::class, 'update']);
-    Route::post('/product_destroy', [ProductController::class, 'destroy']);
-    
-    //Inventory Controller
-    Route::get('/inventory_index', [InventoryController::class, 'index']);
-    Route::post('/inventory_store', [InventoryController::class, 'store']);
-    Route::post('/inventory_show', [InventoryController::class, 'show']);
-    Route::post('/inventory_edit', [InventoryController::class, 'edit']);
-    Route::post('/inventory_update', [InventoryController::class, 'update']);
-    Route::post('/inventory_destroy', [InventoryController::class, 'destroy']);
-    Route::post('/inventory_update_stock', [InventoryController::class, 'updateemployee']);
-    Route::post('/check_usage', [InventoryController::class, 'checkInventoryUsage']);
+
+
+//Dubbing Controller
+//Route::get('/dubbing_index', [DubbingController::class, 'index']);
+//Route::post('/dubbing_store', [DubbingController::class, 'store']);
+Route::get('/dubbing_show', [DubbingController::class, 'show']);
+Route::post('/dubbing_edit', [DubbingController::class, 'edit']);
+Route::post('/dubbing_update', [DubbingController::class, 'update']);
+Route::post('/dubbing_destroy', [DubbingController::class, 'destroy']);
+
+
+//Language Controller
+Route::get('/language_index', [DubbingController::class, 'index']);
+Route::post('/language_store', [DubbingController::class, 'store']);
+Route::get('/language_show', [DubbingController::class, 'show']);
+Route::post('/language_edit', [DubbingController::class, 'edit']);
+Route::post('/language_update', [DubbingController::class, 'update']);
+Route::post('/language_destroy', [DubbingController::class, 'destroy']);
 
     
+//Movie Controller
+Route::get('/movie_index', [MovieController::class, 'index']);
+Route::post('/movie_store', [MovieController::class, 'store']);
+Route::get('/movie_show', [MovieController::class, 'show']);
+Route::post('/movie_edit', [MovieController::class, 'edit']);
+Route::post('/movie_update', [MovieController::class, 'update']);
+Route::post('/movie_destroy', [MovieController::class, 'destroy']);
+
+
+//Reservation Controller
+Route::get('/reservation_index', [ReservationController::class, 'index']);
+Route::post('/reservation_store', [ReservationController::class, 'store']);
+Route::get('/reservation_show', [ReservationController::class, 'show']);
+Route::post('/reservation_edit', [ReservationController::class, 'edit']);
+Route::post('/reservation_update', [ReservationController::class, 'update']);
+Route::post('/reservation_destroy', [ReservationController::class, 'destroy']);
+
+//Schedule Controller
+Route::get('/schedule_index', [ScheduleController::class, 'index']);
+Route::post('/schedule_store', [ScheduleController::class, 'store']);
+Route::get('/schedule_show', [ScheduleController::class, 'show']);
+Route::post('/schedule_edit', [ScheduleController::class, 'edit']);
+Route::post('/schedule_update', [ScheduleController::class, 'update']);
+Route::post('/schedule_destroy', [ScheduleController::class, 'destroy']);
+
+//Seat Controller
+Route::get('/seat_index', [SeatController::class, 'index']);
+Route::post('/seat_store', [SeatController::class, 'store']);
+Route::get('/seat_show', [SeatController::class, 'show']);
+Route::post('/seat_edit', [SeatController::class, 'edit']);
+Route::post('/seat_update', [SeatController::class, 'update']);
+Route::post('/seat_destroy', [SeatController::class, 'destroy']);
+
+//Subtitle Controller
+Route::get('/subtitle_index', [SubtitleController::class, 'index']);
+Route::post('/subtitle_store', [SubtitleController::class, 'store']);
+Route::get('/subtitle_show', [SubtitleController::class, 'show']);
+Route::post('/subtitle_edit', [SubtitleController::class, 'edit']);
+Route::post('/subtitle_update', [SubtitleController::class, 'update']);
+Route::post('/subtitle_destroy', [SubtitleController::class, 'destroy']);
+
+//UserSeat Controller
+Route::get('/user_seat_index', [UserSeatController::class, 'index']);
+Route::post('/user_seat_store', [UserSeatController::class, 'store']);
+Route::get('/user_seat_show', [UserSeatController::class, 'show']);
+Route::post('/user_seat_edit', [UserSeatController::class, 'edit']);
+Route::post('/user_seat_update', [UserSeatController::class, 'update']);
+Route::post('/user_seat_destroy', [UserSeatController::class, 'destroy']);
+
+
 
 
 });
