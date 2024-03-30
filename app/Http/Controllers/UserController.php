@@ -28,15 +28,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
         $user = User::create([
             'name' => $request->name,
-
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => $request->role,
         ]);
 
         $user->save();
-        return $request;
-
+        return $user;
     }
 
     /**
@@ -65,13 +65,13 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
-            'rol_id' => $request->rol_id,
-
+            'password' => bcrypt($request->password),
+            'role' => $request->role,
         ]);
+
         $user->save();
         return $user;
-
+    
     }
 
     /**

@@ -22,12 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'rol_id'
+        'role'
     ];
-    public function rols(): BelongsTo
+    public function reservations()
     {
-        return $this->belongsTo(Rol::class);
-
+        return $this->hasMany(Reservation::class);
     }
 
 
