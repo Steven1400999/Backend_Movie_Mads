@@ -14,7 +14,8 @@ class Schedule extends Model
         'time',
         'room',
         'total_capacity',
-        'available_seats'
+        'available_seats',
+
     ];
 
     public function movie()

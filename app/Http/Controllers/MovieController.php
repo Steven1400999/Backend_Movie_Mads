@@ -34,6 +34,10 @@ class MovieController extends Controller
             'description' => $request->description,
             'duration' => $request->duration,
             'image' => $request->image,
+            'language_id' => $request->language_id,
+            'dubbing_id' => $request->dubbing_id,
+            'subtitle_id' => $request->subtitle_id,
+
         ]);
 
         $movie->save();
@@ -50,6 +54,10 @@ class MovieController extends Controller
         ->orWhere('title' , $request->title)
         ->orWhere('description' , $request->description)
         ->orWhere('duration' , $request->duration)
+        ->orWhere('language_id' , $request->language_id)
+        ->orWhere('dubbing_id' , $request->dubbing_id)
+        ->orWhere('subtitle_id' , $request->subtitle_id)
+
         ->get();
 
 
@@ -76,6 +84,9 @@ class MovieController extends Controller
             'description' => $request->description,
             'duration' => $request->duration,
             'image' => $request->image,
+            'language_id' => $request->language_id,
+            'dubbing_id' => $request->dubbing_id,
+            'subtitle_id' => $request->subtitle_id,
         ]);
 
         $movie->save();

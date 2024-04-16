@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\DubbingController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\RegisterController;
 
@@ -33,24 +34,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', [RegisterController::class, 'login']);
 Route::post('register', [RegisterController::class, 'register']);
-Route::get('/dubbing_index', [DubbingController::class, 'index']);
-Route::post('/dubbing_store', [DubbingController::class, 'store']);
+Route::get('/user_index', [UserController::class, 'index']);
+Route::post('/user_update', [UserController::class, 'update']);
+Route::post('/user_destroy', [UserController::class, 'destroy']);
 
 
 
-Route::middleware('auth:api')->group(function () {
-
-    Route::get('/user_index', [UserController::class, 'index']);
-    Route::post('/user_update', [UserController::class, 'update']);
-    Route::post('/user_destroy', [UserController::class, 'destroy']);
-
-    
-    
 
 
 //Dubbing Controller
-//Route::get('/dubbing_index', [DubbingController::class, 'index']);
-//Route::post('/dubbing_store', [DubbingController::class, 'store']);
+Route::get('/dubbing_index', [DubbingController::class, 'index']);
+Route::post('/dubbing_store', [DubbingController::class, 'store']);
 Route::get('/dubbing_show', [DubbingController::class, 'show']);
 Route::post('/dubbing_edit', [DubbingController::class, 'edit']);
 Route::post('/dubbing_update', [DubbingController::class, 'update']);
@@ -58,14 +52,14 @@ Route::post('/dubbing_destroy', [DubbingController::class, 'destroy']);
 
 
 //Language Controller
-Route::get('/language_index', [DubbingController::class, 'index']);
-Route::post('/language_store', [DubbingController::class, 'store']);
-Route::get('/language_show', [DubbingController::class, 'show']);
-Route::post('/language_edit', [DubbingController::class, 'edit']);
-Route::post('/language_update', [DubbingController::class, 'update']);
-Route::post('/language_destroy', [DubbingController::class, 'destroy']);
+Route::get('/language_index', [LanguageController::class, 'index']);
+Route::post('/language_store', [LanguageController::class, 'store']);
+Route::get('/language_show', [LanguageController::class, 'show']);
+Route::post('/language_edit', [LanguageController::class, 'edit']);
+Route::post('/language_update', [LanguageController::class, 'update']);
+Route::post('/language_destroy', [LanguageController::class, 'destroy']);
 
-    
+
 //Movie Controller
 Route::get('/movie_index', [MovieController::class, 'index']);
 Route::post('/movie_store', [MovieController::class, 'store']);
@@ -114,6 +108,10 @@ Route::get('/user_seat_show', [UserSeatController::class, 'show']);
 Route::post('/user_seat_edit', [UserSeatController::class, 'edit']);
 Route::post('/user_seat_update', [UserSeatController::class, 'update']);
 Route::post('/user_seat_destroy', [UserSeatController::class, 'destroy']);
+
+
+
+Route::middleware('auth:api')->group(function () {
 
 
 
