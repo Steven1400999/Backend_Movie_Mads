@@ -45,6 +45,15 @@ class ScheduleController extends Controller
     $end_time->add(new DateInterval('PT' . ($duration->format('H') * 3600 + $duration->format('i') * 60) . 'S'));
     $end_time->add(new DateInterval('PT30M')); // Agrega 30 minutos extra para la limpieza
 
+    $existing_schedule = Schedule::where('start_time', '<=', $end_time->format('Y-m-d H:i:s'))
+    ->where('end_time', '>=', $start_time->format('Y-m-d H:i:s'))
+    ->exists();
+
+// Si hay superposición, devuelve un mensaje de error
+if ($existing_schedule) {
+return response()->json(['error' => 'The proposed schedule is already in use.'], 400);
+}
+
     $schedule = Schedule::create([
         'movie_id' => $request->movie_id,
         'start_time' => $request->start_time,
