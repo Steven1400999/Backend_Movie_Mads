@@ -10,7 +10,7 @@ class User_seat extends Model
     use HasFactory;
 
 
-    protected $fillable = ['user_id', 'seat_id'];
+    protected $fillable = ['user_id', 'seat_id','schedule_id'];
 
     public function user()
     {

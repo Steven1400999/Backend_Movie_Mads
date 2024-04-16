@@ -32,6 +32,8 @@ class UserSeatController extends Controller
         $userSeat = User_seat::create([
             'user_id' => $request->user_id,
             'seat_id' => $request->seat_id,
+            'schedule_id' => $request->schedule_id,
+
         ]);
 
         $userSeat->save();
@@ -65,6 +67,8 @@ class UserSeatController extends Controller
         $userSeat->update([
             'user_id' => $request->user_id,
             'seat_id' => $request->seat_id,
+            'schedule_id' => $request->schedule_id,
+
         ]);
 
         $userSeat->save();
