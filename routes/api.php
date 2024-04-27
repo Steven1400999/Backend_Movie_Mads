@@ -70,7 +70,7 @@ Route::post('/category_destroy', [CategoryController::class, 'destroy']);
 
 
 //Movie Controller
-Route::get('/movie_index', [MovieController::class, 'index']);
+//Route::get('/movie_index', [MovieController::class, 'index']);
 Route::post('/movie_store', [MovieController::class, 'store']);
 Route::get('/movie_show', [MovieController::class, 'show']);
 Route::post('/movie_edit', [MovieController::class, 'edit']);
@@ -122,6 +122,7 @@ Route::post('/user_seat_destroy', [UserSeatController::class, 'destroy']);
 
 Route::middleware('auth:api')->group(function () {
 
+    Route::get('/movie_index', [MovieController::class, 'index']);
 
 
 

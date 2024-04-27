@@ -63,7 +63,9 @@ class RegisterController extends ResponseController
                 'name'=>$user->name,
                 'role'=>$user->role,
                 'messagge' =>'Login succesful'],200);
-    
+                
+                $response->withCookie(cookie('token', $token, 60 * 24 * 7, null, null, false, true));
+
         } else {
             return $this->sendError(
                 'Unauthorized.',
