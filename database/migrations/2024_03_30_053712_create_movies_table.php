@@ -16,14 +16,16 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->time('duration');
+            $table->string('image');
             $table->unsignedBigInteger('language_id');
             $table->unsignedBigInteger('dubbing_id');
             $table->unsignedBigInteger('subtitle_id');
-            $table->string('image');
+            $table->unsignedBigInteger('category_id');
 
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
             $table->foreign('dubbing_id')->references('id')->on('dubbings')->onDelete('cascade');
             $table->foreign('subtitle_id')->references('id')->on('subtitles')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -37,6 +37,7 @@ class MovieController extends Controller
             'language_id' => $request->language_id,
             'dubbing_id' => $request->dubbing_id,
             'subtitle_id' => $request->subtitle_id,
+            'category_id' => $request->category_id,
 
         ]);
 
@@ -57,6 +58,8 @@ class MovieController extends Controller
         ->orWhere('language_id' , $request->language_id)
         ->orWhere('dubbing_id' , $request->dubbing_id)
         ->orWhere('subtitle_id' , $request->subtitle_id)
+        ->orWhere('category_id' , $request->category_id)
+        ->orWhere( 'category_id', $request->category_id)
 
         ->get();
 
@@ -87,6 +90,8 @@ class MovieController extends Controller
             'language_id' => $request->language_id,
             'dubbing_id' => $request->dubbing_id,
             'subtitle_id' => $request->subtitle_id,
+            'category_id' => $request->category_id,
+
         ]);
 
         $movie->save();

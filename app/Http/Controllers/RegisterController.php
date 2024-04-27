@@ -57,8 +57,6 @@ class RegisterController extends ResponseController
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
             $token = $user->createToken('MyApp')->accessToken;
-            Cookie::queue('access_token', $token, 60);
-
             return response()->json([
                 'token'=> $token,
                 'id'=>$user->id,

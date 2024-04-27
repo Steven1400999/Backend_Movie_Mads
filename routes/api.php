@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DubbingController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MovieController;
@@ -58,6 +59,14 @@ Route::get('/language_show', [LanguageController::class, 'show']);
 Route::post('/language_edit', [LanguageController::class, 'edit']);
 Route::post('/language_update', [LanguageController::class, 'update']);
 Route::post('/language_destroy', [LanguageController::class, 'destroy']);
+
+//Category Controller
+Route::get('/category_index', [CategoryController::class, 'index']);
+Route::post('/category_store', [CategoryController::class, 'store']);
+Route::get('/category_show', [CategoryController::class, 'show']);
+Route::post('/category_edit', [CategoryController::class, 'edit']);
+Route::post('/category_update', [CategoryController::class, 'update']);
+Route::post('/category_destroy', [CategoryController::class, 'destroy']);
 
 
 //Movie Controller

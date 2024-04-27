@@ -16,7 +16,9 @@ class Movie extends Model
         'image',
         'language_id',
         'dubbing_id',
-        'subtitle_id'
+        'subtitle_id',
+        'category_id',
+
     ];
 
     public function schedules()
