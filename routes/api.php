@@ -28,13 +28,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::post('login', [RegisterController::class, 'login']);
+Route::post('register', [RegisterController::class, 'register']);
+
+
+Route::middleware('auth:api')->group(function () {
+
+
 
 //User Controller
 
-
-
-Route::post('login', [RegisterController::class, 'login']);
-Route::post('register', [RegisterController::class, 'register']);
 Route::get('/user_index', [UserController::class, 'index']);
 Route::post('/user_update', [UserController::class, 'update']);
 Route::post('/user_destroy', [UserController::class, 'destroy']);
@@ -70,7 +73,7 @@ Route::post('/category_destroy', [CategoryController::class, 'destroy']);
 
 
 //Movie Controller
-//Route::get('/movie_index', [MovieController::class, 'index']);
+Route::get('/movie_index', [MovieController::class, 'index']);
 Route::post('/movie_store', [MovieController::class, 'store']);
 Route::get('/movie_show', [MovieController::class, 'show']);
 Route::post('/movie_edit', [MovieController::class, 'edit']);
@@ -117,12 +120,6 @@ Route::get('/user_seat_show', [UserSeatController::class, 'show']);
 Route::post('/user_seat_edit', [UserSeatController::class, 'edit']);
 Route::post('/user_seat_update', [UserSeatController::class, 'update']);
 Route::post('/user_seat_destroy', [UserSeatController::class, 'destroy']);
-
-
-
-Route::middleware('auth:api')->group(function () {
-
-    Route::get('/movie_index', [MovieController::class, 'index']);
 
 
 
