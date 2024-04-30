@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MovieController extends Controller
 {
@@ -29,6 +30,15 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $filename = uniqid() . '.' . $extension;
+            $image->storeAs('public/images', $filename);
+            $imagePath = '/storage/images/' . $filename;
+            $request->merge(['image' => $imagePath]);
+        }
+
         $movie = Movie::create([
             'title' => $request->title,
             'description' => $request->description,
@@ -38,11 +48,10 @@ class MovieController extends Controller
             'dubbing_id' => $request->dubbing_id,
             'subtitle_id' => $request->subtitle_id,
             'category_id' => $request->category_id,
-
         ]);
 
         $movie->save();
-        return $movie;
+                return $movie;
     }
 
     /**
