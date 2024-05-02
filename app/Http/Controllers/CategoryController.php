@@ -44,12 +44,11 @@ class CategoryController extends Controller
      */
     public function show(Request $request)
     {
-        $category = category::where('id', $request->id)
-        ->orWhere('category' , $request->category)
+        $category = Category::where('id', $request->id)
         ->get();
 
 
-        return response()->json($category, 201);
+        return $category;
 
     }
 
