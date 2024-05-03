@@ -46,7 +46,7 @@ class DubbingController extends Controller
     {
         $dubbing = Dubbing::where('id', $request->id)
         ->orWhere('language' , $request->language)
-        ->get();
+        ->first();
 
 
         return response()->json($dubbing, 201);

@@ -46,7 +46,7 @@ class CategoryController extends Controller
     {
         $category = Category::where('id', $request->id)
         ->orWhere('category' , $request->category)
-        ->get();
+        ->first();
 
 
         return response()->json($category, 201);

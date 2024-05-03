@@ -45,7 +45,7 @@ class LanguageController extends Controller
     {
         $language = Language::where('id', $request->id)
         ->orWhere('language' , $request->language)
-        ->get();
+        ->first();
 
 
         return response()->json($language, 201);

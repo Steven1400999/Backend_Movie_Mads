@@ -45,7 +45,7 @@ class SubtitleController extends Controller
     {
         $subtitle = Subtitle::where('id', $request->id)
         ->orWhere('language' , $request->language)
-        ->get();
+        ->first();
 
 
         return response()->json($subtitle, 201);
