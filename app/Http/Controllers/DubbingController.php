@@ -45,7 +45,6 @@ class DubbingController extends Controller
     public function show(Request $request)
     {
         $dubbing = Dubbing::where('id', $request->id)
-        ->orWhere('language' , $request->language)
         ->first();
 
 

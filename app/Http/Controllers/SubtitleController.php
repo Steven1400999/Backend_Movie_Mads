@@ -44,7 +44,6 @@ class SubtitleController extends Controller
     public function show(Request $request)
     {
         $subtitle = Subtitle::where('id', $request->id)
-        ->orWhere('language' , $request->language)
         ->first();
 
 

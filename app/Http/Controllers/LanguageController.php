@@ -44,7 +44,6 @@ class LanguageController extends Controller
     public function show(Request $request)
     {
         $language = Language::where('id', $request->id)
-        ->orWhere('language' , $request->language)
         ->first();
 
 
