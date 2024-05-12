@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Models\Seat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
 {
@@ -27,18 +29,38 @@ class ReservationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $reservation = Reservation::create([
-            'user_id' => $request->user_id,
-            'schedule_id' => $request->schedule_id,
-            'seat_number' => $request->seat_number,
-            'qr_code' => $request->qr_code,
-        ]);
+ // ReservationController.php
+ public function store(Request $request)
+ {
+     $request->validate([
+         'user_id' => 'required|exists:users,id',
+         'schedule_id' => 'required|exists:schedules,id',
+         'seats' => 'required|array',
+         'qr_code' => 'nullable|string'
+     ]);
+ 
+     DB::beginTransaction();
+     try {
+         $reservation = Reservation::create([
+             'user_id' => $request->user_id,
+             'schedule_id' => $request->schedule_id,
+             'seats' => json_encode($request->seats), // Make sure seats are stored as a JSON string
+             'qr_code' => $request->qr_code
+         ]);
+ 
+         foreach ($request->seats as $seatId) {
+             Seat::where('id', $seatId)->update(['status' => 'occupied']);
+         }
+ 
+         DB::commit();
+         return response()->json($reservation, 201);
+     } catch (\Exception $e) {
+         DB::rollBack();
+         return response()->json(['error' => 'Failed to create reservation: ' . $e->getMessage()], 500);
+     }
+ }
+ 
 
-        $reservation->save();
-        return $reservation;
-    }
 
     /**
      * Display the specified resource.

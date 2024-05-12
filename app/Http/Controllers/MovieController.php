@@ -70,7 +70,7 @@ class MovieController extends Controller
         ->orWhere('category_id' , $request->category_id)
         ->orWhere( 'category_id', $request->category_id)
 
-        ->get();
+        ->first();
 
 
         return response()->json($movie, 201);
