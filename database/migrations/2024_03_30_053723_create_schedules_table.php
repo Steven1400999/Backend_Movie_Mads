@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('movie_id');
             $table->datetime('start_time');
-            $table->dateTime('end_time')->nullable(); // Añade nullable para permitir valores nulos
+            $table->dateTime('end_time')->nullable(); 
 
             $table->integer('room');
             $table->integer('total_capacity')->default(50);

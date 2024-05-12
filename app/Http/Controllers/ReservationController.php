@@ -68,11 +68,7 @@ class ReservationController extends Controller
     public function show(Request $request)
     {
          
-        $reservation =  Reservation::where('id', $request->id)
-        ->orWhere('user_id' , $request->title)
-        ->orWhere('schedule_id' , $request->description)
-        ->orWhere('seat_number' , $request->duration)
-        ->orWhere('qr_code' , $request->duration)
+        $reservation =  Reservation::where('user_id', $request->user_id)
         ->get();
 
 
