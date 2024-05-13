@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dubbing;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 
 class DubbingController extends Controller
@@ -29,6 +30,13 @@ class DubbingController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        $existing = Dubbing::where('language', $request->language)->first();
+        if ($existing) {
+            return response()->json(['message' => 'language already exists'], 409);
+        }
+
         $dubbing = Dubbing::create([
             'language' => $request->language,
 
@@ -67,6 +75,11 @@ class DubbingController extends Controller
     {
         $dubbing = Dubbing::where('id', $request->id)->first();
 
+        $existing = Dubbing::where('language', $request->language)->first();
+        if ($existing) {
+            return response()->json(['message' => 'language already exists'], 409);
+        }
+
         $dubbing->update([
             'language' => $request->language,
         ]);
@@ -82,6 +95,12 @@ class DubbingController extends Controller
      */
     public function destroy(Request $request)
     {
+        $existing = Movie::where('dubbing_id', $request->id)->first();
+        if ($existing) {
+            return response()->json(['message' => 'This register is being used on a movie.'], 409);
+        }
+
+
         $dubbing = Dubbing::where('id', $request->id)->delete();
         return $dubbing;
     }

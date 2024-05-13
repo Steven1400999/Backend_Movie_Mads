@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -38,6 +39,14 @@ class MovieController extends Controller
             $imagePath = '/storage/images/' . $filename;
             $request->merge(['image' => $imagePath]);
         }
+
+
+        $existing = Movie::where('title', $request->title)->first();
+        if ($existing) {
+            return response()->json(['message' => 'Movie already exists'], 409);
+        }
+
+
 
         $movie = Movie::create([
             'title' => $request->title,
@@ -91,6 +100,11 @@ class MovieController extends Controller
     {
         $movie = Movie::where('id', $request->id)->first();
 
+        $existing = Movie::where('title', $request->title)->first();
+        if ($existing) {
+            return response()->json(['message' => 'Movie already exists'], 409);
+        }
+
         $movie->update([
             'title' => $request->title,
             'description' => $request->description,
@@ -113,6 +127,12 @@ class MovieController extends Controller
      */
     public function destroy(Request $request)
     {
+
+        $existing = Schedule::where('movie_id', $request->id)->first();
+        if ($existing) {
+            return response()->json(['message' => 'This register is being used on a movie.'], 409);
+        }
+
         $movie = Movie::where('id', $request->id)->delete();
         return $movie;
     }

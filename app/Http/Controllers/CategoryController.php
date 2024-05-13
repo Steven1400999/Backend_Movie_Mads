@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -29,6 +30,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
+        $existingCategory = Category::where('category', $request->category)->first();
+        if ($existingCategory) {
+            return response()->json(['message' => 'Category already exists'], 409);
+        }
+        
         $category = Category::create([
             'category' => $request->category,
 
@@ -67,6 +74,11 @@ class CategoryController extends Controller
     {
         $category = category::where('id', $request->id)->first();
 
+        $existingCategory = Category::where('category', $request->category)->first();
+        if ($existingCategory) {
+            return response()->json(['message' => 'Category already exists'], 409);
+        }
+
         $category->update([
             'category' => $request->category,
         ]);
@@ -82,6 +94,13 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request)
     {
+
+        $existing = Movie::where('category_id', $request->id)->first();
+        if ($existing) {
+            return response()->json(['message' => 'This register is being used on a movie.'], 409);
+        }
+
+
         $category = category::where('id', $request->id)->delete();
         return $category;
     }

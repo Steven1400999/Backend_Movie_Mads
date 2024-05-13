@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use App\Models\Subtitle;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,12 @@ class SubtitleController extends Controller
      */
     public function store(Request $request)
     {
+        $existing = Subtitle::where('language', $request->language)->first();
+        if ($existing) {
+            return response()->json(['message' => 'language already exists'], 409);
+        }
+
+
         $subtitle = Subtitle::create([
             'language' => $request->language,
 
@@ -65,6 +72,12 @@ class SubtitleController extends Controller
     {
         $subtitle = Subtitle::where('id', $request->id)->first();
 
+        $existing = Subtitle::where('language', $request->language)->first();
+        if ($existing) {
+            return response()->json(['message' => 'language already exists'], 409);
+        }
+
+
         $subtitle->update([
             'language' => $request->language,
         ]);
@@ -78,6 +91,12 @@ class SubtitleController extends Controller
      */
     public function destroy(Request $request)
     {
+
+        $existing = Movie::where('subtitle_id', $request->id)->first();
+        if ($existing) {
+            return response()->json(['message' => 'This register is being used on a movie.'], 409);
+        }
+
         $subtitle = Subtitle::where('id', $request->id)->delete();
         return $subtitle;
     }

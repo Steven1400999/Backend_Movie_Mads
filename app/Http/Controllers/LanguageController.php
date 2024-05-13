@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Language;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 
 class LanguageController extends Controller
@@ -29,6 +30,13 @@ class LanguageController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        $existing = Language::where('language', $request->language)->first();
+        if ($existing) {
+            return response()->json(['message' => 'language already exists'], 409);
+        }
+
         $language = Language::create([
             'language' => $request->language,
 
@@ -65,6 +73,12 @@ class LanguageController extends Controller
     {
         $language = Language::where('id', $request->id)->first();
 
+
+        $existing = Language::where('language', $request->language)->first();
+        if ($existing) {
+            return response()->json(['message' => 'language already exists'], 409);
+        }
+
         $language->update([
             'language' => $request->language,
         ]);
@@ -79,6 +93,12 @@ class LanguageController extends Controller
      */
     public function destroy(Request $request)
     {
+
+        $existing = Movie::where('language_id', $request->id)->first();
+        if ($existing) {
+            return response()->json(['message' => 'This register is being used on a movie.'], 409);
+        }
+
         $language = Language::where('id', $request->id)->delete();
         return $language;
     }
